@@ -186,7 +186,7 @@
                 </div>
             </div>
 
-            <div class="form-group row">
+            <div class="form-group row" v-if="form.photoPaths">
                 <div class="d-flex ml-3" v-for="(path,index) in form.photoPaths" :key="path.index" style="border: 1px solid blue; width: 102px; height: 102px;">
                     <img :src="form.photoPaths[index]" class="img_thumb_nail" alt="">
                 </div>
