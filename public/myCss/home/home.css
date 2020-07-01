@@ -1,0 +1,23 @@
+.z_index2 {
+    z-index: 2;
+}
+.big_carousel {
+    /* top: 64px; position: fixed; */
+    top: 114px; position: absolute;
+}
+.line_height13 {
+    line-height: 1.3;
+}
+.display_none {
+    display: none;
+}
+.carousel-inner img {
+    width: 100%;
+    height: 100%;
+}
+.modal-footer {
+    justify-content: center;
+}
+.modal_body_border {
+    border: 10px solid blue; box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.137); min-height: 500px;
+}
