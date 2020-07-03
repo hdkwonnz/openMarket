@@ -23,6 +23,7 @@ class CreateOrdersTable extends Migration
             $table->string('addressee');
             $table->dateTime('shipping_date')->nullable();
             $table->string('payment_intent_id')->unique();
+            $table->float('payment_intent_amount');
             $table->dateTime('payment_created_at');
             $table->timestamps();
         });

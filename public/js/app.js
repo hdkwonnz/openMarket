@@ -2266,6 +2266,131 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/checkout/PayNow.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/checkout/PayNow.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      clientSecret: "",
+      errorMsg: "",
+      userName: ""
+    };
+  },
+  methods: {
+    performStripe: function performStripe() {
+      var stripe = Stripe("{{ env('STRIPE_PUB_KEY') }}");
+      var elements = stripe.elements();
+      var style = {
+        base: {
+          color: "#32325d",
+          fontFamily: '"Helvetica Neue", Helvetica, sans-serif',
+          fontSmoothing: "antialiased",
+          fontSize: "16px",
+          "::placeholder": {
+            color: "#aab7c4"
+          }
+        },
+        invalid: {
+          color: "#fa755a",
+          iconColor: "#fa755a"
+        }
+      };
+      var card = elements.create("card", {
+        style: style,
+        hidePostalCode: true
+      }); //hidePostalCode: true 내가추가...
+      // var card = elements.create("card", { iconStyle: 'solid', style: style, hidePostalCode: true });//hidePostalCode: true, iconStyle: 'solid' 내가추가...
+
+      card.mount("#card-element");
+      card.addEventListener('change', function (_ref) {
+        var error = _ref.error;
+        var displayError = document.getElementById('card-errors');
+
+        if (error) {
+          displayError.classList.add('alert', 'alert-warning');
+          displayError.textContent = error.message;
+        } else {
+          displayError.classList.remove('alert', 'alert-warning');
+          displayError.textContent = '';
+        }
+      });
+      var form = document.getElementById('payment-form');
+      var submitButton = document.getElementById('submit'); ////
+
+      var customerName = this.userName;
+      form.addEventListener('submit', function (ev) {
+        ev.preventDefault();
+        submitButton.disabled = true; ////
+
+        stripe.confirmCardPayment(this.clientSecret, {
+          payment_method: {
+            card: card,
+            billing_details: {
+              name: customerName ////
+
+            }
+          }
+        });
+      }); //form.addEventListener
+    } //performStrip()
+
+  },
+  //methodes
+  created: function created() {
+    var _this = this;
+
+    axios.get('/checkout/getPaymentIntent', {
+      params: {}
+    }).then(function (response) {
+      //console.log(response);
+      _this.clientSecret = response.data.clientSecret;
+      _this.errorMsg = response.data.errorMsg;
+      _this.userName = response.data.userName;
+
+      _this.performStripe();
+    })["catch"](function (error) {//console.log(error);
+    });
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/order/OrderDetails.vue?vue&type=script&lang=js&":
 /*!*****************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/order/OrderDetails.vue?vue&type=script&lang=js& ***!
@@ -63145,6 +63270,77 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/checkout/PayNow.vue?vue&type=template&id=abb131c8&":
+/*!******************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/checkout/PayNow.vue?vue&type=template&id=abb131c8& ***!
+  \******************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm.errorMsg
+      ? _c("div", { staticClass: "row no-gutters" }, [
+          _c("div", { staticClass: "col-md-12 col-sm-12" }, [
+            _c("div", { staticClass: "text-danger" }, [
+              _c("h4", [_vm._v(_vm._s(_vm.$errorMsg))])
+            ])
+          ])
+        ])
+      : _c(
+          "div",
+          {
+            staticClass: "col-md-6 col-sm-6",
+            staticStyle: { "margin-top": "100px", "margin-bottom": "100px" }
+          },
+          [
+            _c("h4", [_vm._v("Input Card Details")]),
+            _vm._v(" "),
+            _vm._m(0),
+            _vm._v(" "),
+            _c("div", { staticClass: "error_msg" })
+          ]
+        )
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c(
+      "form",
+      { staticClass: "my-4 mt-5", attrs: { id: "payment-form" } },
+      [
+        _c("div", { attrs: { id: "card-element" } }),
+        _vm._v(" "),
+        _c("div", { attrs: { id: "card-errors", role: "alert" } }),
+        _vm._v(" "),
+        _c(
+          "button",
+          {
+            staticClass: "btn btn-success mt-5 w-100",
+            attrs: { id: "submit" }
+          },
+          [_vm._v("Pay Now")]
+        )
+      ]
+    )
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/order/OrderDetails.vue?vue&type=template&id=da20b140&scoped=true&":
 /*!*********************************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/order/OrderDetails.vue?vue&type=template&id=da20b140&scoped=true& ***!
@@ -77765,6 +77961,7 @@ Vue.component('order-details', __webpack_require__(/*! ./components/order/OrderD
 Vue.component('product-input', __webpack_require__(/*! ./components/seller/product/ProductInput.vue */ "./resources/js/components/seller/product/ProductInput.vue")["default"]);
 Vue.component('my-products', __webpack_require__(/*! ./components/seller/product/MyProducts.vue */ "./resources/js/components/seller/product/MyProducts.vue")["default"]);
 Vue.component('edit-products', __webpack_require__(/*! ./components/seller/product/EditProduct.vue */ "./resources/js/components/seller/product/EditProduct.vue")["default"]);
+Vue.component('pay-now', __webpack_require__(/*! ./components/checkout/PayNow.vue */ "./resources/js/components/checkout/PayNow.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -78042,6 +78239,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GetCart_vue_vue_type_template_id_5409b05c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_GetCart_vue_vue_type_template_id_5409b05c_scoped_true___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/checkout/PayNow.vue":
+/*!*****************************************************!*\
+  !*** ./resources/js/components/checkout/PayNow.vue ***!
+  \*****************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _PayNow_vue_vue_type_template_id_abb131c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./PayNow.vue?vue&type=template&id=abb131c8& */ "./resources/js/components/checkout/PayNow.vue?vue&type=template&id=abb131c8&");
+/* harmony import */ var _PayNow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./PayNow.vue?vue&type=script&lang=js& */ "./resources/js/components/checkout/PayNow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _PayNow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _PayNow_vue_vue_type_template_id_abb131c8___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _PayNow_vue_vue_type_template_id_abb131c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/checkout/PayNow.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/checkout/PayNow.vue?vue&type=script&lang=js&":
+/*!******************************************************************************!*\
+  !*** ./resources/js/components/checkout/PayNow.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PayNow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/babel-loader/lib??ref--4-0!../../../../node_modules/vue-loader/lib??vue-loader-options!./PayNow.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/checkout/PayNow.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_PayNow_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/checkout/PayNow.vue?vue&type=template&id=abb131c8&":
+/*!************************************************************************************!*\
+  !*** ./resources/js/components/checkout/PayNow.vue?vue&type=template&id=abb131c8& ***!
+  \************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PayNow_vue_vue_type_template_id_abb131c8___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../node_modules/vue-loader/lib??vue-loader-options!./PayNow.vue?vue&type=template&id=abb131c8& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/checkout/PayNow.vue?vue&type=template&id=abb131c8&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PayNow_vue_vue_type_template_id_abb131c8___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_PayNow_vue_vue_type_template_id_abb131c8___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

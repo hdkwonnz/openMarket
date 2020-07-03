@@ -59,6 +59,9 @@ Route::get('/order/orderDetailsById/{id}', 'OrderController@orderDetailsById')->
 // checkout
 Route::get('/checkout/checkOut', 'CheckoutController@checkOut')->name('checkout.checkOut')->middleware('auth','can:isUser');
 Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','can:isUser');
+Route::get('/checkout/payNow', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','can:isUser');//for blade
+Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','can:isUser');//for vue.js
+Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','can:isUser');
 
 // seller/option ==> for manyToMany test
 Route::get('/seller/showOptionConnections', 'SellerController@showOptionConnections')->name('seller.showOptionConnections');

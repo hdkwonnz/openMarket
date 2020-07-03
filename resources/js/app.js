@@ -38,6 +38,7 @@ Vue.component('order-details', require('./components/order/OrderDetails.vue').de
 Vue.component('product-input', require('./components/seller/product/ProductInput.vue').default);
 Vue.component('my-products', require('./components/seller/product/MyProducts.vue').default);
 Vue.component('edit-products', require('./components/seller/product/EditProduct.vue').default);
+Vue.component('pay-now', require('./components/checkout/PayNow.vue').default);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application

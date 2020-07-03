@@ -110,9 +110,10 @@
                     <div class="w-50"><h4>Grand Total</h4></div>
                     <div class="w-50 text-right"><h4>${{ number_format(($totalSalePrice + 10),2) }}</h4></div>
                 </div>
-                <a href="javascript:void(0) return false;" class="text-decoration-none click_pay">
+                <a href="{{route ('checkout.payNow')}}" class="text-decoration-none click_pay">
+                {{-- <a href="{{route ('checkout.showPayNow')}}" class="text-decoration-none click_pay"> --}}
                     <div class="text-center bg-primary text-white" style="border: none; height: 40px; padding-top: 5px;">
-                        <h4>Click to Pay</h4>
+                        <h4>Check Out</h4>
                     </div>
                 </a>
             </div>
@@ -120,10 +121,4 @@
     </div>
     @endif
 </div>
-@endsection
-
-@section('extra-js')
-
-<script src="{{ asset('myJs\checkOut\checkOut.js') }}"></script>
-
 @endsection
