@@ -46,13 +46,6 @@ class Cart
             Arr::forget($this->items,$this->items[$id]);
             $this->countOfItems = count($this->items);
         }
-
-        // if ($this->items){
-        //     if (array_key_exists($id, $this->items)){
-        //         unset($this->items,$this->items[$id]);
-        //         $this->countOfItems = count($this->items);
-        //     }
-        // }
     }
 
     public function add($item, $id)
@@ -80,7 +73,7 @@ class Cart
     }
 
     ////////DO NOT DELETE BELOW => ORIGINAL CODE FROM YOUTUBE////////////////////////////////////////
-
+    ////https://www.youtube.com/watch?v=4J939dDUH4M&list=PL55RiY5tL51qUXDyBqx0mKVOhLNFwwxvH&index=9
     // public $items = null;
     // public $totalQty = 0;
     // public $totalPrice = 0;
