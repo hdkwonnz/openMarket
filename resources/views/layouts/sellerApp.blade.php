@@ -105,6 +105,9 @@
                       <li class="nav-item">
                         <a href="{{ route('seller.product.showMyProducts') }}" class="nav-link text-dark" href="#">MY PRODUCTS</a>
                       </li>
+                      <li class="nav-item">
+                        <a href="{{ route('seller.seller.showCustomerOrders') }}" class="nav-link text-dark" href="#">ORDERS</a>
+                      </li>
                     </ul>
                     <ul class="navbar-nav ml-auto">
                         <li class="nav-item">
@@ -138,11 +141,10 @@
 
     </div>
 
-     <script src="{{ asset('js/app.js') }}"></script>
-     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script> --}}
-     <script src="{{ asset('myJs/layout/app.js') }}"></script>
+    <script src="{{ asset('js/app.js') }}"></script>
+    <script src="{{ asset('myJs/layout/app.js') }}"></script>
 
-     @yield('extra-js')
+    @yield('extra-js')
 
 </body>
 </html>

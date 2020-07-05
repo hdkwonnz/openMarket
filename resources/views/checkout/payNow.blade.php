@@ -3,8 +3,8 @@
 @section('content')
 
 <div class="container mt-5">
-    <div id="my_loader">
-        <!-- will be loading for spinner loader  -->
+    <div class="loading_spiner">
+        <!-- spiner will be showing here -->
     </div>
     @if ($errorMsg)
         <div class="row no-gutters">
@@ -41,14 +41,7 @@
 @section('extra-js')
 
 <script src="https://js.stripe.com/v3/"></script>
-{{-- <script src="{{ asset('myJs/checkout/spiner.js') }}"></script> --}}
-{{-- <script src='/node_modules/spin.js/spin.js'></script> --}}
 <script>
-
-import {Spinner} from '/node_modules/spin.js';
-
-
-
 var stripe = Stripe("{{ env('STRIPE_PUB_KEY') }}");//take the stripe public key from .env file
 var elements = stripe.elements();//make tripe elements
 var style = {
@@ -91,35 +84,9 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
     ev.preventDefault();
     submitButton.disabled = true;////
 
-
-
-    var opts = {
-        lines: 13, // The number of lines to draw
-        length: 38, // The length of each line
-        width: 17, // The line thickness
-        radius: 45, // The radius of the inner circle
-        scale: 1, // Scales overall size of the spinner
-        corners: 1, // Corner roundness (0..1)
-        color: '#ffffff', // CSS color or array of colors
-        fadeColor: 'transparent', // CSS color or array of colors
-        speed: 1, // Rounds per second
-        rotate: 0, // The rotation offset
-        animation: 'spinner-line-fade-quick', // The CSS animation name for the lines
-        direction: 1, // 1: clockwise, -1: counterclockwise
-        zIndex: 2e9, // The z-index (defaults to 2000000000)
-        className: 'spinner', // The CSS class to assign to the spinner
-        top: '50%', // Top position relative to parent
-        left: '50%', // Left position relative to parent
-        shadow: '0 0 1px transparent', // Box-shadow for the lines
-        position: 'absolute' // Element positioning
-    };
-    var target = document.getElementById('my_loader');
-    var spinner = new Spinner(opts).spin(target);
-
-
-
-
-
+    ////https://stackoverflow.com/questions/55093152/how-to-show-spinner-in-stripe-after-button-is-clicked
+    ////my_loader ==> public/css/app.css(resources/sass/app.scss => compiled..)
+    $('.loading_spiner').addClass('my_loader');//start loading spiner
 
     ////아래에서 카드 결제가 이루어 진다.
     stripe.confirmCardPayment("{{ $clientSecret }}", { //$clientSecret => CheckoutController에서 받은 값
@@ -136,6 +103,8 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
         submitButton.disabled = false;////
 
         // console.log(result.error.message);
+
+        $('.loading_spiner').removeClass('my_loader');//stop loading spiner
 
         $('.error_msg').html("");////
         $('.error_msg').append(result.error.message).addClass('alert').addClass('alert-danger');////
@@ -169,11 +138,18 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
                             $('.error_msg').html("");
                             $('.error_msg').append(data.errorMsg).addClass('alert').addClass('alert-danger');
                             submitButton.disabled = false;////
+
+                            $('.loading_spiner').removeClass('my_loader');//stop loading spiner
+
                         }else{
-                            // $('.error_msg').html("");
-                            // $('.error_msg').append(data.successMsg).removeClass('alert').removeClass('alert-danger');
-                            // $('.count_cart').text(data.countCart);
+                            $('.error_msg').html("");
+                            $('.error_msg').append(data.successMsg).removeClass('alert').removeClass('alert-danger');
+                            $('.count_cart').text(data.countCart);
+
                             window.location.href = '/order/orderDetailsById' + '/' + data.orderId;
+
+                            $('.loading_spiner').removeClass('my_loader');//stop loading spiner
+
                         }
                     },
                     error: function (data) {
@@ -181,6 +157,9 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
                         $('.error_msg').html("");////
                         $('.error_msg').append(error).addClass('alert').addClass('alert-danger');
                         submitButton.disabled = false;////
+
+                        $('.loading_spiner').removeClass('my_loader');//stop loading spiner
+
                     }
                 });
             }

@@ -4,6 +4,7 @@ namespace App\Http\Controllers;
 
 use Session;
 use App\Cart;
+use App\Errorlog;
 use DateTime;
 use App\Order;
 use Stripe\Stripe;
@@ -18,6 +19,11 @@ class CheckoutController extends Controller
     public function payment(Request $request)
     {
         if (!Session::has('cart')){
+            Errorlog::create([
+                            'user_name' => auth()->user()->name,
+                            'user_email' => auth()->user()->email,
+                            'error_message' => "Unable to checkout due to cart session already deleted. => Checkout@payment",
+                      ]);
             return response()->json([
                                         'errorMsg' => "Unable to checkout due to cart session already deleted.",
                                     ]);
@@ -31,7 +37,12 @@ class CheckoutController extends Controller
         if ($data['paymentIntent']['status'] === 'succeeded') {
             //continue to next
         } else {
-            return response()->json(['errorMsg' => 'Payment Intent Not Succeeded']);
+            Errorlog::create([
+                'user_name' => auth()->user()->name,
+                'user_email' => auth()->user()->email,
+                'error_message' => "Payment Intent Not Succeeded. => Checkout@payment",
+          ]);
+            return response()->json(['errorMsg' => 'Payment Intent Not Succeeded.']);
         }
 
         $oldCart = Session::get('cart');
@@ -61,7 +72,6 @@ class CheckoutController extends Controller
                 'user_id' => auth()->user()->id,
                 'total_amount' => $totalSalePrice,
                 'shipping_cost' => 10,
-                'delivery_address' => '7 tinturn pl. flat bush auckland',
                 'addressee' => 'Leo Kwon',
                 'shipping_date' => new DateTime(),
 
@@ -100,8 +110,14 @@ class CheckoutController extends Controller
 
             DB::rollback();
 
+            Errorlog::create([
+                'user_name' => auth()->user()->name,
+                'user_email' => auth()->user()->email,
+                'error_message' => "woops! data base errors on Checkout@payment. => Checkout@payment",
+            ]);
+
             return response()->json([
-                'errorMsg' => 'woops! data base errors on orders & orderdetails table.',
+                'errorMsg' => 'woops! data base errors on Checkout@payment.',
             ]);
         }
     }

@@ -83,3 +83,6 @@ Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyPr
 
 //seller/seller
 Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');
+Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')->name('seller.seller.customerOrders')->middleware('auth','can:isSeller');
+Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
+Route::get('/seller/showCustomerOrders', 'Seller\SellerController@showCustomerOrders')->name('seller.seller.showCustomerOrders')->middleware('auth','can:isSeller');

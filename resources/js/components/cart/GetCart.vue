@@ -106,9 +106,9 @@
                                     <td class="text-right">$10.00</td>
                                 </tr>
                                 <tr>
-                                    <td>Total amt</td>
+                                    <td>Total amount</td>
                                     <td class="text-right">
-                                        {{ (parseFloat(totalSalePrice) + parseFloat(shippingCost)) | currency  }}
+                                        <h5>{{ (parseFloat(totalSalePrice) + parseFloat(shippingCost)) | currency  }}</h5>
                                     </td>
                                 </tr>
                                 <tr>

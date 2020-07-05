@@ -51,4 +51,9 @@ class User extends Authenticatable
     {
         return $this->hasManyThrough('App\Orderdetail', 'App\Order');
     }
+
+    public function address()
+    {
+        return $this->hasOne('App\Address');
+    }
 }

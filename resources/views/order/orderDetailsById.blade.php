@@ -2,8 +2,6 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('myCss/order/order.css') }}">
-
 @if ($errorMsg)
     <div class="container mt-5 mb-5">
         <div class="row no-gutters">
