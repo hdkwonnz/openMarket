@@ -21,7 +21,6 @@
     <!-- Styles -->
     <link href="{{ asset('css/app.css') }}" rel="stylesheet">
     <link rel="stylesheet" href="{{ asset('myCss/layout/app.css') }}">
-
 </head>
 <body>
     <div id="app">
@@ -90,13 +89,13 @@
                         @guest
                             <li class="nav-item">
                                 <a class="nav-link text-dark" href="{{ route('login') }}">
-                                    <i class="fas fa-sign-in-alt text-primary"></i> LOGIN
+                                    <!-- <i class="fas fa-sign-in-alt text-primary"></i> --> LOGIN
                                 </a>
                             </li>
                             @if (Route::has('register'))
                                 <li class="nav-item">
                                     <a class="nav-link text-dark" href="{{ route('register') }}">
-                                        <i class="fas fa-user-plus text-primary"></i> REGISTER
+                                        <!-- <i class="fas fa-user-plus text-primary"></i> --> REGISTER
                                     </a>
                                 </li>
                             @endif
@@ -110,7 +109,7 @@
                                 <a class="nav-link" href="{{ route('logout') }}"
                                     onclick="event.preventDefault();
                                                 document.getElementById('logout-form').submit();">
-                                    <i class="fas fa-sign-out-alt text-danger"></i> LOGOUT
+                                    <!-- <i class="fas fa-sign-out-alt text-danger"></i> --> LOGOUT
                                 </a>
 
                                 <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
@@ -195,7 +194,6 @@
     <script src="{{ asset('js/app.js') }}"></script>
     {{-- <script src="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.13.0/js/all.min.js"></script> --}}
     <script src="{{ asset('myJs/layout/app.js') }}"></script>
-
     @yield('extra-js')
 
 </body>

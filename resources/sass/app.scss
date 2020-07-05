@@ -6,3 +6,18 @@
 
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
+
+// GetCart.vue
+.img_thumb_nail {
+    min-width: 100px; min-height: 100px;
+}
+.grand_total_box {
+    border: 1px solid white; width: 100%; min-height: 352px; position: sticky; top: 168px;
+}
+.order_now {
+    border: 1px solide white;
+}
+// OrderDetails.vue
+.left_side_menu {
+    position: sticky; top: 80px;
+}

@@ -2,7 +2,7 @@
 
 @section('content')
 
-<link rel="stylesheet" href="{{ asset('myCss/order/order.css') }}">
+{{-- <link rel="stylesheet" href="{{ asset('myCss/order/order.css') }}"> --}}
 
 <div class="container mt-5">
     @if ($errorMsg)

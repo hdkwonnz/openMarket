@@ -1,17 +1,5 @@
-<style scoped>
-    .img_thumb_nail {
-        min-width: 100px; min-height: 100px;
-    }
-    .grand_total_box {
-        border: 1px solid white; width: 100%; min-height: 352px; position: sticky; top: 168px;
-    }
-    .order_now {
-        border: 1px solide white;
-    }
-</style>
-
 <template>
-    <div class="container">
+    <div>
         <div v-if="this.errorMsg" class="row no-gutters">
             <div class="col-md-6 offset-md-3 mt-5 mb-5">
                 <strong class="display-4">{{ this.errorMsg }}</strong>
@@ -65,9 +53,12 @@
                                     <a class="btn btn-sm btn-primary" @click="editCart(product['productId'], qty[index])">Edit</a>
                                 </td>
                                 <!-- https://www.npmjs.com/package/vue-numeral-filter -->
-                                <td>
-                                    {{ ( parseFloat(product['price']) * parseFloat(qty[index])) | currency }}
+                                <td v-if="parseFloat(product['price']) > parseFloat(product['salePrice'])">
+                                    <span class="text_decoration_line_through">{{ ( parseFloat(product['price']) * parseFloat(qty[index])) | currency }}</span>
+                                    <br>
+                                    <b>{{ ( parseFloat(product['salePrice']) * parseFloat(qty[index])) | currency }}</b>
                                 </td>
+                                <td v-else><b>{{ ( parseFloat(product['price']) * parseFloat(qty[index])) | currency }}</b></td>
                                 <td>
                                     <a class="btn btn-sm btn-danger" @click="deleteInCart(product['productId'])">Delete</a>
                                 </td>

@@ -293,6 +293,12 @@ class CartController extends Controller
 
         // return $cart->items;
 
+        if ($cart->countOfItems < 1){
+            return response()->json([
+                'errorMsg' => 'No Items in Cart.',
+            ]);
+        }
+
         $totalPrice = 0;
         foreach($cart->items as $item){
             $totalPrice += $item['qty'] * $item['price'];

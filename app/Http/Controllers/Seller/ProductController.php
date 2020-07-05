@@ -45,10 +45,17 @@ class ProductController extends Controller
                                 ->where('id','=',request('productId'))
                                 ->first();
 
+        if (!$product){
+            return response()->json([
+                'errorMsg' => "Not found product Id."
+            ]);
+        }
+
         $photos = unserialize($product->photo_paths);
         return response()->json([
             'product' => $product,
             'photos' => $photos,
+            'errorMsg' => null,
         ]);
     }
 

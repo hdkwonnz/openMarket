@@ -18,8 +18,9 @@ class CheckoutController extends Controller
     public function payment(Request $request)
     {
         if (!Session::has('cart')){
-            Session::flash('error', 'unable to...');
-            return response()->json(['success' => false], 400);
+            return response()->json([
+                                        'errorMsg' => "Unable to checkout due to cart session already deleted.",
+                                    ]);
         }
 
         ////payNow.blade.php => body: JSON.stringify({paymentIntent: paymentIntent})로 넘어 왔기 때문에...
@@ -30,7 +31,7 @@ class CheckoutController extends Controller
         if ($data['paymentIntent']['status'] === 'succeeded') {
             //continue to next
         } else {
-            return response()->json(['error' => 'Payment Intent Not Succeeded']);
+            return response()->json(['errorMsg' => 'Payment Intent Not Succeeded']);
         }
 
         $oldCart = Session::get('cart');
@@ -85,22 +86,22 @@ class CheckoutController extends Controller
 
             session()->forget('cart');
 
-            Session::flash('success', 'Thank you so much...');
-            return response()->json(['success' => 'Payment Intent Succeeded']);
+            return response()->json([
+                                        'errorMsg' => null,
+                                        'successMsg' => 'Payment Intent Succeeded',
+                                        'countCart' => 0,
+                                        'orderId' => $order->id,
+                                    ]);
 
             ////https://stackoverflow.com/questions/30019627/redirectroute-with-parameter-in-url-in-laravel-5
             ////return \Redirect::route('order.orderDetailsById', [$order->id]);
-
-            // return response()->json([
-            //     'orderId' => $order->id,
-            // ]);
         }
         catch(Exception $e){
 
             DB::rollback();
 
             return response()->json([
-                'error' => 'woops! data base errors on orders & orderdetails table.',
+                'errorMsg' => 'woops! data base errors on orders & orderdetails table.',
             ]);
         }
     }
@@ -205,7 +206,10 @@ class CheckoutController extends Controller
 
         if ($count < 1){
             $errorMsg = "No items to check out.";
-            return view('checkout.payNow', compact('errorMsg'));
+            return view('checkout.payNow', ['clientSecret' => null,
+                                            'errorMsg' => $errorMsg,
+                                            'userName' => auth()->user()->name,
+                                            ]);
         }
 
         $totalPrice = 0;
@@ -229,7 +233,10 @@ class CheckoutController extends Controller
             'currency' => 'nzd',
             'payment_method_types' => ['card'],
             // Verify your integration in this guide by including this parameter
-            'metadata' => ['integration_check' => 'accept_a_payment'],////???
+            'metadata' => ['integration_check' => 'accept_a_payment',
+                           'customer_email' => auth()->user()->email,
+                           'customer_name' => auth()->user()->name,
+                          ],
         ]);
 
         // return $intent;
@@ -239,6 +246,7 @@ class CheckoutController extends Controller
         return view('checkout.payNow',['clientSecret' => $clientSecret,
                                         'errorMsg' => null,
                                         'userName' => auth()->user()->name,
+                                        'grandAmount' => $grandAmount,
                                       ]);
     }
 }

@@ -1,14 +1,5 @@
-<style scoped>
-    .img_thumb_nail {
-        min-width: 100px; min-height: 100px;
-    }
-    .left_side_menu {
-        position: sticky; top: 80px;
-    }
-</style>
-
 <template>
-    <div class="container">
+    <div>
         <div class="row no-gutters">
             <div v-if="termSw" class="col-md-7 col-sm-7">
                 <h4>ORDER DETAILS (by terms)</h4>

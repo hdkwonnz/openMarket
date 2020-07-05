@@ -23,6 +23,7 @@ class OrderController extends Controller
         $orders = Order::with('orderdetails')
                         ->where('user_id','=',auth()->user()->id)
                         ->where('created_at', '>=', $yymmddhis)
+                        ->orderBy('created_at','desc')
                         ->get();
 
         // return $orders;
@@ -34,14 +35,27 @@ class OrderController extends Controller
 
     public function orderDetailsById($id)
     {
+        if ($id == "" || null){
+            $errorMsg = "Please enter order Id.";
+
+            return view('order.orderDetailsById', compact('errorMsg'));
+        }
+
         $orders = Order::with('orderdetails')
                         ->where('user_id','=',auth()->user()->id)
                         ->where('id','=',$id)
+                        ->orderBy('created_at','desc')
                         ->get();
 
         // return $orders;
 
-        return view('order.orderDetailsById', compact('orders'));
+        if ($orders->count() < 1){
+            $errorMsg = "Order does not exist.";
+        }else{
+            $errorMsg = null;
+        }
+
+        return view('order.orderDetailsById', compact('orders','errorMsg'));
     }
 
     // public function orderDetails()
@@ -66,6 +80,7 @@ class OrderController extends Controller
                         ->where('user_id','=',auth()->user()->id)
                         ->whereDate('created_at', '>=', request('fromDate'))
                         ->whereDate('created_at', '<=', request('toDate'))
+                        ->orderBy('created_at','desc')
                         ->get();
 
         // return $orders;
