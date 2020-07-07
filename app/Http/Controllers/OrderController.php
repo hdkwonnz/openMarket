@@ -41,21 +41,23 @@ class OrderController extends Controller
             return view('order.orderDetailsById', compact('errorMsg'));
         }
 
-        $orders = Order::with('orderdetails')
+        $order = Order::with('orderdetails')
                         ->where('user_id','=',auth()->user()->id)
                         ->where('id','=',$id)
-                        ->orderBy('created_at','desc')
-                        ->get();
+                        //->get();
+                        ->first();
 
         // return $orders;
 
-        if ($orders->count() < 1){
+        if (!$order){
             $errorMsg = "Order does not exist.";
         }else{
             $errorMsg = null;
         }
 
-        return view('order.orderDetailsById', compact('orders','errorMsg'));
+        return view('order.orderDetailsById', compact('order','errorMsg'));
+        // $orderDetails = $order;
+        // return view('emails.toCustomer.orderDetails', compact('orderDetails','errorMsg'));
     }
 
     // public function orderDetails()

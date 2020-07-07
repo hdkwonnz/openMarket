@@ -8,9 +8,9 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Categorya;
 use App\Categoryb;
-// use App\Categoryc;
 
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class HomeController extends Controller
 {
@@ -79,8 +79,15 @@ class HomeController extends Controller
 
     public function home()
     {
-        $categoryas = Categorya::with('categorybs')
-                        ->get();
+        //redis에 cache key 'categoryas'가 존재하면 cache에서 data를 읽어 오고
+        //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
+        $categoryas = Cache::store('redis')->remember('home.categoryas', now()->addHours(24), function() {
+            return (Categorya::with('categorybs')->get());
+        });
+
+
+        // $categoryas = Categorya::with('categorybs')
+        //                 ->get();
 
         $bestProducts = Product::inRandomOrder()->take(12)->get();
 
@@ -92,8 +99,14 @@ class HomeController extends Controller
 
     public function allCategory()
     {
-        $categorybs = Categoryb::with('categorycs')
-                        ->get();
+        //redis에 cache key 'categorybs'가 존재하면 cache에서 data를 읽어 오고
+        //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
+        $categorybs = Cache::store('redis')->remember('home.categorybs', now()->addHours(24), function() {
+            return (Categoryb::with('categorycs')->get());
+        });
+
+        // $categorybs = Categoryb::with('categorycs')
+        //                 ->get();
 
         // return $allCategory;
         return (string) view('home.allCategory', compact('categorybs'));

@@ -10,6 +10,7 @@ use App\Categorya;
 use App\Categoryb;
 use App\Categoryc;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -32,39 +33,86 @@ class ProductController extends Controller
 
     public function showProductsCategoryAB($aId)
     {
-        $productsCategoryAs = Product::with('categorya','categoryb','categoryc')
-                        ->where('categorya_id', '=', $aId)
-                        ->get();
+        //redis에 cache key 'categorybs'가 존재하면 cache에서 data를 읽어 오고
+        //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
+        $productsCategoryAs = Cache::store('redis')->remember('productsCategoryAs', now()->addHours(24), function() use($aId) {
+            return (Product::with('categorya','categoryb','categoryc')
+                            ->where('categorya_id', '=', $aId)
+                            ->get());
+        });
 
-        $categoryABs = Categorya::with('categorybs')
-                        ->where('id', '=', $aId)
-                        ->first();
+        // return $productsCategoryAs;
+
+        // $productsCategoryAs = Product::with('categorya','categoryb','categoryc')
+        //                 ->where('categorya_id', '=', $aId)
+        //                 ->get();
+
+        $categoryABs = Cache::store('redis')->remember('product.categoryABs', now()->addHours(24), function() use($aId) {
+            return (Categorya::with('categorybs')
+                            ->where('id', '=', $aId)
+                            ->first());
+        });
+
+        // return $categoryABs;
+
+        // $categoryABs = Categorya::with('categorybs')
+        //                 ->where('id', '=', $aId)
+        //                 ->first();
+
         return view('product.showProductsCategoryAB', compact('productsCategoryAs','categoryABs'));
     }
 
     public function showProductsCategoryBC($bId)
     {
-        $productsCategoryBCs = Product::with('categorya','categoryb','categoryc')
-                        ->where('categoryb_id', '=', $bId)
-                        ->get();
+        $productsCategoryBCs = Cache::store('redis')->remember('productsCategoryBCs', now()->addHours(24), function() use($bId) {
+            return (Product::with('categorya','categoryb','categoryc')
+                            ->where('categoryb_id', '=', $bId)
+                            ->get());
+        });
 
-        $categoryBCs = Categoryb::with('categorycs', 'categorya')
-                        ->where('id', '=', $bId)
-                        ->first();
+        // $productsCategoryBCs = Product::with('categorya','categoryb','categoryc')
+        //                 ->where('categoryb_id', '=', $bId)
+        //                 ->get();
+
+        $categoryBCs = Cache::store('redis')->remember('product.categoryBCs', now()->addHours(24), function() use($bId) {
+            return (Categoryb::with('categorycs', 'categorya')
+                            ->where('id', '=', $bId)
+                            ->first());
+        });
+
+        // $categoryBCs = Categoryb::with('categorycs', 'categorya')
+        //                 ->where('id', '=', $bId)
+        //                 ->first();
+
         //return $categoryBCs;
+
         return view('product.showProductsCategoryBC', compact('productsCategoryBCs','categoryBCs'));
     }
 
     public function showProductsCategoryC($cId)
     {
-        $productsCategoryCs = Product::with('categorya','categoryb','categoryc')
-                        ->where('categoryc_id', '=', $cId)
-                        ->get();
+        $productsCategoryCs = Cache::store('redis')->remember('productsCategoryCs', now()->addHours(24), function() use($cId) {
+            return (Product::with('categorya','categoryb','categoryc')
+                            ->where('categoryc_id', '=', $cId)
+                            ->get());
+        });
 
-        $categoryCs = Categoryc::with('categoryb', 'categorya')
-                        ->where('id', '=', $cId)
-                        ->first();
+        // $productsCategoryCs = Product::with('categorya','categoryb','categoryc')
+        //                 ->where('categoryc_id', '=', $cId)
+        //                 ->get();
+
+        $categoryCs = Cache::store('redis')->remember('product.categoryCs', now()->addHours(24), function() use($cId) {
+            return (Categoryc::with('categoryb', 'categorya')
+                            ->where('id', '=', $cId)
+                            ->first());
+        });
+
+        // $categoryCs = Categoryc::with('categoryb', 'categorya')
+        //                 ->where('id', '=', $cId)
+        //                 ->first();
+
         //return $categoryCs;
+
         return view('product.showProductsCategoryC', compact('productsCategoryCs','categoryCs'));
     }
 

@@ -15,35 +15,38 @@
         <div class="row no-gutters mt-2">
             <div class="col-md-12 col-sm-12">
                 <div class="table-responsive">
-                    <table class="table table-sm">
+                    <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
-                                <th style="width: 32%;">Date/Order#/Amount/Addressee/Address</th>
-                                <th style="width: 52%;">Product Infos</th>
-                                <th style="width: 6%;">Ship.Date</th>
-                                <th style="width: 10%;">Delivery</th>
+                                <th style="width: 38%;">Order Infos</th>
+                                <th style="width: 7%;">Delivery</th>
+                                <th style="width: 55%;">Product Infos</th>
                             </tr>
                         </thead>
                         <tbody>
                         </tbody>
                     </table>
-                </div>
-                <div class="table-responsive">
                     <table class="table table-sm">
                         <tbody>
                             <tr v-for="(order) in orders" :key="order.index">
-                                <td style="width: 30%;" scope="row">
+                                <td style="width: 40%;" scope="row">
                                     <div>
                                         {{ order.created_at | myDate }} / Order# : {{ order.id }}
                                     </div>
-                                    <div><b>{{ parseFloat(order.total_amount) | currency }}</b></div>
-                                     <div>{{ order.user.address.address }}</div>
-                                    <div>{{ order.addressee }}</div>
+                                    <div>
+                                        <b>{{ parseFloat(order.total_amount) | currency }}</b> /
+                                        Ship.date: {{ order.shipping_date | myDate }} ({{ order.shipping_cost | currency }})
+                                    </div>
+                                     <span>{{ order.addressee }} / </span>
+                                     <span>{{ order.user.address.address }}</span><br>
                                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#orderDetailsModal">
-                                        Details
+                                        Edit
                                     </a>
                                 </td>
-                                <td style="width: 70%;">
+                                <td>
+                                    processing
+                                </td>
+                                <td style="width: 60%;">
                                     <div class="table-responsive">
                                         <table class="table table-sm table-borderless">
                                             <tbody>
@@ -51,16 +54,10 @@
                                                     <td style="width: 20%;" scope="row">
                                                         <img :src="detail.product.image_path" class="img-fluid img_thumb_nail" alt="">
                                                     </td>
-                                                    <td style="width: 56%;">
+                                                    <td style="width: 80%;">
                                                         <div>{{ detail.product.name }}</div>
                                                         <div>QTY : {{ detail.qty }} ea</div>
-                                                        <div><b>${{ detail.sale_price }}</b></div>
-                                                    </td>
-                                                    <td style="width: 12%;">
-                                                        <div>{{ order.shipping_date | myDate }}</div>
-                                                    </td>
-                                                    <td style="width: 12%;">
-                                                        Lorem ipsum dolor
+                                                        <div><b>{{ (detail.sale_price * detail.qty) | currency }}</b></div>
                                                     </td>
                                                 </tr>
                                             </tbody>

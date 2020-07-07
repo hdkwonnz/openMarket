@@ -104,11 +104,13 @@
                 </div>
                 <div class="d-flex mt-2 mx-2">
                     <div class="w-50"><h4>Shipping Charge</h4></div>
-                    <div class="w-50 text-right"><h4>$10.00</h4></div>
+                    <!-- shipping cost will be added in live mode below -->
+                    <div class="w-50 text-right"><h4>$0</h4></div>
                 </div>
                 <div class="d-flex mt-2 mx-2">
                     <div class="w-50"><h4>Grand Total</h4></div>
-                    <div class="w-50 text-right"><h4>${{ number_format(($totalSalePrice + 10),2) }}</h4></div>
+                    <!-- shipping cost will be added in live mode below -->
+                    <div class="w-50 text-right"><h4>${{ number_format(($totalSalePrice + 0),2) }}</h4></div>
                 </div>
                 <a href="{{route ('checkout.payNow')}}" class="text-decoration-none click_pay">
                 {{-- <a href="{{route ('checkout.showPayNow')}}" class="text-decoration-none click_pay"> --}}

@@ -45,7 +45,6 @@
             <div class="table-responsive">
                 <table class="table table-sm">
                     <tbody>
-                        @foreach ($orders as $order)
                         <tr>
                             <td style="width: 20%;" scope="row">
                                 <div>
@@ -83,7 +82,6 @@
                                 </div>
                             </td>
                         </tr>
-                        @endforeach
                     </tbody>
                 </table>
             </div>

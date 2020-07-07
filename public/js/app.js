@@ -3557,9 +3557,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -65277,9 +65274,9 @@ var render = function() {
     _vm._v(" "),
     _c("div", { staticClass: "row no-gutters mt-2" }, [
       _c("div", { staticClass: "col-md-12 col-sm-12" }, [
-        _vm._m(1),
-        _vm._v(" "),
         _c("div", { staticClass: "table-responsive" }, [
+          _vm._m(1),
+          _vm._v(" "),
           _c("table", { staticClass: "table table-sm" }, [
             _c(
               "tbody",
@@ -65287,7 +65284,7 @@ var render = function() {
                 return _c("tr", { key: order.index }, [
                   _c(
                     "td",
-                    { staticStyle: { width: "30%" }, attrs: { scope: "row" } },
+                    { staticStyle: { width: "40%" }, attrs: { scope: "row" } },
                     [
                       _c("div", [
                         _vm._v(
@@ -65306,12 +65303,20 @@ var render = function() {
                               _vm._f("currency")(parseFloat(order.total_amount))
                             )
                           )
-                        ])
+                        ]),
+                        _vm._v(
+                          " /\n                                    Ship.date: " +
+                            _vm._s(_vm._f("myDate")(order.shipping_date)) +
+                            " (" +
+                            _vm._s(_vm._f("currency")(order.shipping_cost)) +
+                            ")\n                                "
+                        )
                       ]),
                       _vm._v(" "),
-                      _c("div", [_vm._v(_vm._s(order.user.address.address))]),
+                      _c("span", [_vm._v(_vm._s(order.addressee) + " / ")]),
                       _vm._v(" "),
-                      _c("div", [_vm._v(_vm._s(order.addressee))]),
+                      _c("span", [_vm._v(_vm._s(order.user.address.address))]),
+                      _c("br"),
                       _vm._v(" "),
                       _c(
                         "a",
@@ -65325,14 +65330,20 @@ var render = function() {
                         },
                         [
                           _vm._v(
-                            "\n                                    Details\n                                "
+                            "\n                                    Edit\n                                "
                           )
                         ]
                       )
                     ]
                   ),
                   _vm._v(" "),
-                  _c("td", { staticStyle: { width: "70%" } }, [
+                  _c("td", [
+                    _vm._v(
+                      "\n                                processing\n                            "
+                    )
+                  ]),
+                  _vm._v(" "),
+                  _c("td", { staticStyle: { width: "60%" } }, [
                     _c("div", { staticClass: "table-responsive" }, [
                       _c(
                         "table",
@@ -65359,7 +65370,7 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _c("td", { staticStyle: { width: "56%" } }, [
+                                _c("td", { staticStyle: { width: "80%" } }, [
                                   _c("div", [
                                     _vm._v(_vm._s(detail.product.name))
                                   ]),
@@ -65372,25 +65383,15 @@ var render = function() {
                                   _vm._v(" "),
                                   _c("div", [
                                     _c("b", [
-                                      _vm._v("$" + _vm._s(detail.sale_price))
+                                      _vm._v(
+                                        _vm._s(
+                                          _vm._f("currency")(
+                                            detail.sale_price * detail.qty
+                                          )
+                                        )
+                                      )
                                     ])
                                   ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "12%" } }, [
-                                  _c("div", [
-                                    _vm._v(
-                                      _vm._s(
-                                        _vm._f("myDate")(order.shipping_date)
-                                      )
-                                    )
-                                  ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "12%" } }, [
-                                  _vm._v(
-                                    "\n                                                    Lorem ipsum dolor\n                                                "
-                                  )
                                 ])
                               ])
                             }),
@@ -65427,26 +65428,18 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "table-responsive" }, [
-      _c("table", { staticClass: "table table-sm" }, [
-        _c("thead", [
-          _c("tr", [
-            _c("th", { staticStyle: { width: "32%" } }, [
-              _vm._v("Date/Order#/Amount/Addressee/Address")
-            ]),
-            _vm._v(" "),
-            _c("th", { staticStyle: { width: "52%" } }, [
-              _vm._v("Product Infos")
-            ]),
-            _vm._v(" "),
-            _c("th", { staticStyle: { width: "6%" } }, [_vm._v("Ship.Date")]),
-            _vm._v(" "),
-            _c("th", { staticStyle: { width: "10%" } }, [_vm._v("Delivery")])
-          ])
-        ]),
-        _vm._v(" "),
-        _c("tbody")
-      ])
+    return _c("table", { staticClass: "table table-sm table-borderless" }, [
+      _c("thead", [
+        _c("tr", [
+          _c("th", { staticStyle: { width: "38%" } }, [_vm._v("Order Infos")]),
+          _vm._v(" "),
+          _c("th", { staticStyle: { width: "7%" } }, [_vm._v("Delivery")]),
+          _vm._v(" "),
+          _c("th", { staticStyle: { width: "55%" } }, [_vm._v("Product Infos")])
+        ])
+      ]),
+      _vm._v(" "),
+      _c("tbody")
     ])
   },
   function() {

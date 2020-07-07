@@ -22,8 +22,21 @@ Route::get('/test', function () {
 //     return view('welcome');
 // });
 
-// auth
-Auth::routes();
+// // auth
+// Auth::routes();
+
+Auth::routes(['verify' => true]); //for email verification==>['verify' => true]
+
+Route::get('profile', function () { //for email verification test =>temp
+    // Only verified users may enter...
+    return "This is profile";
+})->middleware('verified');
+
+Route::get('showVerificationMsg', function () { //register 후에 email verification을 위하여 삽입.
+    //만약 이메일 인증이 되었으면 아래 메세지가 나오고(그럴리는 없지만...) 그렇지 않으면
+    //resources/views/auth/verify.blade.php에 있는 메시가 나온다.[=>middleware('verified')]
+    return "이미 이메일 인증이 되었습니다."; //현재는 register 후에 곧바로 이 url로 오도록 RegisterController에 코딩
+})->middleware('verified');                //되어 있다.
 
 // home
 Route::get('/', 'HomeController@home')->name('home.home');
@@ -51,17 +64,17 @@ Route::get('/product/showProductsCategoryC/{id}', 'ProductController@showProduct
 Route::get('/product/showProductsCategoryAB/{id}', 'ProductController@showProductsCategoryAB')->name('product.showProductsCategoryAB');
 
 // Order
-Route::get('/order/orderDetails', 'OrderController@orderDetails')->name('order.orderDetails')->middleware('auth','can:isUser');
-Route::get('/order/orderDetailsByTerm', 'OrderController@orderDetailsByTerm')->name('order.orderDetailsByTerm')->middleware('auth','can:isUser');
-Route::get('/order/getOrderDetails', 'OrderController@getOrderDetails')->name('order.getOrderDetails')->middleware('auth','can:isUser');
-Route::get('/order/orderDetailsById/{id}', 'OrderController@orderDetailsById')->name('order.orderDetailsById')->middleware('auth','can:isUser');
+Route::get('/order/orderDetails', 'OrderController@orderDetails')->name('order.orderDetails')->middleware('auth','verified','can:isUser');
+Route::get('/order/orderDetailsByTerm', 'OrderController@orderDetailsByTerm')->name('order.orderDetailsByTerm')->middleware('auth','verified','can:isUser');
+Route::get('/order/getOrderDetails', 'OrderController@getOrderDetails')->name('order.getOrderDetails')->middleware('auth','verified','can:isUser');
+Route::get('/order/orderDetailsById/{id}', 'OrderController@orderDetailsById')->name('order.orderDetailsById')->middleware('auth','verified','can:isUser');
 
 // checkout
-Route::get('/checkout/checkOut', 'CheckoutController@checkOut')->name('checkout.checkOut')->middleware('auth','can:isUser');
-Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','can:isUser');
-Route::get('/checkout/payNow', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','can:isUser');//for blade
-Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','can:isUser');//for vue.js
-Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','can:isUser');
+Route::get('/checkout/checkOut', 'CheckoutController@checkOut')->name('checkout.checkOut')->middleware('auth','verified','can:isUser');
+Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','verified','can:isUser');
+Route::get('/checkout/payNow', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
+Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//for vue.js
+Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','verified','can:isUser');
 
 // seller/option ==> for manyToMany test
 Route::get('/seller/showOptionConnections', 'SellerController@showOptionConnections')->name('seller.showOptionConnections');

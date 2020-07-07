@@ -5,6 +5,7 @@ namespace App\Http\Controllers;
 use Session;
 use App\Cart;
 use App\Errorlog;
+use App\Jobs\OrderdetailsEmailJob;
 use DateTime;
 use App\Order;
 use Stripe\Stripe;
@@ -63,6 +64,15 @@ class CheckoutController extends Controller
             $totalSalePrice += $item['qty'] * $item['salePrice'];
         }
 
+        if ($totalSalePrice < 0.1){
+            Errorlog::create([
+                'user_name' => auth()->user()->name,
+                'user_email' => auth()->user()->email,
+                'error_message' => "No Items to check out => Checkout@payment",
+          ]);
+            return response()->json(['errorMsg' => 'No Items to check out => Checkout@payment.']);
+        }
+
         $products = $cart->items;
 
         DB::beginTransaction();
@@ -71,7 +81,7 @@ class CheckoutController extends Controller
             $order = Order::create([
                 'user_id' => auth()->user()->id,
                 'total_amount' => $totalSalePrice,
-                'shipping_cost' => 10,
+                'shipping_cost' => 0,////////////////////////
                 'addressee' => 'Leo Kwon',
                 'shipping_date' => new DateTime(),
 
@@ -95,6 +105,17 @@ class CheckoutController extends Controller
             DB::commit();
 
             session()->forget('cart');
+
+            $orderDetails = Order::with('user','orderdetails')
+                        ->where('id','=',$order->id)
+                        ->first();
+
+            ////email to customer
+            ////보낼 메일을 jobs table로 passing 한다.
+            ////반드시 php artisan queue:work --tries=2 --sleep=10 type 할 것.
+            $job = (new OrderdetailsEmailJob($orderDetails))
+                    ->delay(now()->addSeconds(10));
+            $this->dispatch($job);
 
             return response()->json([
                                         'errorMsg' => null,
@@ -145,6 +166,11 @@ class CheckoutController extends Controller
         $totalSalePrice = 0;
         foreach($cart->items as $item){
             $totalSalePrice += $item['qty'] * $item['salePrice'];
+        }
+
+        if ($totalSalePrice < 0.1){
+            $errorMsg = "No items to check out.";
+            return view('checkout.checkOut', compact('errorMsg'));
         }
 
         return view('checkout.checkOut',['products' => $cart->items,'totalPrice' => $totalPrice,
@@ -238,9 +264,9 @@ class CheckoutController extends Controller
             $totalSalePrice += $item['qty'] * $item['salePrice'];
         }
 
-        ////$grandAmount = $totalSalePrice + shippingCost
+        // ////$grandAmount = $totalSalePrice + shippingCost
 
-        $shippingCost = 10; ////추후에 결정 할것...
+        $shippingCost = 0; ////추후에 결정 할것...
         $grandAmount = $totalSalePrice + $shippingCost;
 
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));
