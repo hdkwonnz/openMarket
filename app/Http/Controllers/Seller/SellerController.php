@@ -13,6 +13,19 @@ class SellerController extends Controller
         return view('seller/seller/index');
     }
 
+    public function editOrder(Request $request)
+    {
+        $request->validate([
+            'orderId' => 'required|numeric',
+        ]);
+
+        //do update....
+
+        return response()->json([
+            'successMsg' => 'good',
+        ]);
+    }
+
     public function customerOrdersByTerm()
     {
         // $fromDate = date('Y-m-d H:i:s',strtotime(request('fromDate')));

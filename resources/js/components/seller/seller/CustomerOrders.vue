@@ -39,7 +39,10 @@
                                     </div>
                                      <span>{{ order.addressee }} / </span>
                                      <span>{{ order.user.address.address }}</span><br>
-                                    <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#orderDetailsModal">
+                                    <!-- <a href="javascript:void(0) return false;" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#orderDetailsModal">
+                                        Edit
+                                    </a> -->
+                                    <a @click.prevent="openModal(order.id)" class="btn btn-sm btn-primary">
                                         Edit
                                     </a>
                                 </td>
@@ -79,14 +82,30 @@
 
                 <!-- Modal Header -->
                 <div class="modal-header">
-                <h4 class="modal-title">Modal Heading</h4>
-                <button type="button" class="close" data-dismiss="modal">&times;</button>
+                    <h4 class="modal-title">INPUT SHIPPING DATE</h4>
+                    <button type="button" class="close" data-dismiss="modal">&times;</button>
                 </div>
 
                 <!-- Modal body -->
                 <div class="modal-body">
                     <div style="border: 3px solid blue; width: 100%; min-height: 500px;">
-                        Modal body..
+                        <!-- form -->
+                        <form id="edituserForm" @submit.prevent="editOrder()" class="mt-4">
+                            <div class="form-group row">
+                                <label for="verifiedAt" class="col-md-2 col-sm-2 col-form-label text-right">SHIPPED AT</label>
+                                <div class="col-md-3 col-sm-3">
+                                    <input id="shippedAt" type="date" class="form-control" v-model="shippedAt" required>
+                                </div>
+                            </div>
+
+                            <div class="form-group row mt-5">
+                                <div class="offset-md-2 offset-sm-2 col-md-3 col-sm-3">
+                                    <button type="" class="btn btn-primary w-100">
+                                        Click
+                                    </button>
+                                </div>
+                            </div>
+                        </form>
                     </div>
                 </div>
 
@@ -110,10 +129,37 @@
                 fromDate: "",
                 toDate: "",
                 termSw: false,
+                shippedAt: "",
+                orderId: "",
             }
         },
 
         methods: {
+            openModal(orderId){
+                this.orderId = orderId;
+                $('#orderDetailsModal').modal('show');
+            },
+
+            editOrder(){
+                var message = "Do you want to edit this order?";
+                var result = confirm(message);
+                if (result == true) {
+                    axios.post('/seller/editOrder',
+                    {
+                        orderId: this.orderId,
+
+                    })
+                    .then(response => {
+                        //console.log(response);
+
+                    })
+                    .catch(error => {
+                        //console.log(error);
+
+                    });
+                }
+            },
+
             orderDetailsByTerm(){
                 ////https://stackoverflow.com/questions/25445377/how-to-get-current-date-without-time
                 ////https://stackoverflow.com/questions/3605214/javascript-add-leading-zeroes-to-date

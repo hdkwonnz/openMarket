@@ -3557,16 +3557,53 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
       orders: {},
       fromDate: "",
       toDate: "",
-      termSw: false
+      termSw: false,
+      shippedAt: "",
+      orderId: ""
     };
   },
   methods: {
+    openModal: function openModal(orderId) {
+      this.orderId = orderId;
+      $('#orderDetailsModal').modal('show');
+    },
+    editOrder: function editOrder() {
+      var message = "Do you want to edit this order?";
+      var result = confirm(message);
+
+      if (result == true) {
+        axios.post('/seller/editOrder', {
+          orderId: this.orderId
+        }).then(function (response) {//console.log(response);
+        })["catch"](function (error) {//console.log(error);
+        });
+      }
+    },
     orderDetailsByTerm: function orderDetailsByTerm() {
       var _this = this;
 
@@ -65322,10 +65359,11 @@ var render = function() {
                         "a",
                         {
                           staticClass: "btn btn-sm btn-primary",
-                          attrs: {
-                            href: "#",
-                            "data-toggle": "modal",
-                            "data-target": "#orderDetailsModal"
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.openModal(order.id)
+                            }
                           }
                         },
                         [
@@ -65412,7 +65450,94 @@ var render = function() {
       ])
     ]),
     _vm._v(" "),
-    _vm._m(2)
+    _c(
+      "div",
+      { staticClass: "modal fade", attrs: { id: "orderDetailsModal" } },
+      [
+        _c(
+          "div",
+          { staticClass: "modal-dialog modal-xl modal-dialog-centered" },
+          [
+            _c("div", { staticClass: "modal-content" }, [
+              _vm._m(2),
+              _vm._v(" "),
+              _c("div", { staticClass: "modal-body" }, [
+                _c(
+                  "div",
+                  {
+                    staticStyle: {
+                      border: "3px solid blue",
+                      width: "100%",
+                      "min-height": "500px"
+                    }
+                  },
+                  [
+                    _c(
+                      "form",
+                      {
+                        staticClass: "mt-4",
+                        attrs: { id: "edituserForm" },
+                        on: {
+                          submit: function($event) {
+                            $event.preventDefault()
+                            return _vm.editOrder()
+                          }
+                        }
+                      },
+                      [
+                        _c("div", { staticClass: "form-group row" }, [
+                          _c(
+                            "label",
+                            {
+                              staticClass:
+                                "col-md-2 col-sm-2 col-form-label text-right",
+                              attrs: { for: "verifiedAt" }
+                            },
+                            [_vm._v("SHIPPED AT")]
+                          ),
+                          _vm._v(" "),
+                          _c("div", { staticClass: "col-md-3 col-sm-3" }, [
+                            _c("input", {
+                              directives: [
+                                {
+                                  name: "model",
+                                  rawName: "v-model",
+                                  value: _vm.shippedAt,
+                                  expression: "shippedAt"
+                                }
+                              ],
+                              staticClass: "form-control",
+                              attrs: {
+                                id: "shippedAt",
+                                type: "date",
+                                required: ""
+                              },
+                              domProps: { value: _vm.shippedAt },
+                              on: {
+                                input: function($event) {
+                                  if ($event.target.composing) {
+                                    return
+                                  }
+                                  _vm.shippedAt = $event.target.value
+                                }
+                              }
+                            })
+                          ])
+                        ]),
+                        _vm._v(" "),
+                        _vm._m(3)
+                      ]
+                    )
+                  ]
+                )
+              ]),
+              _vm._v(" "),
+              _vm._m(4)
+            ])
+          ]
+        )
+      ]
+    )
   ])
 }
 var staticRenderFns = [
@@ -65446,63 +65571,51 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c(
-      "div",
-      { staticClass: "modal fade", attrs: { id: "orderDetailsModal" } },
-      [
+    return _c("div", { staticClass: "modal-header" }, [
+      _c("h4", { staticClass: "modal-title" }, [_vm._v("INPUT SHIPPING DATE")]),
+      _vm._v(" "),
+      _c(
+        "button",
+        {
+          staticClass: "close",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("×")]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "form-group row mt-5" }, [
+      _c("div", { staticClass: "offset-md-2 offset-sm-2 col-md-3 col-sm-3" }, [
         _c(
-          "div",
-          { staticClass: "modal-dialog modal-xl modal-dialog-centered" },
+          "button",
+          { staticClass: "btn btn-primary w-100", attrs: { type: "" } },
           [
-            _c("div", { staticClass: "modal-content" }, [
-              _c("div", { staticClass: "modal-header" }, [
-                _c("h4", { staticClass: "modal-title" }, [
-                  _vm._v("Modal Heading")
-                ]),
-                _vm._v(" "),
-                _c(
-                  "button",
-                  {
-                    staticClass: "close",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("×")]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-body" }, [
-                _c(
-                  "div",
-                  {
-                    staticStyle: {
-                      border: "3px solid blue",
-                      width: "100%",
-                      "min-height": "500px"
-                    }
-                  },
-                  [
-                    _vm._v(
-                      "\n                    Modal body..\n                "
-                    )
-                  ]
-                )
-              ]),
-              _vm._v(" "),
-              _c("div", { staticClass: "modal-footer" }, [
-                _c(
-                  "button",
-                  {
-                    staticClass: "btn btn-secondary",
-                    attrs: { type: "button", "data-dismiss": "modal" }
-                  },
-                  [_vm._v("Close")]
-                )
-              ])
-            ])
+            _vm._v(
+              "\n                                    Click\n                                "
+            )
           ]
         )
-      ]
-    )
+      ])
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "modal-footer" }, [
+      _c(
+        "button",
+        {
+          staticClass: "btn btn-secondary",
+          attrs: { type: "button", "data-dismiss": "modal" }
+        },
+        [_vm._v("Close")]
+      )
+    ])
   }
 ]
 render._withStripped = true
