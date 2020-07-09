@@ -13,8 +13,13 @@ class Order extends Model
         return $this->hasMany('App\Orderdetail')->with('product');
     }
 
-    public function user()
+    // public function user()
+    // {
+    //     return $this->belongsTo('App\User')->with('address');
+    // }
+
+    public function address()
     {
-        return $this->belongsTo('App\User')->with('address');
+        return $this->belongsTo('App\Address');
     }
 }

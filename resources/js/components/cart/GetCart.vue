@@ -113,7 +113,7 @@
                                 </tr>
                                 <tr>
                                     <td colspan="2" class="bg-success text-center">
-                                        <a href="/checkout/checkOut" class="text-white text-decoration-none">
+                                        <a href="/checkout/checkout" class="text-white text-decoration-none">
                                             <span class="order_now w-100 h-100">
                                                 <h5>Order Now</h5>
                                             </span>

@@ -19,6 +19,7 @@ class CreateOrdersTable extends Migration
             $table->foreign('user_id')->references('id')->on('users');
             $table->float('total_amount');
             $table->float('shipping_cost');
+            $table->unsignedBigInteger('address_id');////
             $table->string('addressee');
             $table->dateTime('shipping_date')->nullable();
             $table->string('payment_intent_id')->unique();

@@ -48,6 +48,7 @@
                                         {{ order.created_at | myDate }}
                                     </div>
                                     <div>Order# : {{ order.id }}</div>
+                                    <div>{{ order.addressee }}/{{ order.address.address }}</div>
                                     <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#orderDetailsModal">
                                         Details
                                     </a>

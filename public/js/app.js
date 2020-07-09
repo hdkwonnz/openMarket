@@ -2507,6 +2507,7 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -62732,7 +62733,7 @@ var staticRenderFns = [
             "a",
             {
               staticClass: "text-white text-decoration-none",
-              attrs: { href: "/checkout/checkOut" }
+              attrs: { href: "/checkout/checkout" }
             },
             [
               _c("span", { staticClass: "order_now w-100 h-100" }, [
@@ -62944,6 +62945,14 @@ var render = function() {
                       ]),
                       _vm._v(" "),
                       _c("div", [_vm._v("Order# : " + _vm._s(order.id))]),
+                      _vm._v(" "),
+                      _c("div", [
+                        _vm._v(
+                          _vm._s(order.addressee) +
+                            "/" +
+                            _vm._s(order.address.address)
+                        )
+                      ]),
                       _vm._v(" "),
                       _c(
                         "a",

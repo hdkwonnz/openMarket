@@ -25,8 +25,70 @@
             <div>
                 <h4>Delivery address</h4>
             </div>
-            <div style="border: 1px solid blue; width: 100%; height: 159px;">
+            <div style="border: 1px solid blue; width: 100%; height: 350px; overflow-y: scroll;">
+                <!-- autocomplete address api ==> test only -->
+                {{-- https://api.addy.co.nz/search?key=demo-api-key&s=80 Queen Street --}}
+                <div class="row no-gutters">
+                    <table class="table table-sm table-hover">
+                        <tbody>
+                            @foreach ($addresses as $address)
+                            <tr class="existing_contents">
+                                <td style="width: 80%;">
+                                    <a href="javascript: void(0)" class="text-dark text-decoration-none existing_address">
+                                        {{ $address->address }}
+                                    </a>
+                                </td>
+                                <td style="width: 20%;">
+                                    <span class="existing_addressee">
+                                        {{ $address->addressee }}
+                                    </span>
+                                </td>
+                            </tr>
+                            @endforeach
+                        </tbody>
+                    </table>
+                </div>
+                <div class="row no-gutters">
+                    <table class="table table-sm table-success table-borderless">
+                        <tbody>
+                            <tr>
+                                <td style="width: 80%;" class="selected_address">
 
+                                </td>
+                                <td style="width: 20%;" class="selected_addressee">
+
+                                </td>
+                            </tr>
+                        </tbody>
+                    </table>
+                </div>
+                <form id="findAddress">
+                    <div class="row no-gutters">
+                        <div class="col-md-10 col-sm-10">
+                            <input type="text" value="" class="street_name form-control" required placeholder="Please type street no. and name if you need new.">
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <button class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </form>
+                <form id="inputAddressee" class="mt-1">
+                    <div class="row no-gutters">
+                        <div class="col-md-10 col-sm-10">
+                            <input type="text" value="" class="street_name form-control" required placeholder="Please type addressee if you need new.">
+                        </div>
+                        <div class="col-md-2 col-sm-2">
+                            <button class="btn btn-primary">Click</button>
+                        </div>
+                    </div>
+                </form>
+                <div class="row no-gutters">
+                    <table class="table table-hover table-sm table-dark">
+                        <tbody class="address_section">
+
+                        </tbody>
+                    </table>
+                </div>
             </div>
             <div class="mt-4">
                 <h4>Terms and Conditions</h4>
@@ -112,8 +174,9 @@
                     <!-- shipping cost will be added in live mode below -->
                     <div class="w-50 text-right"><h4>${{ number_format(($totalSalePrice + 0),2) }}</h4></div>
                 </div>
-                <a href="{{route ('checkout.payNow')}}" class="text-decoration-none click_pay">
+                {{-- <a href="{{route ('checkout.payNow')}}" class="text-decoration-none click_pay"> --}}
                 {{-- <a href="{{route ('checkout.showPayNow')}}" class="text-decoration-none click_pay"> --}}
+                <a href="javascript: void(0)" class="text-decoration-none click_pay">
                     <div class="text-center bg-primary text-white" style="border: none; height: 40px; padding-top: 5px;">
                         <h4>Check Out</h4>
                     </div>
@@ -123,4 +186,11 @@
     </div>
     @endif
 </div>
+@endsection
+
+@section('extra-js')
+
+<script src="{{ asset('myJs/checkout/addressSelect.js') }}"></script>
+<script src="{{ asset('myJs/checkout/clickToCheckout.js') }}"></script>
+
 @endsection

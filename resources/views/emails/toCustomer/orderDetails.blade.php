@@ -9,7 +9,7 @@
     <div class="container mt-5">
         <div class="row no-gutters">
             <div class="col-md-7 col-sm-7">
-                <h4>ORDER DETAILS</h4>
+                <h4>YOUR ORDER DETAILS</h4>
             </div>
         </div>
         <div class="row mt-2">
@@ -36,6 +36,7 @@
                                         {{ \Carbon\Carbon::parse($orderDetails->created_at)->format('d-m-Y') }}
                                     </div>
                                     <div>Order# : {{ $orderDetails->id }}</div>
+                                    <div>{{ $orderDetails->addressee }}/{{ $orderDetails->address->address }}</div>
                                     <div><b>${{ number_format(($orderDetails->total_amount),2) }}</b></div>
                                 </td>
                                 <td style="width: 80%;">

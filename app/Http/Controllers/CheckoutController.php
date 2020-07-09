@@ -4,15 +4,16 @@ namespace App\Http\Controllers;
 
 use Session;
 use App\Cart;
-use App\Errorlog;
-use App\Jobs\OrderdetailsEmailJob;
 use DateTime;
 use App\Order;
+use App\Address;
+use App\Errorlog;
 use Stripe\Stripe;
 use App\Orderdetail;
 use Stripe\PaymentIntent;
 use Illuminate\Support\Arr;
 use Illuminate\Http\Request;
+use App\Jobs\OrderdetailsEmailJob;
 use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
@@ -81,8 +82,8 @@ class CheckoutController extends Controller
             $order = Order::create([
                 'user_id' => auth()->user()->id,
                 'total_amount' => $totalSalePrice,
-                'shipping_cost' => 0,////////////////////////
-                'addressee' => 'Leo Kwon',
+                'shipping_cost' => 0,/////////////////////////////
+                'addressee' => 'Leo Kwon',////////////////////////
                 'shipping_date' => new DateTime(),
 
                 'payment_intent_id' => $data['paymentIntent']['id'],
@@ -106,7 +107,7 @@ class CheckoutController extends Controller
 
             session()->forget('cart');
 
-            $orderDetails = Order::with('user','orderdetails')
+            $orderDetails = Order::with('address','orderdetails')
                         ->where('id','=',$order->id)
                         ->first();
 
@@ -143,7 +144,7 @@ class CheckoutController extends Controller
         }
     }
 
-    public function checkOut()
+    public function checkout()
     {
         $oldCart = Session::get('cart');
 
@@ -173,9 +174,12 @@ class CheckoutController extends Controller
             return view('checkout.checkOut', compact('errorMsg'));
         }
 
-        return view('checkout.checkOut',['products' => $cart->items,'totalPrice' => $totalPrice,
+        $addresses = Address::where('user_id','=',auth()->user()->id)
+                            ->get();
+
+        return view('checkout.checkout',['products' => $cart->items,'totalPrice' => $totalPrice,
                                       'totalSalePrice' => $totalSalePrice, 'count' => $count,
-                                      'errorMsg' => null]);
+                                      'errorMsg' => null, 'addresses' => $addresses]);
     }
 
     public function getPaymentIntent()
@@ -236,8 +240,10 @@ class CheckoutController extends Controller
         return view('checkout.showPayNow');
     }
 
-    public function payNow()
+    public function payNow($address)
     {
+        // return $address;
+
         $oldCart = Session::get('cart');
 
         $cart = new Cart($oldCart);
@@ -289,6 +295,7 @@ class CheckoutController extends Controller
                                         'errorMsg' => null,
                                         'userName' => auth()->user()->name,
                                         'grandAmount' => $grandAmount,
+                                        'address' => $address,
                                       ]);
     }
 }

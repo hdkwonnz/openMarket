@@ -51,6 +51,7 @@
                                     {{ \Carbon\Carbon::parse($order->created_at)->format('d-m-Y') }}
                                 </div>
                                 <div>Order# : {{ $order->id }}</div>
+                                <div>{{ $order->addressee }}/{{ $order->address->address }}</div>
                                 <a href="#" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#orderDetailsModal">
                                     Details
                                 </a>

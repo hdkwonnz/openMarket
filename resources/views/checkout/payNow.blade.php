@@ -152,8 +152,8 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
 
                         }
                     },
-                    error: function (data) {
-                        console.log(data);
+                    error: function (error) {
+                        console.log(error);
                         $('.error_msg').html("");////
                         $('.error_msg').append(error).addClass('alert').addClass('alert-danger');
                         submitButton.disabled = false;////
@@ -164,7 +164,16 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
                 });
             }
         }
-    });
+    })
+    .catch(function(error) {
+        console.log(error);
+        $('.error_msg').html("");////
+        $('.error_msg').append(error).addClass('alert').addClass('alert-danger');
+        submitButton.disabled = false;////
+
+        $('.loading_spiner').removeClass('my_loader');//stop loading spiner
+
+    })
 });
 </script>
 

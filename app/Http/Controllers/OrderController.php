@@ -20,7 +20,7 @@ class OrderController extends Controller
     {
         $yymmddhis = date("Y-m-d H:i:s", strtotime("-1 months"));  //한달전 yymmddhis
 
-        $orders = Order::with('orderdetails')
+        $orders = Order::with('orderdetails','address')
                         ->where('user_id','=',auth()->user()->id)
                         ->where('created_at', '>=', $yymmddhis)
                         ->orderBy('created_at','desc')
@@ -41,7 +41,7 @@ class OrderController extends Controller
             return view('order.orderDetailsById', compact('errorMsg'));
         }
 
-        $order = Order::with('orderdetails')
+        $order = Order::with('orderdetails','address')
                         ->where('user_id','=',auth()->user()->id)
                         ->where('id','=',$id)
                         //->get();
@@ -78,7 +78,7 @@ class OrderController extends Controller
         // $toDate = date('Y-m-d H:i:s',strtotime(request('toDate')));
 
         //// https://stackoverflow.com/questions/43871752/how-to-get-created-at-date-only-not-time-in-laravel-5-4
-        $orders = Order::with('orderdetails')
+        $orders = Order::with('orderdetails','address')
                         ->where('user_id','=',auth()->user()->id)
                         ->whereDate('created_at', '>=', request('fromDate'))
                         ->whereDate('created_at', '<=', request('toDate'))

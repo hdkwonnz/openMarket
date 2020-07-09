@@ -70,9 +70,9 @@ Route::get('/order/getOrderDetails', 'OrderController@getOrderDetails')->name('o
 Route::get('/order/orderDetailsById/{id}', 'OrderController@orderDetailsById')->name('order.orderDetailsById')->middleware('auth','verified','can:isUser');
 
 // checkout
-Route::get('/checkout/checkOut', 'CheckoutController@checkOut')->name('checkout.checkOut')->middleware('auth','verified','can:isUser');
+Route::get('/checkout/checkout', 'CheckoutController@checkout')->name('checkout.checkout')->middleware('auth','verified','can:isUser');
 Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','verified','can:isUser');
-Route::get('/checkout/payNow', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
+Route::get('/checkout/payNow/{address}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
 Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//for vue.js
 Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','verified','can:isUser');
 
