@@ -297,7 +297,7 @@ class CheckoutController extends Controller
         // return $intent;
 
         $clientSecret = Arr::get($intent,'client_secret');
-
+        return json_encode(array('clientSecret' => $intent->client_secret));
 
         return response()->json([
             'clientSecret' => $clientSecret,
@@ -312,9 +312,17 @@ class CheckoutController extends Controller
     }
 
     // public function payNow($address)
-    public function payNow($address, $addressee,$addressId)
+    public function payNow($address, $addressee, $addressId)
     {
-        return ($address . '###' . $addressee . '###' . $addressId);
+        // return ($address . '###' . $addressee . '###' . $addressId);
+
+        if (($address == "") || ($addressee == "")){
+            $errorMsg = "Please select address and addressee.";
+            return view('checkout.payNow', ['clientSecret' => null,
+                                            'errorMsg' => $errorMsg,
+                                            'userName' => auth()->user()->name,
+                                            ]);
+        }
 
         $oldCart = Session::get('cart');
 
@@ -368,6 +376,8 @@ class CheckoutController extends Controller
                                         'userName' => auth()->user()->name,
                                         'grandAmount' => $grandAmount,
                                         'address' => $address,
+                                        'addressee' => $addressee,
+                                        'addressId' => $addressId
                                       ]);
     }
 }

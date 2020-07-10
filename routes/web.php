@@ -76,7 +76,7 @@ Route::get('/checkout/showCheckout', 'CheckoutController@showCheckout')->name('c
 Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','verified','can:isUser');
 Route::get('/checkout/payNow/{address}/{addressee}/{addressId}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
 // Route::get('/checkout/payNow/{address}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
-Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//for vue.js
+// Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//for vue.js
 Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','verified','can:isUser');
 
 // address

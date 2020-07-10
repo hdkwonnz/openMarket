@@ -103,7 +103,7 @@
                                 </tr>
                                 <tr>
                                     <td>Ship. charge</td>
-                                    <td class="text-right">$10.00</td>
+                                    <td class="text-right">$0.00</td><!-- need to change -->
                                 </tr>
                                 <tr>
                                     <td>Total amount</td>
@@ -250,7 +250,7 @@
                     this.products = response.data.products;
                     this.totalPrice = response.data.totalPrice;
                     this.totalSalePrice = response.data.totalSalePrice;
-                    this.shippingCost = 10.00;
+                    this.shippingCost = 0.00; ////////////////////////////////////////
                     this.countOfItems = response.data.countOfItems;
                     this.errorMsg = response.data.errorMsg;
                     //// do not delete below

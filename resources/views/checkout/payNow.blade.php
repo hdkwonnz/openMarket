@@ -17,10 +17,18 @@
     @else
     <div class="col-md-6 col-sm-6" style="margin-top: 100px; margin-bottom: 100px;">
         <h4>Input Card Details</h4>
-        {{-- <form id="payment-form" action="{{ route('checkout.payment') }}" method="POST" class="my-4 mt-5"> --}}
+        <div class="row form-group mt-5">
+            <label for="address" class="col-md-3 col-form-label">ADDRESS</label>
+            <input type="text" class="address col-md-9 form-control" value="{{ $address }}" readonly>
+        </div>
+        <div class="row form-group">
+            <label for="name" class="col-md-3 col-form-label">ADDRESSEE</label>
+            <input type="text" class="addressee col-md-9 form-control" value="{{ $addressee }}" readonly>
+            <input type="hidden" class="addressId" value="{{ $addressId }}" >
+        </div>
         <form id="payment-form" action="" method="POST" class="my-4 mt-5">
             @csrf
-            <div id="card-element">
+            <div id="card-element" class="mt-1">
                 <!-- Elements will create input elements here -->
             </div>
 

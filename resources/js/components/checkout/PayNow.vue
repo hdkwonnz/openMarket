@@ -86,7 +86,6 @@
                             }
                         }
                     })
-
                 }); //form.addEventListener
             } //performStrip()
         }, //methodes

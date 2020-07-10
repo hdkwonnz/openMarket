@@ -259,7 +259,7 @@
             },
 
             selectAddress(address){
-                this.selectedAddressId = "";
+                this.selectedAddressId = "0";
                 this.selectedAddress = address;
                 $('.selected_address').empty().append(address);
                 $('.selected_address').css('font-weight','bold');

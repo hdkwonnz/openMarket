@@ -2224,7 +2224,8 @@ __webpack_require__.r(__webpack_exports__);
         _this4.products = response.data.products;
         _this4.totalPrice = response.data.totalPrice;
         _this4.totalSalePrice = response.data.totalSalePrice;
-        _this4.shippingCost = 10.00;
+        _this4.shippingCost = 0.00; ////////////////////////////////////////
+
         _this4.countOfItems = response.data.countOfItems;
         _this4.errorMsg = response.data.errorMsg; //// do not delete below
         //// https://stackoverflow.com/questions/57047283/how-to-count-the-number-of-elements-in-this-particular-object
@@ -2647,7 +2648,7 @@ __webpack_require__.r(__webpack_exports__);
       this.selectedAddressee = this.inputAddressee;
     },
     selectAddress: function selectAddress(address) {
-      this.selectedAddressId = "";
+      this.selectedAddressId = "0";
       this.selectedAddress = address;
       $('.selected_address').empty().append(address);
       $('.selected_address').css('font-weight', 'bold');
@@ -63042,7 +63043,7 @@ var staticRenderFns = [
     return _c("tr", [
       _c("td", [_vm._v("Ship. charge")]),
       _vm._v(" "),
-      _c("td", { staticClass: "text-right" }, [_vm._v("$10.00")])
+      _c("td", { staticClass: "text-right" }, [_vm._v("$0.00")])
     ])
   },
   function() {
