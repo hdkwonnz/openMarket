@@ -3,7 +3,7 @@
 @section('content')
 
 <div class="container mt-5">
-    <get-cart></get-cart>
+    <show-checkout></show-checkout>
 </div>
 @endsection
 

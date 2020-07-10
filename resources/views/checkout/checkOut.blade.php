@@ -33,7 +33,7 @@
                         <tbody>
                             @foreach ($addresses as $address)
                             <tr class="existing_contents">
-                                <td style="width: 80%;">
+                                <td style="width: 70%;">
                                     <a href="javascript: void(0)" class="text-dark text-decoration-none existing_address">
                                         {{ $address->address }}
                                     </a>
@@ -43,13 +43,18 @@
                                         {{ $address->addressee }}
                                     </span>
                                 </td>
+                                <td style="width: 10%;">
+                                    <button onclick="deleteAddress({{ $address->id }})" class="btn btn-sm btn-danger">
+                                        Delete
+                                    </button>
+                                </td>
                             </tr>
                             @endforeach
                         </tbody>
                     </table>
                 </div>
                 <div class="row no-gutters">
-                    <table class="table table-sm table-success table-borderless">
+                    <table class="table table-sm table-borderless">
                         <tbody>
                             <tr>
                                 <td style="width: 80%;" class="selected_address">
@@ -192,5 +197,5 @@
 
 <script src="{{ asset('myJs/checkout/addressSelect.js') }}"></script>
 <script src="{{ asset('myJs/checkout/clickToCheckout.js') }}"></script>
-
+<script src="{{ asset('myJs/checkout/deleteAddress.js') }}"></script>
 @endsection

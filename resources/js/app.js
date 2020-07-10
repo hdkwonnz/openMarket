@@ -39,6 +39,7 @@ Vue.component('product-input', require('./components/seller/product/ProductInput
 Vue.component('my-products', require('./components/seller/product/MyProducts.vue').default);
 Vue.component('edit-products', require('./components/seller/product/EditProduct.vue').default);
 Vue.component('pay-now', require('./components/checkout/PayNow.vue').default);
+Vue.component('show-checkout', require('./components/checkout/ShowCheckout.vue').default);
 Vue.component('customer-orders', require('./components/seller/seller/CustomerOrders.vue').default);
 
 /**

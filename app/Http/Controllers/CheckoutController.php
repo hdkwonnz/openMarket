@@ -18,6 +18,34 @@ use Illuminate\Support\Facades\DB;
 
 class CheckoutController extends Controller
 {
+    public function showCheckout()
+    {
+        return view('checkout.showCheckout');
+    }
+
+    public function getAddresses()
+    {
+        $addresses = Address::where('user_id','=',auth()->user()->id)
+                            ->get();
+
+        return response()->json([
+            'addresses' => $addresses,
+        ]);
+    }
+
+    public function deleteAddress(Request $request)
+    {
+        $address = Address::findOrFail($request->id);
+
+        if ($address){
+            $address->delete();
+        }
+
+        return response()->json([
+            'successMsg' => 'good',////
+        ]);
+    }
+
     public function payment(Request $request)
     {
         if (!Session::has('cart')){
@@ -144,6 +172,49 @@ class CheckoutController extends Controller
         }
     }
 
+    public function getCheckout()
+    {
+        $oldCart = Session::get('cart');
+
+        $cart = new Cart($oldCart);
+
+        $count = $cart->countOfItems;
+
+        // return $cart->items;
+
+        $errorMsg = "No items to check out.";
+
+        if ($count < 1){
+            return response()->json([
+                'errorMsg' =>  $errorMsg,
+            ]);
+        }
+
+        $totalPrice = 0;
+        foreach($cart->items as $item){
+            $totalPrice += $item['qty'] * $item['price'];
+        }
+
+        $totalSalePrice = 0;
+        foreach($cart->items as $item){
+            $totalSalePrice += $item['qty'] * $item['salePrice'];
+        }
+
+        if ($totalSalePrice < 0.1){
+            return response()->json([
+                'errorMsg' =>  $errorMsg,
+            ]);
+        }
+
+        $addresses = Address::where('user_id','=',auth()->user()->id)
+                            ->get();
+
+        return response()->json(['products' => $cart->items, 'totalPrice' => $totalPrice,
+                                 'totalSalePrice' => $totalSalePrice, 'count' => $count,
+                                 'errorMsg' => null, 'addresses' => $addresses]);
+
+    }
+
     public function checkout()
     {
         $oldCart = Session::get('cart');
@@ -240,9 +311,10 @@ class CheckoutController extends Controller
         return view('checkout.showPayNow');
     }
 
-    public function payNow($address)
+    // public function payNow($address)
+    public function payNow($address, $addressee,$addressId)
     {
-        // return $address;
+        return ($address . '###' . $addressee . '###' . $addressId);
 
         $oldCart = Session::get('cart');
 

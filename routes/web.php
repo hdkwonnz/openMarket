@@ -70,11 +70,18 @@ Route::get('/order/getOrderDetails', 'OrderController@getOrderDetails')->name('o
 Route::get('/order/orderDetailsById/{id}', 'OrderController@orderDetailsById')->name('order.orderDetailsById')->middleware('auth','verified','can:isUser');
 
 // checkout
-Route::get('/checkout/checkout', 'CheckoutController@checkout')->name('checkout.checkout')->middleware('auth','verified','can:isUser');
+Route::post('/checkout/getCheckout', 'CheckoutController@getCheckout')->name('checkout.getCheckout')->middleware('auth','verified','can:isUser');//for vue
+Route::get('/checkout/showCheckout', 'CheckoutController@showCheckout')->name('checkout.showCheckout')->middleware('auth','verified','can:isUser');//for vue
+//Route::get('/checkout/checkout', 'CheckoutController@checkout')->name('checkout.checkout')->middleware('auth','verified','can:isUser');//for blade
 Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','verified','can:isUser');
-Route::get('/checkout/payNow/{address}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
+Route::get('/checkout/payNow/{address}/{addressee}/{addressId}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
+// Route::get('/checkout/payNow/{address}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
 Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//for vue.js
 Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','verified','can:isUser');
+
+// address
+Route::post('/checkout/deleteAddress', 'CheckoutController@deleteAddress')->name('checkout.deleteAddress')->middleware('auth','verified','can:isUser');
+Route::get('/checkout/getAddresses', 'CheckoutController@getAddresses')->name('checkout.getAddresses')->middleware('auth','verified','can:isUser');
 
 // seller/option ==> for manyToMany test
 Route::get('/seller/showOptionConnections', 'SellerController@showOptionConnections')->name('seller.showOptionConnections');
