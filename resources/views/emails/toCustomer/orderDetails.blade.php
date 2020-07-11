@@ -8,9 +8,13 @@
 <body>
     <div class="container mt-5">
         <div class="row no-gutters">
-            <div class="col-md-7 col-sm-7">
-                <h4>YOUR ORDER DETAILS</h4>
+            <div class="col-md-2 col-sm-2">
+                <h4>ORDER DETAILS</h4>
             </div>
+            <div class="col-md-10 col-sm-10">
+                <h5 class="text-dark">(Order Number : {{ $orderDetails->id }} | Order Date : {{ \Carbon\Carbon::parse($orderDetails->created_at)->format('d-m-Y') }})</h5>
+            </div>
+        </col-md-6>
         </div>
         <div class="row mt-2">
             <div class="col-md-9 col-sm-9">
@@ -18,9 +22,8 @@
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
-                                <th style="width: 30%;">Date/Order#</th>
-                                <th style="width: 43%;">Product Infos</th>
-                                <th style="width: 27%;"></th>
+                                <th style="width: 40%;">Delivery Address / Total Amount</th>
+                                <th style="width: 60%;">Product Infos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -31,24 +34,20 @@
                     <table class="table table-sm">
                         <tbody>
                             <tr>
-                                <td style="width: 30%;" scope="row">
-                                    <div>
-                                        {{ \Carbon\Carbon::parse($orderDetails->created_at)->format('d-m-Y') }}
-                                    </div>
-                                    <div>Order# : {{ $orderDetails->id }}</div>
-                                    <div>{{ $orderDetails->addressee }}/{{ $orderDetails->address->address }}</div>
+                                <td style="width: 40%;" scope="row">
+                                    <div>{{ $orderDetails->addressee }} / {{ $orderDetails->address->address }}</div>
                                     <div><b>${{ number_format(($orderDetails->total_amount),2) }}</b></div>
                                 </td>
-                                <td style="width: 80%;">
+                                <td style="width: 60%;">
                                     <div class="table-responsive">
-                                        <table class="table table-sm table-borderless">
+                                        <table class="table table-sm">
                                             <tbody>
                                                 @foreach ($orderDetails->orderdetails as $detail)
                                                 <tr>
                                                     <td style="width: 20%;">
                                                         <img src={{ config('app.url')}}{{ $detail->product->image_path }} style="height: 100px; width: 100px;" alt="">
                                                     </td>
-                                                    <td style="width: 56%;"scope="row">
+                                                    <td style="width: 80%;"scope="row">
                                                         <div>{{ $detail->product->name }}</div>
                                                         <div>QTY : {{ $detail->qty }} ea</div>
                                                         <div><b>${{ $detail->sale_price }}</b></div>

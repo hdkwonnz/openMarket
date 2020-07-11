@@ -144,7 +144,7 @@ class CheckoutController extends Controller
 
             session()->forget('cart');
 
-            $orderDetails = Order::with('address','orderdetails')
+            $orderDetails = Order::with('user','address','orderdetails')
                         ->where('id','=',$order->id)
                         ->first();
 

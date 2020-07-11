@@ -53,6 +53,12 @@ class CartController extends Controller
             ]);
         }
 
+        if (request('qty') < 1){
+            return response()->json([
+                'errorMsg' => "Please enter qty to add to cart.",
+            ]);
+        }
+
         $product = Product::find(request('id'));
 
         // $item = ['qty' => request('qty'), 'price' => $product->price, 'name' => $product->name, 'productId' => $product->id];
