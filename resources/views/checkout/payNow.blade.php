@@ -24,7 +24,6 @@
         <div class="row form-group">
             <label for="name" class="col-md-3 col-form-label">ADDRESSEE</label>
             <input type="text" class="addressee col-md-9 form-control" value="{{ $addressee }}" readonly>
-            <input type="hidden" class="addressId" value="{{ $addressId }}" >
         </div>
         <form id="payment-form" action="" method="POST" class="my-4 mt-5">
             @csrf
@@ -131,7 +130,13 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
 
                 // console.log(result.paymentIntent);
 
-                var paymentIntent = JSON.stringify({ 'paymentIntent': result.paymentIntent})
+                // var paymentIntent = JSON.stringify({ 'paymentIntent': result.paymentIntent });
+
+                var paymentIntent = JSON.stringify({ 'paymentIntent': result.paymentIntent,
+                                                     'shippingCost': {{ $shippingCost }},
+                                                     'addressee': '{{ $addressee }}',
+                                                     'addressId': {{ $addressId }}
+                                                    });
 
                 $.ajax({ //결제 내용을 CheckoutController@payment 로 보내 저장한다.
                     type: "Post",
@@ -142,6 +147,7 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
                     cache: false,
                     data: paymentIntent,
                     success: function (data) {
+                        //console.log(data);
                         if (data.errorMsg){
                             $('.error_msg').html("");
                             $('.error_msg').append(data.errorMsg).addClass('alert').addClass('alert-danger');
@@ -163,7 +169,7 @@ form.addEventListener('submit', function(ev) {//click Pay Now button
                     error: function (error) {
                         console.log(error);
                         $('.error_msg').html("");////
-                        $('.error_msg').append(error).addClass('alert').addClass('alert-danger');
+                        $('.error_msg').append(error.statusText).addClass('alert').addClass('alert-danger');
                         submitButton.disabled = false;////
 
                         $('.loading_spiner').removeClass('my_loader');//stop loading spiner

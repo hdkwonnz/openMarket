@@ -55,7 +55,7 @@ class CheckoutController extends Controller
                             'error_message' => "Unable to checkout due to cart session already deleted. => Checkout@payment",
                       ]);
             return response()->json([
-                                        'errorMsg' => "Unable to checkout due to cart session already deleted.",
+                                        'errorMsg' => "Unable to checkout due to cart session already deleted. => Checkout@payment",
                                     ]);
         }
 
@@ -63,6 +63,14 @@ class CheckoutController extends Controller
         $data = $request->json()->all();
 
         // return $data;
+
+        ////payNow.blade.php에서 아래 data 를 보낼 경우 이곳에서 받는 방법.
+        // $address = $data['address'];
+        $addressee = $data['addressee'];
+        $addressId = $data['addressId'];
+        $shippingCost = $data['shippingCost'];
+
+        // return ("Addressee=" . $addressee . " address=" . $address . " addressId=" . $addressId);
 
         if ($data['paymentIntent']['status'] === 'succeeded') {
             //continue to next
@@ -72,7 +80,7 @@ class CheckoutController extends Controller
                 'user_email' => auth()->user()->email,
                 'error_message' => "Payment Intent Not Succeeded. => Checkout@payment",
           ]);
-            return response()->json(['errorMsg' => 'Payment Intent Not Succeeded.']);
+            return response()->json(['errorMsg' => 'Payment Intent Not Succeeded. => Checkout@payment']);
         }
 
         $oldCart = Session::get('cart');
@@ -97,9 +105,9 @@ class CheckoutController extends Controller
             Errorlog::create([
                 'user_name' => auth()->user()->name,
                 'user_email' => auth()->user()->email,
-                'error_message' => "No Items to check out => Checkout@payment",
+                'error_message' => "Too low price to check out => Checkout@payment",
           ]);
-            return response()->json(['errorMsg' => 'No Items to check out => Checkout@payment.']);
+            return response()->json(['errorMsg' => 'Too low price to check out => Checkout@payment.']);
         }
 
         $products = $cart->items;
@@ -110,8 +118,9 @@ class CheckoutController extends Controller
             $order = Order::create([
                 'user_id' => auth()->user()->id,
                 'total_amount' => $totalSalePrice,
-                'shipping_cost' => 0,/////////////////////////////
-                'addressee' => 'Leo Kwon',////////////////////////
+                'shipping_cost' => $shippingCost,
+                'address_id' => $addressId,
+                'addressee' => $addressee,
                 'shipping_date' => new DateTime(),
 
                 'payment_intent_id' => $data['paymentIntent']['id'],
@@ -350,6 +359,38 @@ class CheckoutController extends Controller
             $totalSalePrice += $item['qty'] * $item['salePrice'];
         }
 
+        if ($totalSalePrice < 0.1){
+            $errorMsg = "Too low price to check out.";
+            return view('checkout.payNow', ['clientSecret' => null,
+                                            'errorMsg' => $errorMsg,
+                                            'userName' => auth()->user()->name,
+                                            ]);
+        }
+
+        ////add address data to Address tabel.
+        if ($addressId > 0 ){
+            $existingAddress = Address::where('id','=',$addressId)
+                                ->where('user_id','=',auth()->user()->id)
+                                ->first();
+            if ($existingAddress->address != $address){
+                $newAddress = Address::create([
+                                'user_id' => auth()->user()->id,
+                                'address' => $address,
+                                'addressee' => $addressee,
+                ]);
+
+                $addressId = $newAddress->id;
+            }
+        }else{
+            $newAddress = Address::create([
+                'user_id' => auth()->user()->id,
+                'address' => $address,
+                'addressee' => $addressee,
+            ]);
+
+            $addressId = $newAddress->id;
+        }
+
         // ////$grandAmount = $totalSalePrice + shippingCost
 
         $shippingCost = 0; ////추후에 결정 할것...
@@ -375,6 +416,7 @@ class CheckoutController extends Controller
                                         'errorMsg' => null,
                                         'userName' => auth()->user()->name,
                                         'grandAmount' => $grandAmount,
+                                        'shippingCost' => $shippingCost,
                                         'address' => $address,
                                         'addressee' => $addressee,
                                         'addressId' => $addressId
