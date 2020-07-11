@@ -34,17 +34,6 @@ class CartController extends Controller
         ]);
     }
 
-    // public function deleteAllInCart()
-    // {
-    //     if (!Session::has('cart')){
-    //         return back()->with('message', 'No Session Exists...');
-    //     }
-
-    //     session()->forget('cart');
-
-    //     return back();
-    // }
-
     public function changeInCart(Request $request)
     {
         if (request('qty') > 99){
@@ -88,36 +77,6 @@ class CartController extends Controller
 
     }
 
-    ////for blade.php below
-    // public function changeInCart(Request $request, $id)
-    // {
-    //     $product = Product::find($id);
-
-    //     // $item = ['qty' => request('qty'), 'price' => $product->price, 'name' => $product->name, 'productId' => $product->id];
-    //     $item = [
-    //                 'qty' => request('qty'),
-    //                 'price' => $product->price,
-    //                 'salePrice' => $product->sale_price,
-    //                 'saleRate' => $product->sale_rate,
-    //                 'name' => $product->name,
-    //                 'productId' => $product->id,
-    //                 'imagePath' => $product->image_path
-    //             ];
-
-    //     $oldCart = Session::has('cart')? Session::get('cart') : null;
-
-    //     $cart = new Cart($oldCart);
-
-    //     $cart->change($item, $id);
-
-    //     $request->session()->put('cart', $cart);
-
-    //     //dd($request->session()->get('cart'));
-
-    //     return back();
-
-    // }
-
     public function deleteInCart(Request $request)
     {
         // return ("id =   " . $id);
@@ -147,27 +106,6 @@ class CartController extends Controller
         ]);
 
     }
-
-
-    // public function deleteInCart(Request $request, $id)
-    // {
-    //     // return ("id =   " . $id);
-
-    //     // $product = Product::findOrFail($id);
-
-    //     $oldCart = Session::has('cart')? Session::get('cart') : null;
-
-    //     $cart = new Cart($oldCart);
-
-    //     // $cart->delete($product->id);
-    //     $cart->delete($id);
-    //     $request->session()->put('cart', $cart);
-
-    //     // dd($request->session()->get('cart'));
-
-    //     return back();
-
-    // }
 
     public function addToCart(Request $request)
     {
@@ -235,51 +173,6 @@ class CartController extends Controller
         // return back();
     }
 
-    // public function addToCart(Request $request)
-    // {
-    //     //return ('qty = ' . request('qty'));
-    //     // return ('id = ' . request('id'));
-
-    //     $product = Product::findOrFail(request('id'));
-
-    //     // $item = ['qty' => 1, 'price' => $product->price, 'name' => $product->name, 'productId' => $product->id];
-    //     $item =
-    //             [
-    //                 'qty' => request('qty'),
-    //                 'price' => $product->price,
-    //                 'salePrice' => $product->sale_price,
-    //                 'saleRate' => $product->sale_rate,
-    //                 'name' => $product->name,
-    //                 'productId' => $product->id,
-    //                 'imagePath' => $product->image_path
-    //             ];
-
-    //     $oldCart = Session::has('cart')? Session::get('cart') : null;
-
-    //     $cart = new Cart($oldCart);
-
-    //     $cart->add($item,$product->id);
-    //     $request->session()->put('cart', $cart);
-
-    //     // dd($request->session()->get('cart'));
-
-    //     return back();
-
-    //     //////////DO NOT DELETE BELOW => ORIGINAL CODE FROM YOUTUBE///////////////////////////
-
-    //     // $product = Product::find($id);
-
-    //     // $oldCart = Session::has('cart')? Session::get('cart') : null;
-
-    //     // $cart = new Cart($oldCart);
-    //     // $cart->add($product,$product->id);
-    //     // $request->session()->put('cart', $cart);
-
-    //     // // dd($request->session()->get('cart'));
-
-    //     // return back();
-    // }
-
     public function showCart()
     {
         return view('cart.showCart');
@@ -321,7 +214,7 @@ class CartController extends Controller
         if ($totalSalePrice > 299.99){
             $shippingCost = 0;
         }else{
-            $shippingCost = 20;
+            $shippingCost = 20.00;
         }
         /////////////////////////////////////////////////////////
 
@@ -334,42 +227,4 @@ class CartController extends Controller
         ]);
 
     }
-
-    ////for blade.php below
-    // public function getCart()
-    // {
-    //     if (!Session::has('cart')){
-    //         return view('cart.getCart');
-    //     }
-
-    //     $oldCart = Session::get('cart');
-
-    //     $cart = new Cart($oldCart);
-
-    //     // return $cart->items;
-
-    //     $totalPrice = 0;
-    //     foreach($cart->items as $item){
-    //         $totalPrice += $item['qty'] * $item['price'];
-    //     }
-
-    //     $totalSalePrice = 0;
-    //     foreach($cart->items as $item){
-    //         $totalSalePrice += $item['qty'] * $item['salePrice'];
-    //     }
-
-    //     return view('cart.getCart',['products' => $cart->items,'totalPrice' => $totalPrice, 'totalSalePrice' => $totalSalePrice]);
-
-    //     //////////DO NOT DELETE BELOW => ORIGINAL CODE FROM YOUTUBE///////////////////////////
-
-    //     // if (!Session::has('cart')){
-    //     //     return view('cart.getCart');
-    //     // }
-
-    //     // $oldCart = Session::get('cart');
-
-    //     // $cart = new Cart($oldCart);
-
-    //     // return view('cart.getCart',['products' => $cart->items, 'totalPrice'=> $cart->totalPrice]);
-    // }
 }

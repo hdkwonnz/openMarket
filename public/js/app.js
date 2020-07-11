@@ -63685,7 +63685,11 @@ var render = function() {
                     _c("div", { staticClass: "w-50 text-right" }, [
                       _c("h4", [
                         _vm._v(
-                          _vm._s(_vm._f("currency")(_vm.totalSalePrice + 0))
+                          _vm._s(
+                            _vm._f("currency")(
+                              _vm.totalSalePrice + _vm.shippingCost
+                            )
+                          )
                         )
                       ])
                     ])
@@ -63790,7 +63794,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "mt-4" }, [
-      _c("h4", [_vm._v("Payment method")])
+      _c("h4", [_vm._v("Refund Policy")])
     ])
   },
   function() {

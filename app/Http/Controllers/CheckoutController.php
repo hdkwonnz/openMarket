@@ -221,7 +221,7 @@ class CheckoutController extends Controller
         if ($totalSalePrice > 299.99){
             $shippingCost = 0;
         }else{
-            $shippingCost = 20;
+            $shippingCost = 20.00;
         }
         //////////////////////////////////////////////////////////////////////////////////////////////
 
@@ -233,44 +233,6 @@ class CheckoutController extends Controller
                                  'errorMsg' => null, 'addresses' => $addresses,
                                  'shippingCost' => $shippingCost,]);
 
-    }
-
-    public function checkout()
-    {
-        $oldCart = Session::get('cart');
-
-        $cart = new Cart($oldCart);
-
-        $count = $cart->countOfItems;
-
-        // return $cart->items;
-
-        if ($count < 1){
-            $errorMsg = "No items to check out.";
-            return view('checkout.checkOut', compact('errorMsg'));
-        }
-
-        $totalPrice = 0;
-        foreach($cart->items as $item){
-            $totalPrice += $item['qty'] * $item['price'];
-        }
-
-        $totalSalePrice = 0;
-        foreach($cart->items as $item){
-            $totalSalePrice += $item['qty'] * $item['salePrice'];
-        }
-
-        if ($totalSalePrice < 0.1){
-            $errorMsg = "No items to check out.";
-            return view('checkout.checkOut', compact('errorMsg'));
-        }
-
-        $addresses = Address::where('user_id','=',auth()->user()->id)
-                            ->get();
-
-        return view('checkout.checkout',['products' => $cart->items,'totalPrice' => $totalPrice,
-                                      'totalSalePrice' => $totalSalePrice, 'count' => $count,
-                                      'errorMsg' => null, 'addresses' => $addresses]);
     }
 
     public function getPaymentIntent()
@@ -402,9 +364,16 @@ class CheckoutController extends Controller
             $addressId = $newAddress->id;
         }
 
-        // ////$grandAmount = $totalSalePrice + shippingCost
+        /////////////////////////////////////////////////////////////////
+        ////이곳에서 최후로 shipping cost를 결정 한다. ///////////////////
+        /////////////////////////////////////////////////////////////////
+        if ($totalSalePrice > 299.99){
+            $shippingCost = 0;
+        }else{
+            $shippingCost = 20.00;
+        }
+        //////////////////////////////////////////////////////////////////
 
-        $shippingCost = 0; ////추후에 결정 할것...
         $grandAmount = $totalSalePrice + $shippingCost;
 
         Stripe::setApiKey(env('STRIPE_SECRET_KEY'));

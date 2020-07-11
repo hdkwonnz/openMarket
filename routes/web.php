@@ -46,16 +46,13 @@ Route::get('/home/search', 'HomeController@search')->name('home.search');
 Route::get('/allCategory', 'HomeController@allCategory')->name('home.allCategory');
 
 // cart
-// Route::get('/cart/addToCart/{id}', 'CartController@addTocart')->name('cart.addToCart');
 Route::get('/cart/addToCart', 'CartController@addTocart')->name('cart.addToCart');
-Route::get('/cart/deleteInCart/{id}', 'CartController@deleteInCart')->name('cart.deleteInCart');//for blade.php
 Route::get('/cart/deleteInCart', 'CartController@deleteInCart')->name('cart.deleteInCart');
 Route::get('/cart/deleteAllInCart', 'CartController@deleteAllInCart')->name('cart.deleteAllInCart');
-// Route::get('/cart/changeInCart/{id}', 'CartController@changeInCart')->name('cart.changeInCart');//for blade.php
 Route::get('/cart/changeInCart', 'CartController@changeInCart')->name('cart.changeInCart');
 Route::get('/cart/getCart', 'CartController@getCart')->name('cart.getCart');
 Route::get('/cart/showCart', 'CartController@showCart')->name('cart.showCart');
-Route::get('/cart/countCart', 'CartController@countCart');
+//Route::get('/cart/countCart', 'CartController@countCart');//do not delete observing...
 
 // product
 Route::get('/product/details/{id}', 'ProductController@details')->name('product.details');
@@ -72,12 +69,10 @@ Route::get('/order/orderDetailsById/{id}', 'OrderController@orderDetailsById')->
 // checkout
 Route::post('/checkout/getCheckout', 'CheckoutController@getCheckout')->name('checkout.getCheckout')->middleware('auth','verified','can:isUser');//for vue
 Route::get('/checkout/showCheckout', 'CheckoutController@showCheckout')->name('checkout.showCheckout')->middleware('auth','verified','can:isUser');//for vue
-//Route::get('/checkout/checkout', 'CheckoutController@checkout')->name('checkout.checkout')->middleware('auth','verified','can:isUser');//for blade
 Route::post('checkout/payment', 'CheckoutController@payment')->name('checkout.payment')->middleware('auth','verified','can:isUser');
 Route::get('/checkout/payNow/{address}/{addressee}/{addressId}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
-// Route::get('/checkout/payNow/{address}', 'CheckoutController@payNow')->name('checkout.payNow')->middleware('auth','verified','can:isUser');//for blade
-// Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//for vue.js
-Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','verified','can:isUser');
+// Route::get('/checkout/showPayNow', 'CheckoutController@showPayNow')->name('checkout.showPayNow')->middleware('auth','verified','can:isUser');//do not delete for vue.js
+// Route::get('/checkout/getPaymentIntent', 'CheckoutController@getPaymentIntent')->name('checkout.getPaymentIntent')->middleware('auth','verified','can:isUser');//do not delete for vue.js
 
 // address
 Route::post('/checkout/deleteAddress', 'CheckoutController@deleteAddress')->name('checkout.deleteAddress')->middleware('auth','verified','can:isUser');

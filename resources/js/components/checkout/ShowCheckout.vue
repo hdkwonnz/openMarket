@@ -99,7 +99,7 @@
 
                     </div>
                     <div class="mt-4">
-                        <h4>Payment method</h4>
+                        <h4>Refund Policy</h4>
                     </div>
                     <div style="border: 1px solid blue; width: 100%; height: 140px;">
 
@@ -170,7 +170,7 @@
                         <div class="d-flex mt-2 mx-2">
                             <div class="w-50"><h4>Grand Total</h4></div>
                             <!-- shipping cost will be added in live mode below -->
-                            <div class="w-50 text-right"><h4>{{ ((totalSalePrice + 0)) | currency}}</h4></div>
+                            <div class="w-50 text-right"><h4>{{ ((totalSalePrice + shippingCost)) | currency}}</h4></div>
                         </div>
                         <a href="#" @click.prevent="checkoutToPayNow()" class="text-decoration-none click_pay">
                             <div class="text-center bg-primary text-white" style="border: none; height: 60px; padding-top: 15px;">
