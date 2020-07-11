@@ -66,7 +66,7 @@ class HomeController extends Controller
      *
      * @return \Illuminate\Contracts\Support\Renderable
      */
-    public function index()
+    public function index() //do not delete for test
     {
         // $products = Product::take(20)->get();
 
@@ -84,7 +84,6 @@ class HomeController extends Controller
         $categoryas = Cache::store('redis')->remember('home.categoryas', now()->addHours(24), function() {
             return (Categorya::with('categorybs')->get());
         });
-
 
         // $categoryas = Categorya::with('categorybs')
         //                 ->get();

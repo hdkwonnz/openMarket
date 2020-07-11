@@ -35,7 +35,7 @@ class ProductController extends Controller
     {
         //redis에 cache key 'categorybs'가 존재하면 cache에서 data를 읽어 오고
         //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
-        $productsCategoryAs = Cache::store('redis')->remember('productsCategoryAs', now()->addHours(24), function() use($aId) {
+        $productsCategoryAs = Cache::store('redis')->remember('productsCategoryAs'.$aId, now()->addHours(24), function() use($aId) {
             return (Product::with('categorya','categoryb','categoryc')
                             ->where('categorya_id', '=', $aId)
                             ->get());
@@ -47,7 +47,7 @@ class ProductController extends Controller
         //                 ->where('categorya_id', '=', $aId)
         //                 ->get();
 
-        $categoryABs = Cache::store('redis')->remember('product.categoryABs', now()->addHours(24), function() use($aId) {
+        $categoryABs = Cache::store('redis')->remember('product.categoryABs'.$aId, now()->addHours(24), function() use($aId) {
             return (Categorya::with('categorybs')
                             ->where('id', '=', $aId)
                             ->first());
@@ -64,7 +64,7 @@ class ProductController extends Controller
 
     public function showProductsCategoryBC($bId)
     {
-        $productsCategoryBCs = Cache::store('redis')->remember('productsCategoryBCs', now()->addHours(24), function() use($bId) {
+        $productsCategoryBCs = Cache::store('redis')->remember('productsCategoryBCs'.$bId, now()->addHours(24), function() use($bId) {
             return (Product::with('categorya','categoryb','categoryc')
                             ->where('categoryb_id', '=', $bId)
                             ->get());
@@ -74,7 +74,7 @@ class ProductController extends Controller
         //                 ->where('categoryb_id', '=', $bId)
         //                 ->get();
 
-        $categoryBCs = Cache::store('redis')->remember('product.categoryBCs', now()->addHours(24), function() use($bId) {
+        $categoryBCs = Cache::store('redis')->remember('product.categoryBCs'.$bId, now()->addHours(24), function() use($bId) {
             return (Categoryb::with('categorycs', 'categorya')
                             ->where('id', '=', $bId)
                             ->first());
@@ -91,7 +91,7 @@ class ProductController extends Controller
 
     public function showProductsCategoryC($cId)
     {
-        $productsCategoryCs = Cache::store('redis')->remember('productsCategoryCs', now()->addHours(24), function() use($cId) {
+        $productsCategoryCs = Cache::store('redis')->remember('productsCategoryCs'.$cId, now()->addHours(24), function() use($cId) {
             return (Product::with('categorya','categoryb','categoryc')
                             ->where('categoryc_id', '=', $cId)
                             ->get());
@@ -101,7 +101,7 @@ class ProductController extends Controller
         //                 ->where('categoryc_id', '=', $cId)
         //                 ->get();
 
-        $categoryCs = Cache::store('redis')->remember('product.categoryCs', now()->addHours(24), function() use($cId) {
+        $categoryCs = Cache::store('redis')->remember('product.categoryCs'.$cId, now()->addHours(24), function() use($cId) {
             return (Categoryc::with('categoryb', 'categorya')
                             ->where('id', '=', $cId)
                             ->first());

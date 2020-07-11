@@ -2,12 +2,13 @@
 
 namespace App\Http\Controllers\Seller;
 
+use App\Product;
 use App\Categorya;
 use App\Categoryb;
 use App\Categoryc;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-use App\Product;
+use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
 {
@@ -136,7 +137,13 @@ class ProductController extends Controller
 
     public function getCategoryAs()
     {
-        $categoryAs = Categorya::all();
+        //redis에 cache key 'seller.categoryAs'가 존재하면 cache에서 data를 읽어 오고
+        //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
+        $categoryAs = Cache::store('redis')->remember('seller.categoryAs', now()->addHours(24), function() {
+            return (Categorya::all());
+        });
+
+        // $categoryAs = Categorya::all();
 
         return response()->json([
             'categoryAs' => $categoryAs,
@@ -145,8 +152,19 @@ class ProductController extends Controller
 
     public function getCategoryBbyId()
     {
-        $categoryBs = Categoryb::where('categorya_id','=',request(('id')))
-                                ->get();
+        $aId = request('aId');
+
+        //redis에 cache key 'seller.categoryBs'가 존재하면 cache에서 data를 읽어 오고
+        //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
+        $categoryBs = Cache::store('redis')->remember('seller.categoryBs'.$aId, now()->addHours(24),
+             function() use($aId){
+                return (Categoryb::where('categorya_id','=', $aId)
+                        ->get()
+                );
+        });
+
+        // $categoryBs = Categoryb::where('categorya_id','=',request('aId'))
+        //                        ->get();
 
         return response()->json([
             'categoryBs' => $categoryBs,
@@ -154,9 +172,22 @@ class ProductController extends Controller
     }
     public function getCategoryCbyId()
     {
-        $categoryCs = Categoryc::where('categorya_id','=',request(('aId')))
-                                ->where('categoryb_id','=',request(('bId')))
-                                ->get();
+        $aId = request('aId');
+        $bId = request('bId');
+
+        //redis에 cache key 'seller.categoryCs'가 존재하면 cache에서 data를 읽어 오고
+        //그렇지 않으면 db에서 읽어온 data를 cache에 저장 한다.
+        $categoryCs = Cache::store('redis')->remember('seller.categoryCs'.$aId.$bId, now()->addHours(24),
+            function() use($aId, $bId){
+                return (Categoryc::where('categorya_id','=',$aId)
+                    ->where('categoryb_id','=',$bId)
+                    ->get()
+                );
+        });
+
+        // $categoryCs = Categoryc::where('categorya_id','=',request(('aId')))
+        //                         ->where('categoryb_id','=',request(('bId')))
+        //                         ->get();
 
         return response()->json([
             'categoryCs' => $categoryCs,

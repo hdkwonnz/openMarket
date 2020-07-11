@@ -317,7 +317,7 @@
                 });
             },
 
-            getCategoryBbyId(id,categoryAname){
+            getCategoryBbyId(categoryAid,categoryAname){
                 $('.categoryb_name').empty();
                 $('.categoryc_name').empty();
                 $('.categorya_name').empty().text(categoryAname);
@@ -325,7 +325,7 @@
                 this.blockSw = false;
                 axios.get('/seller/product/getCategoryBbyId',{
                     params: {
-                        id: id,
+                        aId: categoryAid,
                     }
                 })
                 .then(response => {
