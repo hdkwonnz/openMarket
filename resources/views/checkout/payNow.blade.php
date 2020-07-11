@@ -16,7 +16,11 @@
         </div>
     @else
     <div class="col-md-6 col-sm-6" style="margin-top: 100px; margin-bottom: 100px;">
-        <h4>Input Card Details</h4>
+        <div class="d-flex m-0 p-0">
+            <h4>Input Card Details</h4>
+            <i class="fab fa-cc-visa fa-3x ml-4"></i>
+            <i class="fab fa-cc-mastercard fa-3x ml-2"></i>
+        </div>
         <div class="row form-group mt-5">
             <label for="address" class="col-md-3 col-form-label">ADDRESS</label>
             <input type="text" class="address col-md-9 form-control" value="{{ $address }}" readonly>
@@ -27,12 +31,12 @@
         </div>
         <form id="payment-form" action="" method="POST" class="my-4 mt-5">
             @csrf
-            <div id="card-element" class="mt-1">
+            <div id="card-element" class="col-md-12 col-sm-12 mt-1">
                 <!-- Elements will create input elements here -->
             </div>
 
             <!-- We'll put the error messages in this element -->
-            <div id="card-errors" role="alert"></div>
+            <div id="card-errors" role="alert" class="col-md-12 col-sm-12"></div>
 
             <!-- https://stackoverflow.com/questions/59138359/laravel-crud-decimal-change-dot-to-comma-in-the-form -->
             <button class="btn btn-success mt-5 w-100" id="submit">Pay Now (${{ number_format($grandAmount,2) }})</button>

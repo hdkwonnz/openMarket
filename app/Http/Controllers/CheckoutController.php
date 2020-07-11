@@ -215,12 +215,23 @@ class CheckoutController extends Controller
             ]);
         }
 
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        ////shipping cost => CartController@getCart 애서 이미 정했지만 다시 보여 준다./////////////////
+        //////////////////////////////////////////////////////////////////////////////////////////////
+        if ($totalSalePrice > 299.99){
+            $shippingCost = 0;
+        }else{
+            $shippingCost = 20;
+        }
+        //////////////////////////////////////////////////////////////////////////////////////////////
+
         $addresses = Address::where('user_id','=',auth()->user()->id)
                             ->get();
 
         return response()->json(['products' => $cart->items, 'totalPrice' => $totalPrice,
                                  'totalSalePrice' => $totalSalePrice, 'count' => $count,
-                                 'errorMsg' => null, 'addresses' => $addresses]);
+                                 'errorMsg' => null, 'addresses' => $addresses,
+                                 'shippingCost' => $shippingCost,]);
 
     }
 

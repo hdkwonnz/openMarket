@@ -309,19 +309,28 @@ class CartController extends Controller
         foreach($cart->items as $item){
             $totalPrice += $item['qty'] * $item['price'];
         }
-        // $totalPrice = number_format($totalPrice, 2);
 
         $totalSalePrice = 0;
         foreach($cart->items as $item){
             $totalSalePrice += $item['qty'] * $item['salePrice'];
         }
-        // $totalSalePrice = number_format($totalSalePrice, 2);
+
+        //////////////////////////////////////////////////////////
+        ////이곳에서 shipping cost를 정해야 한다./////////////////
+        /////////////////////////////////////////////////////////
+        if ($totalSalePrice > 299.99){
+            $shippingCost = 0;
+        }else{
+            $shippingCost = 20;
+        }
+        /////////////////////////////////////////////////////////
 
         return response()->json([
             'products' => $cart->items,
             'totalPrice' => $totalPrice,
             'totalSalePrice' => $totalSalePrice,
-            'countOfItems' => $cart->countOfItems
+            'countOfItems' => $cart->countOfItems,
+            'shippingCost' => $shippingCost,
         ]);
 
     }

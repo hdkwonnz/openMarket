@@ -2224,7 +2224,7 @@ __webpack_require__.r(__webpack_exports__);
         _this4.products = response.data.products;
         _this4.totalPrice = response.data.totalPrice;
         _this4.totalSalePrice = response.data.totalSalePrice;
-        _this4.shippingCost = 0.00; ////////////////////////////////////////
+        _this4.shippingCost = response.data.shippingCost; ////////////////////////////////////////
 
         _this4.countOfItems = response.data.countOfItems;
         _this4.errorMsg = response.data.errorMsg; //// do not delete below
@@ -2577,6 +2577,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -2591,7 +2593,8 @@ __webpack_require__.r(__webpack_exports__);
       selectedAddressId: "",
       selectedAddressee: "",
       selectedAddress: "",
-      inputAddressee: ""
+      inputAddressee: "",
+      shippingCost: ""
     };
   },
   methods: {
@@ -2646,6 +2649,8 @@ __webpack_require__.r(__webpack_exports__);
     },
     getAddressee: function getAddressee() {
       this.selectedAddressee = this.inputAddressee;
+      $('.selected_addressee').empty().text(this.selectedAddressee);
+      $('.selected_addressee').css('font-weight', 'bold');
     },
     selectAddress: function selectAddress(address) {
       this.selectedAddressId = "0";
@@ -2692,6 +2697,7 @@ __webpack_require__.r(__webpack_exports__);
           _this4.totalPrice = response.data.totalPrice;
           _this4.totalSalePrice = response.data.totalSalePrice;
           _this4.addresses = response.data.addresses;
+          _this4.shippingCost = response.data.shippingCost;
         }
       })["catch"](function (error) {
         //console.log(error);
@@ -62971,7 +62977,13 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(2),
+                    _c("tr", [
+                      _c("td", [_vm._v("Ship. charge")]),
+                      _vm._v(" "),
+                      _c("td", { staticClass: "text-right" }, [
+                        _vm._v(_vm._s(_vm._f("currency")(_vm.shippingCost)))
+                      ])
+                    ]),
                     _vm._v(" "),
                     _c("tr", [
                       _c("td", [_vm._v("Total amount")]),
@@ -62990,7 +63002,7 @@ var render = function() {
                       ])
                     ]),
                     _vm._v(" "),
-                    _vm._m(3)
+                    _vm._m(2)
                   ])
                 ])
               ])
@@ -63034,16 +63046,6 @@ var staticRenderFns = [
         },
         [_c("h5", [_vm._v("Grand Total")])]
       )
-    ])
-  },
-  function() {
-    var _vm = this
-    var _h = _vm.$createElement
-    var _c = _vm._self._c || _h
-    return _c("tr", [
-      _c("td", [_vm._v("Ship. charge")]),
-      _vm._v(" "),
-      _c("td", { staticClass: "text-right" }, [_vm._v("$0.00")])
     ])
   },
   function() {
@@ -63195,82 +63197,92 @@ var render = function() {
                 [
                   _c("div", { staticClass: "row no-gutters" }, [
                     _c("table", { staticClass: "table table-sm table-hover" }, [
-                      _c(
-                        "tbody",
-                        _vm._l(_vm.addresses, function(address) {
-                          return _c(
-                            "tr",
-                            {
-                              key: address.index,
-                              staticClass: "existing_contents",
-                              on: {
-                                click: function($event) {
-                                  $event.preventDefault()
-                                  return _vm.selectAddressName(
-                                    address.id,
-                                    address.address,
-                                    address.addressee
-                                  )
+                      _c("tbody", [
+                        _c(
+                          "div",
+                          {
+                            staticStyle: {
+                              border: "3px solid blue",
+                              width: "100%",
+                              height: "80px",
+                              "overflow-y": "scroll"
+                            }
+                          },
+                          _vm._l(_vm.addresses, function(address) {
+                            return _c(
+                              "tr",
+                              {
+                                key: address.index,
+                                staticClass: "existing_contents",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.selectAddressName(
+                                      address.id,
+                                      address.address,
+                                      address.addressee
+                                    )
+                                  }
                                 }
-                              }
-                            },
-                            [
-                              _c("td", { staticStyle: { width: "70%" } }, [
-                                _c(
-                                  "a",
-                                  {
-                                    staticClass:
-                                      "text-dark text-decoration-none existing_address",
-                                    attrs: { href: "javascript: void(0)" }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(address.address) +
-                                        "\n                                        "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "20%" } }, [
-                                _c(
-                                  "span",
-                                  { staticClass: "existing_addressee" },
-                                  [
-                                    _vm._v(
-                                      "\n                                            " +
-                                        _vm._s(address.addressee) +
-                                        "\n                                        "
-                                    )
-                                  ]
-                                )
-                              ]),
-                              _vm._v(" "),
-                              _c("td", { staticStyle: { width: "10%" } }, [
-                                _c(
-                                  "button",
-                                  {
-                                    staticClass: "btn btn-sm btn-danger",
-                                    on: {
-                                      click: function($event) {
-                                        $event.preventDefault()
-                                        return _vm.deleteAddress(address.id)
+                              },
+                              [
+                                _c("td", { staticStyle: { width: "70%" } }, [
+                                  _c(
+                                    "a",
+                                    {
+                                      staticClass:
+                                        "text-dark text-decoration-none existing_address",
+                                      attrs: { href: "javascript: void(0)" }
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(address.address) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "20%" } }, [
+                                  _c(
+                                    "span",
+                                    { staticClass: "existing_addressee" },
+                                    [
+                                      _vm._v(
+                                        "\n                                                " +
+                                          _vm._s(address.addressee) +
+                                          "\n                                            "
+                                      )
+                                    ]
+                                  )
+                                ]),
+                                _vm._v(" "),
+                                _c("td", { staticStyle: { width: "10%" } }, [
+                                  _c(
+                                    "button",
+                                    {
+                                      staticClass: "btn btn-sm btn-danger",
+                                      on: {
+                                        click: function($event) {
+                                          $event.preventDefault()
+                                          return _vm.deleteAddress(address.id)
+                                        }
                                       }
-                                    }
-                                  },
-                                  [
-                                    _vm._v(
-                                      "\n                                            Delete\n                                        "
-                                    )
-                                  ]
-                                )
-                              ])
-                            ]
-                          )
-                        }),
-                        0
-                      )
+                                    },
+                                    [
+                                      _vm._v(
+                                        "\n                                                Delete\n                                            "
+                                      )
+                                    ]
+                                  )
+                                ])
+                              ]
+                            )
+                          }),
+                          0
+                        )
+                      ])
                     ])
                   ]),
                   _vm._v(" "),
@@ -63657,7 +63669,15 @@ var render = function() {
                     ])
                   ]),
                   _vm._v(" "),
-                  _vm._m(11),
+                  _c("div", { staticClass: "d-flex mt-2 mx-2" }, [
+                    _vm._m(11),
+                    _vm._v(" "),
+                    _c("div", { staticClass: "w-50 text-right" }, [
+                      _c("h4", [
+                        _vm._v(_vm._s(_vm._f("currency")(_vm.shippingCost)))
+                      ])
+                    ])
+                  ]),
                   _vm._v(" "),
                   _c("div", { staticClass: "d-flex mt-2 mx-2" }, [
                     _vm._m(12),
@@ -63784,7 +63804,7 @@ var staticRenderFns = [
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
     return _c("div", { staticClass: "mt-4" }, [
-      _c("h4", [_vm._v("Payment informations")])
+      _c("h4", [_vm._v("Total Amount Informations")])
     ])
   },
   function() {
@@ -63807,12 +63827,8 @@ var staticRenderFns = [
     var _vm = this
     var _h = _vm.$createElement
     var _c = _vm._self._c || _h
-    return _c("div", { staticClass: "d-flex mt-2 mx-2" }, [
-      _c("div", { staticClass: "w-50" }, [
-        _c("h4", [_vm._v("Shipping Charge")])
-      ]),
-      _vm._v(" "),
-      _c("div", { staticClass: "w-50 text-right" }, [_c("h4", [_vm._v("$0")])])
+    return _c("div", { staticClass: "w-50" }, [
+      _c("h4", [_vm._v("Shipping Charge")])
     ])
   },
   function() {
@@ -63831,7 +63847,7 @@ var staticRenderFns = [
       "div",
       {
         staticClass: "text-center bg-primary text-white",
-        staticStyle: { border: "none", height: "40px", "padding-top": "5px" }
+        staticStyle: { border: "none", height: "60px", "padding-top": "15px" }
       },
       [_c("h4", [_vm._v("Check Out")])]
     )

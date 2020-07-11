@@ -24,23 +24,25 @@
                         <div class="row no-gutters">
                             <table class="table table-sm table-hover">
                                 <tbody>
-                                    <tr @click.prevent="selectAddressName(address.id, address.address, address.addressee)" v-for="address in addresses" :key="address.index" class="existing_contents">
-                                        <td style="width: 70%;">
-                                            <a href="javascript: void(0)" class="text-dark text-decoration-none existing_address">
-                                                {{ address.address }}
-                                            </a>
-                                        </td>
-                                        <td style="width: 20%;">
-                                            <span class="existing_addressee">
-                                                {{ address.addressee }}
-                                            </span>
-                                        </td>
-                                        <td style="width: 10%;">
-                                            <button @click.prevent="deleteAddress(address.id)" class="btn btn-sm btn-danger">
-                                                Delete
-                                            </button>
-                                        </td>
-                                    </tr>
+                                    <div style="border: 3px solid blue; width: 100%; height: 80px; overflow-y: scroll;">
+                                        <tr @click.prevent="selectAddressName(address.id, address.address, address.addressee)" v-for="address in addresses" :key="address.index" class="existing_contents">
+                                            <td style="width: 70%;">
+                                                <a href="javascript: void(0)" class="text-dark text-decoration-none existing_address">
+                                                    {{ address.address }}
+                                                </a>
+                                            </td>
+                                            <td style="width: 20%;">
+                                                <span class="existing_addressee">
+                                                    {{ address.addressee }}
+                                                </span>
+                                            </td>
+                                            <td style="width: 10%;">
+                                                <button @click.prevent="deleteAddress(address.id)" class="btn btn-sm btn-danger">
+                                                    Delete
+                                                </button>
+                                            </td>
+                                        </tr>
+                                    </div>
                                 </tbody>
                             </table>
                         </div>
@@ -149,7 +151,7 @@
 
                     </div>
                     <div class="mt-4">
-                        <h4>Payment informations</h4>
+                        <h4>Total Amount Informations</h4>
                     </div>
                     <div style="border: 3px solid blue; min-height: 206px;">
                         <div class="d-flex mt-2 mx-2">
@@ -163,7 +165,7 @@
                         <div class="d-flex mt-2 mx-2">
                             <div class="w-50"><h4>Shipping Charge</h4></div>
                             <!-- shipping cost will be added in live mode below -->
-                            <div class="w-50 text-right"><h4>$0</h4></div>
+                            <div class="w-50 text-right"><h4>{{ shippingCost | currency }}</h4></div>
                         </div>
                         <div class="d-flex mt-2 mx-2">
                             <div class="w-50"><h4>Grand Total</h4></div>
@@ -171,7 +173,7 @@
                             <div class="w-50 text-right"><h4>{{ ((totalSalePrice + 0)) | currency}}</h4></div>
                         </div>
                         <a href="#" @click.prevent="checkoutToPayNow()" class="text-decoration-none click_pay">
-                            <div class="text-center bg-primary text-white" style="border: none; height: 40px; padding-top: 5px;">
+                            <div class="text-center bg-primary text-white" style="border: none; height: 60px; padding-top: 15px;">
                                 <h4>Check Out</h4>
                             </div>
                         </a>
@@ -198,6 +200,7 @@
                 selectedAddressee: "",
                 selectedAddress: "",
                 inputAddressee: "",
+                shippingCost: "",
             }
         },
 
@@ -256,6 +259,8 @@
 
             getAddressee(){
                 this.selectedAddressee = this.inputAddressee;
+                $('.selected_addressee').empty().text(this.selectedAddressee);
+                $('.selected_addressee').css('font-weight','bold');
             },
 
             selectAddress(address){
@@ -307,6 +312,7 @@
                         this.totalPrice = response.data.totalPrice;
                         this.totalSalePrice = response.data.totalSalePrice;
                         this.addresses = response.data.addresses;
+                        this.shippingCost = response.data.shippingCost;
                     }
                 })
                 .catch(error => {
