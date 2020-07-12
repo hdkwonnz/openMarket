@@ -41,6 +41,7 @@ Vue.component('edit-products', require('./components/seller/product/EditProduct.
 Vue.component('pay-now', require('./components/checkout/PayNow.vue').default);
 Vue.component('show-checkout', require('./components/checkout/ShowCheckout.vue').default);
 Vue.component('customer-orders', require('./components/seller/seller/CustomerOrders.vue').default);
+Vue.component('show-category', require('./components/admin/category/ShowCategory.vue').default);
 
 /**
  * Next, we will create a fresh Vue application instance and attach it to

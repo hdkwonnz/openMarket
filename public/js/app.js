@@ -1932,6 +1932,347 @@ __webpack_require__.r(__webpack_exports__);
 
 /***/ }),
 
+/***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/category/ShowCategory.vue?vue&type=script&lang=js&":
+/*!**************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admin/category/ShowCategory.vue?vue&type=script&lang=js& ***!
+  \**************************************************************************************************************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+/* harmony default export */ __webpack_exports__["default"] = ({
+  data: function data() {
+    return {
+      categoryAs: {},
+      categoryA: {},
+      categoryB: {},
+      categoryC: {},
+      categoryAsw: false,
+      categoryBsw: false,
+      categoryCsw: false,
+      initialSw: true
+    };
+  },
+  methods: {
+    getCategoryAbyId: function getCategoryAbyId(aId) {
+      var _this = this;
+
+      axios.post('/admin/getCategoryAbyId', {
+        aId: aId
+      }).then(function (response) {
+        //console.log(response);
+        _this.categoryA = response.data.categoryA;
+        _this.categoryAsw = true;
+        _this.categoryBsw = false;
+        _this.categoryCsw = false;
+        _this.initialSw = false;
+      })["catch"](function (error) {//console.log(error);
+      });
+    },
+    getCategoryBbyId: function getCategoryBbyId(bId) {
+      var _this2 = this;
+
+      axios.post('/admin/getCategoryBbyId', {
+        bId: bId
+      }).then(function (response) {
+        //console.log(response);
+        _this2.categoryB = response.data.categoryB;
+        _this2.categoryBsw = true;
+        _this2.categoryAsw = false;
+        _this2.categoryCsw = false;
+        _this2.initialSw = false;
+      })["catch"](function (error) {//console.log(error);
+      });
+    },
+    getCategoryCbyId: function getCategoryCbyId(cId) {
+      var _this3 = this;
+
+      axios.post('/admin/getCategoryCbyId', {
+        cId: cId
+      }).then(function (response) {
+        //console.log(response);
+        _this3.categoryC = response.data.categoryC;
+        _this3.categoryCsw = true;
+        _this3.categoryBsw = false;
+        _this3.categoryAsw = false;
+        _this3.initialSw = false;
+      })["catch"](function (error) {//console.log(error);
+      });
+    },
+    getAllCategories: function getAllCategories() {
+      var _this4 = this;
+
+      axios.post('/admin/getAllcategories', {//
+      }).then(function (response) {
+        //console.log(response);
+        _this4.categoryAs = response.data.categoryAs;
+      })["catch"](function (error) {//console.log(error);
+      });
+    }
+  },
+  created: function created() {
+    this.getAllCategories();
+  },
+  mounted: function mounted() {}
+});
+
+/***/ }),
+
 /***/ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/cart/CountCart.vue?vue&type=script&lang=js&":
 /*!*************************************************************************************************************************************************************************!*\
   !*** ./node_modules/babel-loader/lib??ref--4-0!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/cart/CountCart.vue?vue&type=script&lang=js& ***!
@@ -62638,6 +62979,1070 @@ render._withStripped = true
 
 /***/ }),
 
+/***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/category/ShowCategory.vue?vue&type=template&id=25656e1e&":
+/*!******************************************************************************************************************************************************************************************************************************!*\
+  !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/admin/category/ShowCategory.vue?vue&type=template&id=25656e1e& ***!
+  \******************************************************************************************************************************************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "render", function() { return render; });
+/* harmony export (binding) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return staticRenderFns; });
+var render = function() {
+  var _vm = this
+  var _h = _vm.$createElement
+  var _c = _vm._self._c || _h
+  return _c("div", [
+    _vm._m(0),
+    _vm._v(" "),
+    _vm.initialSw
+      ? _c("div", { staticClass: "row mt-2" }, [
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(1),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.categoryAs, function(categoryA) {
+                        return _c("tr", { key: categoryA.index }, [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: { width: "80%" },
+                              attrs: { scope: "row" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none text-dark",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.getCategoryAbyId(categoryA.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(categoryA.name) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("td", { staticStyle: { width: "10%" } }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-primary",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.editCategoryA(categoryA.id)
+                                  }
+                                }
+                              },
+                              [_vm._v("Edit")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticStyle: { width: "10%" } }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.deleteCategoryA(categoryA.id)
+                                  }
+                                }
+                              },
+                              [_vm._v("Delt")]
+                            )
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.categoryAsw
+      ? _c("div", { staticClass: "row mt-2" }, [
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(2),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticStyle: { width: "80%" },
+                            attrs: { scope: "row" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-decoration-none text-dark",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.getCategoryAbyId(
+                                      _vm.categoryA.id
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.categoryA.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editCategoryA(_vm.categoryA.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteCategoryA(_vm.categoryA.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delt")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(3),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.categoryA.categorybs, function(categoryB) {
+                        return _c("tr", { key: categoryB.index }, [
+                          _c(
+                            "td",
+                            {
+                              staticStyle: { width: "80%" },
+                              attrs: { scope: "row" }
+                            },
+                            [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none text-dark",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.getCategoryBbyId(categoryB.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(categoryB.name) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ]
+                          ),
+                          _vm._v(" "),
+                          _c("td", { staticStyle: { width: "10%" } }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-primary",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.editCategoryA(categoryB.id)
+                                  }
+                                }
+                              },
+                              [_vm._v("Edit")]
+                            )
+                          ]),
+                          _vm._v(" "),
+                          _c("td", { staticStyle: { width: "10%" } }, [
+                            _c(
+                              "button",
+                              {
+                                staticClass: "btn btn-sm btn-danger",
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.deleteCategoryA(categoryB.id)
+                                  }
+                                }
+                              },
+                              [_vm._v("Delt")]
+                            )
+                          ])
+                        ])
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(4),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.categoryA.categorycs, function(categoryC) {
+                        return _c(
+                          "tr",
+                          {
+                            key: categoryC.index,
+                            staticStyle: { width: "80%" }
+                          },
+                          [
+                            _c("td", { attrs: { scope: "row" } }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none text-dark",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.getCategoryCbyId(categoryC.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(categoryC.name) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "10%" } }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-sm btn-primary",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.editCategoryA(categoryC.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit")]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "10%" } }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-sm btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.deleteCategoryA(categoryC.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delt")]
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.categoryBsw
+      ? _c("div", { staticClass: "row mt-2" }, [
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(5),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticStyle: { width: "80%" },
+                            attrs: { scope: "row" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-decoration-none text-dark",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.getCategoryAbyId(
+                                      _vm.categoryB.categorya.id
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.categoryB.categorya.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editCategoryA(
+                                    _vm.categoryB.categorya.id
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteCategoryA(
+                                    _vm.categoryB.categorya.id
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Delt")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(6),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticStyle: { width: "80%" },
+                            attrs: { scope: "row" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-decoration-none text-dark",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.getCategoryBbyId(
+                                      _vm.categoryB.id
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.categoryB.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editCategoryA(_vm.categoryB.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteCategoryA(_vm.categoryB.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delt")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(7),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c(
+                      "tbody",
+                      _vm._l(_vm.categoryB.categorycs, function(categoryC) {
+                        return _c(
+                          "tr",
+                          {
+                            key: categoryC.index,
+                            staticStyle: { width: "80%" }
+                          },
+                          [
+                            _c("td", { attrs: { scope: "row" } }, [
+                              _c(
+                                "a",
+                                {
+                                  staticClass: "text-decoration-none text-dark",
+                                  attrs: { href: "#" },
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.getCategoryCbyId(categoryC.id)
+                                    }
+                                  }
+                                },
+                                [
+                                  _vm._v(
+                                    "\n                                    " +
+                                      _vm._s(categoryC.name) +
+                                      "\n                                "
+                                  )
+                                ]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "10%" } }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-sm btn-primary",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.editCategoryA(categoryC.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Edit")]
+                              )
+                            ]),
+                            _vm._v(" "),
+                            _c("td", { staticStyle: { width: "10%" } }, [
+                              _c(
+                                "button",
+                                {
+                                  staticClass: "btn btn-sm btn-danger",
+                                  on: {
+                                    click: function($event) {
+                                      $event.preventDefault()
+                                      return _vm.deleteCategoryA(categoryC.id)
+                                    }
+                                  }
+                                },
+                                [_vm._v("Delt")]
+                              )
+                            ])
+                          ]
+                        )
+                      }),
+                      0
+                    )
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      : _vm._e(),
+    _vm._v(" "),
+    _vm.categoryCsw
+      ? _c("div", { staticClass: "row mt-2" }, [
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(8),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticStyle: { width: "80%" },
+                            attrs: { scope: "row" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-decoration-none text-dark",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.getCategoryAbyId(
+                                      _vm.categoryC.categorya.id
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.categoryC.categorya.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editCategoryA(
+                                    _vm.categoryC.categorya.id
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteCategoryA(
+                                    _vm.categoryC.categorya.id
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Delt")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(9),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c("tbody", [
+                      _c("tr", [
+                        _c(
+                          "td",
+                          {
+                            staticStyle: { width: "80%" },
+                            attrs: { scope: "row" }
+                          },
+                          [
+                            _c(
+                              "a",
+                              {
+                                staticClass: "text-decoration-none text-dark",
+                                attrs: { href: "#" },
+                                on: {
+                                  click: function($event) {
+                                    $event.preventDefault()
+                                    return _vm.getCategoryBbyId(
+                                      _vm.categoryC.categoryb.id
+                                    )
+                                  }
+                                }
+                              },
+                              [
+                                _vm._v(
+                                  "\n                                    " +
+                                    _vm._s(_vm.categoryC.categoryb.name) +
+                                    "\n                                "
+                                )
+                              ]
+                            )
+                          ]
+                        ),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editCategoryA(
+                                    _vm.categoryC.categoryb.id
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteCategoryA(
+                                    _vm.categoryC.categoryb.id
+                                  )
+                                }
+                              }
+                            },
+                            [_vm._v("Delt")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-4 col-sm-4" }, [
+            _vm._m(10),
+            _vm._v(" "),
+            _c(
+              "div",
+              {
+                staticClass: "w-100",
+                staticStyle: {
+                  height: "200px",
+                  "overflow-y": "auto",
+                  border: "1px solid blue"
+                }
+              },
+              [
+                _c(
+                  "table",
+                  {
+                    staticClass: "table table-sm table-borderless table-hover"
+                  },
+                  [
+                    _c("tbody", [
+                      _c("tr", { staticStyle: { width: "80%" } }, [
+                        _c("td", { attrs: { scope: "row" } }, [
+                          _c(
+                            "a",
+                            {
+                              staticClass: "text-decoration-none text-dark",
+                              attrs: { href: "#" },
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.getCategoryCbyId(_vm.categoryC.id)
+                                }
+                              }
+                            },
+                            [
+                              _vm._v(
+                                "\n                                    " +
+                                  _vm._s(_vm.categoryC.name) +
+                                  "\n                                "
+                              )
+                            ]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-primary",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.editCategoryA(_vm.categoryC.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Edit")]
+                          )
+                        ]),
+                        _vm._v(" "),
+                        _c("td", { staticStyle: { width: "10%" } }, [
+                          _c(
+                            "button",
+                            {
+                              staticClass: "btn btn-sm btn-danger",
+                              on: {
+                                click: function($event) {
+                                  $event.preventDefault()
+                                  return _vm.deleteCategoryA(_vm.categoryC.id)
+                                }
+                              }
+                            },
+                            [_vm._v("Delt")]
+                          )
+                        ])
+                      ])
+                    ])
+                  ]
+                )
+              ]
+            )
+          ])
+        ])
+      : _vm._e()
+  ])
+}
+var staticRenderFns = [
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("div", { staticClass: "row no-gutters" }, [
+      _c(
+        "div",
+        {
+          staticClass: "text-center w-100",
+          staticStyle: {
+            "border-top": "2px solid blue",
+            "min-height": "40px",
+            "background-color": "rgba(128, 128, 128, 0.42)",
+            "padding-top": "10px"
+          }
+        },
+        [_c("span", [_c("h4", [_vm._v("CATEGORIES     MANAGEMENT")])])]
+      )
+    ])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY A")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY A")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY B")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY C")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY A")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY B")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY C")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY A")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY B")])])
+  },
+  function() {
+    var _vm = this
+    var _h = _vm.$createElement
+    var _c = _vm._self._c || _h
+    return _c("h5", [_c("b", [_vm._v("CATEGORY C")])])
+  }
+]
+render._withStripped = true
+
+
+
+/***/ }),
+
 /***/ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/cart/CountCart.vue?vue&type=template&id=2d38f0ea&":
 /*!*****************************************************************************************************************************************************************************************************************!*\
   !*** ./node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!./node_modules/vue-loader/lib??vue-loader-options!./resources/js/components/cart/CountCart.vue?vue&type=template&id=2d38f0ea& ***!
@@ -78966,6 +80371,7 @@ Vue.component('edit-products', __webpack_require__(/*! ./components/seller/produ
 Vue.component('pay-now', __webpack_require__(/*! ./components/checkout/PayNow.vue */ "./resources/js/components/checkout/PayNow.vue")["default"]);
 Vue.component('show-checkout', __webpack_require__(/*! ./components/checkout/ShowCheckout.vue */ "./resources/js/components/checkout/ShowCheckout.vue")["default"]);
 Vue.component('customer-orders', __webpack_require__(/*! ./components/seller/seller/CustomerOrders.vue */ "./resources/js/components/seller/seller/CustomerOrders.vue")["default"]);
+Vue.component('show-category', __webpack_require__(/*! ./components/admin/category/ShowCategory.vue */ "./resources/js/components/admin/category/ShowCategory.vue")["default"]);
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -79087,6 +80493,75 @@ __webpack_require__.r(__webpack_exports__);
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
 
 /* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ExampleComponent_vue_vue_type_template_id_299e239e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
+
+
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/category/ShowCategory.vue":
+/*!*****************************************************************!*\
+  !*** ./resources/js/components/admin/category/ShowCategory.vue ***!
+  \*****************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _ShowCategory_vue_vue_type_template_id_25656e1e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! ./ShowCategory.vue?vue&type=template&id=25656e1e& */ "./resources/js/components/admin/category/ShowCategory.vue?vue&type=template&id=25656e1e&");
+/* harmony import */ var _ShowCategory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__ = __webpack_require__(/*! ./ShowCategory.vue?vue&type=script&lang=js& */ "./resources/js/components/admin/category/ShowCategory.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport *//* harmony import */ var _node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__ = __webpack_require__(/*! ../../../../../node_modules/vue-loader/lib/runtime/componentNormalizer.js */ "./node_modules/vue-loader/lib/runtime/componentNormalizer.js");
+
+
+
+
+
+/* normalize component */
+
+var component = Object(_node_modules_vue_loader_lib_runtime_componentNormalizer_js__WEBPACK_IMPORTED_MODULE_2__["default"])(
+  _ShowCategory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_1__["default"],
+  _ShowCategory_vue_vue_type_template_id_25656e1e___WEBPACK_IMPORTED_MODULE_0__["render"],
+  _ShowCategory_vue_vue_type_template_id_25656e1e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"],
+  false,
+  null,
+  null,
+  null
+  
+)
+
+/* hot reload */
+if (false) { var api; }
+component.options.__file = "resources/js/components/admin/category/ShowCategory.vue"
+/* harmony default export */ __webpack_exports__["default"] = (component.exports);
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/category/ShowCategory.vue?vue&type=script&lang=js&":
+/*!******************************************************************************************!*\
+  !*** ./resources/js/components/admin/category/ShowCategory.vue?vue&type=script&lang=js& ***!
+  \******************************************************************************************/
+/*! exports provided: default */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowCategory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/babel-loader/lib??ref--4-0!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowCategory.vue?vue&type=script&lang=js& */ "./node_modules/babel-loader/lib/index.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/category/ShowCategory.vue?vue&type=script&lang=js&");
+/* empty/unused harmony star reexport */ /* harmony default export */ __webpack_exports__["default"] = (_node_modules_babel_loader_lib_index_js_ref_4_0_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowCategory_vue_vue_type_script_lang_js___WEBPACK_IMPORTED_MODULE_0__["default"]); 
+
+/***/ }),
+
+/***/ "./resources/js/components/admin/category/ShowCategory.vue?vue&type=template&id=25656e1e&":
+/*!************************************************************************************************!*\
+  !*** ./resources/js/components/admin/category/ShowCategory.vue?vue&type=template&id=25656e1e& ***!
+  \************************************************************************************************/
+/*! exports provided: render, staticRenderFns */
+/***/ (function(module, __webpack_exports__, __webpack_require__) {
+
+"use strict";
+__webpack_require__.r(__webpack_exports__);
+/* harmony import */ var _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowCategory_vue_vue_type_template_id_25656e1e___WEBPACK_IMPORTED_MODULE_0__ = __webpack_require__(/*! -!../../../../../node_modules/vue-loader/lib/loaders/templateLoader.js??vue-loader-options!../../../../../node_modules/vue-loader/lib??vue-loader-options!./ShowCategory.vue?vue&type=template&id=25656e1e& */ "./node_modules/vue-loader/lib/loaders/templateLoader.js?!./node_modules/vue-loader/lib/index.js?!./resources/js/components/admin/category/ShowCategory.vue?vue&type=template&id=25656e1e&");
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "render", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowCategory_vue_vue_type_template_id_25656e1e___WEBPACK_IMPORTED_MODULE_0__["render"]; });
+
+/* harmony reexport (safe) */ __webpack_require__.d(__webpack_exports__, "staticRenderFns", function() { return _node_modules_vue_loader_lib_loaders_templateLoader_js_vue_loader_options_node_modules_vue_loader_lib_index_js_vue_loader_options_ShowCategory_vue_vue_type_template_id_25656e1e___WEBPACK_IMPORTED_MODULE_0__["staticRenderFns"]; });
 
 
 

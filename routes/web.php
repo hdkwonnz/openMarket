@@ -102,3 +102,13 @@ Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')-
 Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
 Route::get('/seller/showCustomerOrders', 'Seller\SellerController@showCustomerOrders')->name('seller.seller.showCustomerOrders')->middleware('auth','can:isSeller');
 Route::post('/seller/editOrder', 'Seller\SellerController@editOrder')->name('seller.seller.editOrder')->middleware('auth','can:isSeller');
+
+//admin/admin
+Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin.index')->middleware('auth','can:isAdmin');
+
+//admin/category
+Route::get('/admin/category', 'Admin\AdminController@showCategoryForm')->name('admin.category.showCategoryForm')->middleware('auth','can:isAdmin');
+Route::post('/admin/getAllcategories', 'Admin\AdminController@getAllcategories')->name('admin.category.getAllcategories')->middleware('auth','can:isAdmin');
+Route::post('/admin/getCategoryAbyId', 'Admin\AdminController@getCategoryAbyId')->name('admin.category.getCategoryAbyId')->middleware('auth','can:isAdmin');
+Route::post('/admin/getCategoryBbyId', 'Admin\AdminController@getCategoryBbyId')->name('admin.category.getCategoryBbyId')->middleware('auth','can:isAdmin');
+Route::post('/admin/getCategoryCbyId', 'Admin\AdminController@getCategoryCbyId')->name('admin.category.getCategoryCbyId')->middleware('auth','can:isAdmin');
