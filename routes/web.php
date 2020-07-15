@@ -12,10 +12,10 @@ use Illuminate\Support\Facades\Route;
 | contains the "web" middleware group. Now create something great!
 |
 */
-Route::get('/test', function () {
-    $remainder = fmod(4,3);
-    return $remainder;
-});
+// Route::get('/test', function () {
+//     $remainder = fmod(4,3);
+//     return $remainder;
+// });
 
 
 // Route::get('/', function () {
@@ -27,19 +27,20 @@ Route::get('/test', function () {
 
 Auth::routes(['verify' => true]); //for email verification==>['verify' => true]
 
-Route::get('profile', function () { //for email verification test =>temp
-    // Only verified users may enter...
-    return "This is profile";
-})->middleware('verified');
+// Route::get('profile', function () { //for email verification test =>temp
+//     // Only verified users may enter...
+//     return "This is profile";
+// })->middleware('verified');
 
-Route::get('showVerificationMsg', function () { //register 후에 email verification을 위하여 삽입.
-    //만약 이메일 인증이 되었으면 아래 메세지가 나오고(그럴리는 없지만...) 그렇지 않으면
-    //resources/views/auth/verify.blade.php에 있는 메시가 나온다.[=>middleware('verified')]
-    return "이미 이메일 인증이 되었습니다."; //현재는 register 후에 곧바로 이 url로 오도록 RegisterController에 코딩
-})->middleware('verified');                //되어 있다.
+// Route::get('showVerificationMsg', function () { //register 후에 email verification을 위하여 삽입.
+//     //만약 이메일 인증이 되었으면 아래 메세지가 나오고(그럴리는 없지만...) 그렇지 않으면
+//     //resources/views/auth/verify.blade.php에 있는 메시가 나온다.[=>middleware('verified')]
+//     return "You have been already verified."; //현재는 register 후에 곧바로 이 url로 오도록 RegisterController에 코딩
+// })->middleware('verified');                //되어 있다.
+Route::get('/showVerificationMsg','Auth\RegisterController@showVerificationMsg')->middleware('verified');
 
 // home
-Route::get('/', 'HomeController@home')->name('home.home');
+Route::get('/', 'HomeController@home');
 // Route::get('/home', 'HomeController@index')->name('home'); //=> do not delete for testing.
 Route::get('/home', 'HomeController@home')->name('home.home');
 Route::get('/home/search', 'HomeController@search')->name('home.search');
@@ -96,17 +97,17 @@ Route::get('/seller/product/getMyProducts', 'Seller\ProductController@getMyProdu
 Route::get('/seller/product/showEditProduct/{id}', 'Seller\ProductController@showEditProduct')->name('seller.product.showEditProduct')->middleware('auth','can:isSeller');
 Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyProductById')->name('seller.product.getMyProductById')->middleware('auth','can:isSeller');
 
-//seller/seller
+// seller/seller
 Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');
 Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')->name('seller.seller.customerOrders')->middleware('auth','can:isSeller');
 Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
 Route::get('/seller/showCustomerOrders', 'Seller\SellerController@showCustomerOrders')->name('seller.seller.showCustomerOrders')->middleware('auth','can:isSeller');
 Route::post('/seller/editOrder', 'Seller\SellerController@editOrder')->name('seller.seller.editOrder')->middleware('auth','can:isSeller');
 
-//admin/admin
+// admin/admin
 Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin.index')->middleware('auth','can:isAdmin');
 
-//admin/category
+// admin/category
 Route::get('/admin/category', 'Admin\AdminController@showCategoryForm')->name('admin.category.showCategoryForm')->middleware('auth','can:isAdmin');
 Route::post('/admin/getAllcategories', 'Admin\AdminController@getAllcategories')->name('admin.category.getAllcategories')->middleware('auth','can:isAdmin');
 Route::post('/admin/getCategoryAbyId', 'Admin\AdminController@getCategoryAbyId')->name('admin.category.getCategoryAbyId')->middleware('auth','can:isAdmin');
