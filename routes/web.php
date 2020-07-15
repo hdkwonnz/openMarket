@@ -37,7 +37,7 @@ Auth::routes(['verify' => true]); //for email verification==>['verify' => true]
 //     //resources/views/auth/verify.blade.php에 있는 메시가 나온다.[=>middleware('verified')]
 //     return "You have been already verified."; //현재는 register 후에 곧바로 이 url로 오도록 RegisterController에 코딩
 // })->middleware('verified');                //되어 있다.
-Route::get('/showVerificationMsg','Auth\RegisterController@showVerificationMsg')->middleware('verified');
+Route::get('showVerificationMsg','HomeController@showVerificationMsg')->middleware('verified');
 
 // home
 Route::get('/', 'HomeController@home');

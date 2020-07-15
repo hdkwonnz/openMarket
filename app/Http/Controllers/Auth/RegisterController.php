@@ -99,10 +99,4 @@ class RegisterController extends Controller
         return $this->registered($request, $user)//이메일 인증하라는 메시가 보인다.
                         ?: redirect('/showVerificationMsg');
     }
-
-    public function showVerificationMsg()
-    {
-        return view('auth.showVerificationMsg');
-    }
-
 }

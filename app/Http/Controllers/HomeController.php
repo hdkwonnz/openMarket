@@ -24,6 +24,11 @@ class HomeController extends Controller
         // $this->middleware('auth');
     }
 
+    public function showVerificationMsg()
+    {
+        return view('home.showVerificationMsg');
+    }
+
     public function search()
     {
         $searchTerm = request('searchTerm');
