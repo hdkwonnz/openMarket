@@ -2,10 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use Session;
 use App\Cart;
+use App\Recall;
 use App\Product;
 use Illuminate\Http\Request;
-use Session;
 
 class CartController extends Controller
 {
@@ -131,6 +132,9 @@ class CartController extends Controller
                 'errorMsg' => "Product Id dose not exist.",
             ]);
         }
+
+        $recall = new Recall;
+        $recall->add($product->id, $product->image_path);
 
         // $item = ['qty' => 1, 'price' => $product->price, 'name' => $product->name, 'productId' => $product->id];
         $item =

@@ -8,6 +8,7 @@ namespace App\Http\Controllers;
 use App\Product;
 use App\Categorya;
 use App\Categoryb;
+use Cookie;
 
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
@@ -22,6 +23,29 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+    }
+
+    //myJs/layout/reCall.js 에서 콜한다.
+    public function deletCookieProduct(Request $request)
+    {
+        // return $request->id;
+        $id = $request->id;
+
+        if (Cookie::get('myProducts'))   //myProducts라는 쿠키가 존재하면...
+        {
+            foreach (Cookie::get('myProducts') as $name => $value)   //쿠키를 순서대로 읽어서
+            {
+                $name = htmlspecialchars($name);
+                $value = htmlspecialchars($value);
+                if ($name == $id) //삭제를 원하는 상품이 있으면 삭제한다.
+                {
+                    $myCookie = 'myProducts' . '[' . $id . ']';
+                    Cookie::queue($myCookie, $value,  -1, '/'); //-1은 분을 의미(1시간 = 60초 * 60초)
+                }                                                  //일분 전에 쿠키가 지워졌다는 의미...
+            }
+        }
+
+        return 1;////
     }
 
     public function showVerificationMsg()

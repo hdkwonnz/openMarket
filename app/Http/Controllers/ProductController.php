@@ -9,6 +9,7 @@ use App\Product;
 use App\Categorya;
 use App\Categoryb;
 use App\Categoryc;
+use App\Recall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -27,6 +28,9 @@ class ProductController extends Controller
         // if (!$product){
         //     return back()->with('message', 'Product Id does not exist.');
         // }
+
+        $recall = new Recall;
+        $recall->add($product->id, $product->image_path);
 
         return view('product.details', compact('product'));
     }

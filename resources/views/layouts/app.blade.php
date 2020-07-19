@@ -131,18 +131,21 @@
                   <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     @cannot('isAdminOrSeller')
                     <ul class="navbar-nav mr-auto">
-                      <li class="nav-item">
-                        <a href="{{ route('order.orderDetails') }}" class="nav-link text-dark" href="#">MY SHOPPING</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('cart.showCart') }}" class="nav-link text-dark" href="#">MY CART</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">SALE</a>
-                      </li>
-                      <li class="nav-item">
-                        <a class="nav-link text-dark" href="#">LOCATION</a>
-                      </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark watched_products" href="#">WATCHED</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('order.orderDetails') }}" class="nav-link text-dark" href="#">MY SHOPPING</a>
+                        </li>
+                        <li class="nav-item">
+                            <a href="{{ route('cart.showCart') }}" class="nav-link text-dark" href="#">MY CART</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#">SALE</a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="#">LOCATION</a>
+                        </li>
                     </ul>
                     @endcannot
 
@@ -164,13 +167,13 @@
         </nav><!-- end of navbar second top-->
 
         <!-- navbar bottom -->
-        <nav class="navbar fixed-bottom">
+        {{-- <nav class="navbar fixed-bottom">
             <ul class="navbar-nav ml-auto">
                 <li class="nav-item">
                     <a href="#" class="btn btn-lg btn-danger"><i class="far fa-question-circle"></i> Help</a>
                 </li>
             </ul>
-        </nav>
+        </nav> --}}
 
         <!-- all menu display block -->
         <div class="container">
@@ -189,10 +192,17 @@
         <!-- footer -->
         @include('includes.layout.app.footer')
 
+        <!-- help -->
+        @include('includes.layout.app.help')
+
+        <!-- view watched product-->
+        @include('includes.layout.app.reCall')
+
     </div>
 
     <script src="{{ asset('js/app.js') }}"></script>
     <script src="{{ asset('myJs/layout/app.js') }}"></script>
+    <script src="{{ asset('myJs/layout/reCall.js') }}"></script>
 
     @yield('extra-js')
 

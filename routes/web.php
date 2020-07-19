@@ -45,6 +45,7 @@ Route::get('/', 'HomeController@home');
 Route::get('/home', 'HomeController@home')->name('home.home');
 Route::get('/home/search', 'HomeController@search')->name('home.search');
 Route::get('/allCategory', 'HomeController@allCategory')->name('home.allCategory');
+Route::post('/home/deletCookieProduct', 'HomeController@deletCookieProduct')->name('home.deletCookieProduct');
 
 // cart
 Route::get('/cart/addToCart', 'CartController@addTocart')->name('cart.addToCart');
@@ -79,7 +80,7 @@ Route::get('/checkout/payNow/{address}/{addressee}/{addressId}', 'CheckoutContro
 Route::post('/checkout/deleteAddress', 'CheckoutController@deleteAddress')->name('checkout.deleteAddress')->middleware('auth','verified','can:isUser');
 Route::get('/checkout/getAddresses', 'CheckoutController@getAddresses')->name('checkout.getAddresses')->middleware('auth','verified','can:isUser');
 
-// seller/option ==> for manyToMany test
+// seller/option ==> for manyTo many test
 Route::get('/seller/showOptionConnections', 'SellerController@showOptionConnections')->name('seller.showOptionConnections');
 Route::get('/seller/showProductOptions', 'SellerController@showProductOptions')->name('seller.showProductOptions');//entry point
 Route::post('/seller/connectProductOptions', 'SellerController@connectProductOptions')->name('seller.connectProductOptions');
