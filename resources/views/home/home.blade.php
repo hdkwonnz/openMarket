@@ -5,9 +5,9 @@
 <link rel="stylesheet" href="{{ asset('myCss/home/home.css') }}">
 
 <!-- categorya & categoryb -->
-<div class="container" style="margin-top: 36px;">
+<div class="container" style="margin-top: 35px;">
     <div class="row no-gutters">
-        <div class="col-md-3 col-sm-6 col-lg-3 col-xl-3 z_index2">
+        <div class="col-md-5 col-sm-6 col-lg-4 col-xl-3 z_index2">
             <ul class="list-group">
                 <a href="javascript:void(0)" class="text-decoration-none">
                     <li class="list-group-item bg-primary text-white categorya_name01 category_com01">
@@ -53,7 +53,7 @@
         </div>
 
         <!-- groceries -->
-        <div class="col-md-9 col-sm-9 category_com01 category_sub01 display_none">
+        <div class="col-lg-8 col-xl-9 col-md-7 col-sm-6 category_com01 category_sub01 display_none">
             <div class="row no-gutters mt-3">
                 <div class="col-md-6 col-sm-6">
                     @foreach ($categoryas as $categorya)
@@ -81,7 +81,7 @@
         </div>
 
         <!-- meat seafood produce -->
-        <div class="col-md-9 col-sm-9 category_com02 category_sub02 display_none">
+        <div class="col-lg-9 col-xl-9 col-md-9 col-sm-9 category_com02 category_sub02 display_none">
             @foreach ($categoryas as $categorya)
             @if ($categorya->id == 2)
             <div style="width: 260px; float: left; margin-left: 10px;">
@@ -109,13 +109,13 @@
             <!-- The slideshow -->
             <div class="carousel-inner">
                 <div class="carousel-item active">
-                    <img style="width: 100%; height: 100%;" src="\myImage\home\bigCarousel\building-01-1.jpg" class="d-block w-100" alt="Los Angeles">
+                    <img style="min-height: 440px;" src="\myImage\home\bigCarousel\building-01-1.jpg" class="img-fluid d-block w-100" alt="Los Angeles">
                 </div>
                 <div class="carousel-item">
-                    <img style="width: 100%; height: 100%;" src="\myImage\home\bigCarousel\seoul-01-1.jpg" class="d-block w-100" alt="Chicago">
+                    <img style="min-height: 440px;" src="\myImage\home\bigCarousel\seoul-01-1.jpg" class="img-fluid d-block w-100" alt="Chicago">
                 </div>
                 <div class="carousel-item">
-                    <img style="width: 100%; height: 100%;" src="\myImage\home\bigCarousel\south-01-1.jpg" class="d-block w-100" alt="New York">
+                    <img style="min-height: 440px;" src="\myImage\home\bigCarousel\south-01-1.jpg" class="img-fluid d-block w-100" alt="New York">
                 </div>
             </div>
             <!-- Left and right controls -->
@@ -129,93 +129,90 @@
     </div><!-- end of row -->
 </div><!-- end of top big carousel -->
 
-<!-- best products carousel-->
-<div class="container mt-4">
-    <div class="row no-gutters">
-        <span><h5><b>BEST PRODUCTS IN THIS WEEK</b></h5></span>
 
-        <!--사진 여러장 들어갈때-->
-        <!-- https://mdbootstrap.com/snippets/jquery/ascensus/135508 -->
-        <!-- https://stackoverflow.com/questions/56266190/dynamic-carousel-in-laravel-not-working-displays-only-one-image -->
-        <!--아래 오른쪽 data-interval을 "0"으로 놓으면 자동 sliding이 없어진다.-->
-        <!--2초마다 슬라이딩 원할시 "2000"을 넣는다.-->
-        <!--Carousel Wrapper-->
-        <div id="best_this_week" class="carousel slide carousel-multi-item mt-2" data-ride="carousel" data-interval="2000">
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#best_this_week" data-slide-to="0" class="active"></li>
-                <li data-target="#best_this_week" data-slide-to="1"></li>
-                <li data-target="#best_this_week" data-slide-to="2"></li>
-                <li data-target="#best_this_week" data-slide-to="3"></li>
-                <li data-target="#best_this_week" data-slide-to="4"></li>
-                <li data-target="#best_this_week" data-slide-to="5"></li>
-            </ol><!--/.Indicators-->
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                @foreach($bestProducts as $key => $product)
-                @php
-                    $remainder = fmod($key,6);
-                @endphp
-                @if ($remainder == 0)
-                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                    <div class="row no-gutters">
-                        <div class="col-md-2">
-                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                <div class="card" style="width: 185px; height: 310px;">
-                                    <div style="width: 183px; height: 180px;">
-                                        <img class="card-img-top" src="{{ $product->image_path }}" alt="">
-                                    </div>
-                                    <div style="width: 183px; height: 100px;">
-                                        <div class="card-body">
-                                            <div style="width: 183px; height: 80px; padding-right: 30px;">
-                                                <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                            </div>
-                                            <p class="card-text"><b>${{ $product->price }}</b></p>
+
+
+<!-- BEST PRODUCTS IN THIS WEEK -->
+<!-- https://stackoverflow.com/questions/55481009/in-bootstrap-4-multiple-item-slider-3-items-shows-at-the-same-time-on-desktop -->
+<!--아래 오른쪽 data-interval을 "0"으로 놓으면 자동 sliding이 없어진다.-->
+<!--2초마다 슬라이딩 원할시 "2000"을 넣는다.-->
+<div class="container mt-4">
+    <span><h5><b>BEST PRODUCTS IN THIS WEEK</b></h5></span>
+    <div id="demo" class="carousel slide" data-ride="carousel" data-interval="2000">
+        <!-- Indicators -->
+        <ul class="carousel-indicators">
+            <li data-target="#demo" data-slide-to="0" class="active"></li>
+            <li data-target="#demo" data-slide-to="1"></li>
+            <li data-target="#demo" data-slide-to="2"></li>
+            <li data-target="#demo" data-slide-to="3"></li>
+            <li data-target="#demo" data-slide-to="4"></li>
+            <li data-target="#demo" data-slide-to="5"></li>
+        </ul>
+        <!-- slide -->
+        <div class="carousel-inner">
+            @foreach($bestProducts as $key => $product)
+            @php
+                $remainder = fmod($key,6);
+            @endphp
+            @if ($remainder == 0)
+            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                <div class="row no-gutters">
+                    <div class="col-sm-2 col-md-2">
+                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                            <div class="card" style="width: 201px; height: 310px;">
+                                <div style="width: 193px; height: 180px;">
+                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                                </div>
+                                <div style="width: 193px; height: 100px;">
+                                    <div class="card-body">
+                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
+                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                         </div>
+                                        <p class="card-text"><b>${{ $product->price }}</b></p>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                @else
-                        <div class="col-md-2 clearfix d-none d-md-block">
-                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                <div class="card" style="width: 185px; height: 310px;">
-                                    <div style="width: 183px; height: 180px;">
-                                        <img class="card-img-top" src="{{ $product->image_path }}" alt="">
-                                    </div>
-                                    <div style="width: 183px; height: 100px;">
-                                        <div class="card-body">
-                                            <div style="width: 183px; height: 80px; padding-right: 30px;">
-                                                <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                            </div>
-                                            <p class="card-text"><b>${{ $product->price }}</b></p>
+                            </div>
+                        </a>
+                    </div>
+            @else
+                    <div class="col-sm-2 col-md-2">
+                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                            <div class="card" style="width: 201px; height: 310px;">
+                                <div style="width: 193px; height: 180px;">
+                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                                </div>
+                                <div style="width: 193px; height: 100px;">
+                                    <div class="card-body">
+                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
+                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                         </div>
+                                        <p class="card-text"><b>${{ $product->price }}</b></p>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
+                    </div>
                     @if ($remainder == 5)
-                    </div><!-- end of row -->
-                </div><!-- end of carousel item -->
-                    @endif
+                </div><!-- end of row -->
+            </div><!-- end of carousel item -->
                 @endif
-                @endforeach
+            @endif
+            @endforeach
+        </div><!-- end of slid -->
 
-            </div><!--/.Slides-->
-             <!-- Left and right controls -->
-             {{-- <div>
-                <a class="carousel-control-prev" href="#best_this_week" data-slide="prev">
-                    <i class="fas fa-chevron-left fa-2x"></i>
-                </a>
-                <a class="carousel-control-next" href="#best_this_week" data-slide="next">
-                    <i class="fas fa-chevron-right fa-2x"></i>
-                </a>
-             </div> --}}
-        </div><!--/.Carousel Wrapper-->
-    </div><!-- end of row -->
-</div><!-- end of container(best products carousel) -->
+        <!-- Left and right controls -->
+        {{-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
+          <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#demo" data-slide="next">
+          <span class="carousel-control-next-icon"></span>
+        </a> --}}
+      </div>
+</div><!-- END OF BEST PRODUCTS IN THIS WEEK -->
 
+<!-- HOT PRODUCTS-->
 <div class="container mt-4">
+    <span><h5><b>HOT PRODUCTS</b></h5></span>
     <div class="row">
         <div class="col-md-4 col-sm-4">
             <div class="bg-warning mb-3" style="border: 1px solid red; height: 200px;">
@@ -239,7 +236,7 @@
             </div>
         </div>
     </div>
-</div>
+</div><!-- END OF HOT PRODUCTS-->
 
 <!-- new arrivals carousel-->
 <div class="container mt-4">
@@ -267,13 +264,13 @@
                     <div class="row no-gutters">
                         <div class="col-md-2">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                <div class="card" style="width: 185px; height: 310px;">
-                                    <div style="width: 183px; height: 180px;">
+                                <div class="card" style="width: 201px; height: 310px;">
+                                    <div style="width: 193px; height: 180px;">
                                         <img class="card-img-top" src="{{ $product->image_path }}" alt="">
                                     </div>
-                                    <div style="width: 183px; height: 100px;">
+                                    <div style="width: 193px; height: 100px;">
                                         <div class="card-body">
-                                            <div style="width: 183px; height: 80px; padding-right: 30px;">
+                                            <div style="width: 193px; height: 80px; padding-right: 30px;">
                                                 <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                             </div>
                                             <p class="card-text"><b>${{ $product->price }}</b></p>
@@ -285,13 +282,13 @@
                 @else
                         <div class="col-md-2 clearfix d-none d-md-block">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                <div class="card" style="width: 185px; height: 310px;">
-                                    <div style="width: 183px; height: 180px;">
+                                <div class="card" style="width: 201px; height: 310px;">
+                                    <div style="width: 193px; height: 180px;">
                                         <img class="card-img-top" src="{{ $product->image_path }}" alt="">
                                     </div>
-                                    <div style="width: 183px; height: 100px;">
+                                    <div style="width: 193px; height: 100px;">
                                         <div class="card-body">
-                                            <div style="width: 183px; height: 80px; padding-right: 30px;">
+                                            <div style="width: 193px; height: 80px; padding-right: 30px;">
                                                 <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                             </div>
                                             <p class="card-text"><b>${{ $product->price }}</b></p>
@@ -408,13 +405,13 @@
                             <div class="row no-gutters">
                                 <div class="col-md-2">
                                     <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                        <div class="card" style="width: 185px; height: 310px;">
-                                            <div style="width: 183px; height: 180px;">
+                                        <div class="card" style="width: 201px; height: 310px;">
+                                            <div style="width: 193px; height: 180px;">
                                                 <img class="card-img-top" src="{{ $product->image_path }}" alt="">
                                             </div>
-                                            <div style="width: 183px; height: 100px;">
+                                            <div style="width: 193px; height: 100px;">
                                                 <div class="card-body">
-                                                    <div style="width: 183px; height: 80px; padding-right: 30px;">
+                                                    <div style="width: 193px; height: 80px; padding-right: 30px;">
                                                         <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                                     </div>
                                                     <p class="card-text"><b>${{ $product->price }}</b></p>
@@ -426,13 +423,13 @@
                         @else
                                 <div class="col-md-2 clearfix d-none d-md-block">
                                     <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                        <div class="card" style="width: 185px; height: 310px;">
-                                            <div style="width: 183px; height: 180px;">
+                                        <div class="card" style="width: 201px; height: 310px;">
+                                            <div style="width: 193px; height: 180px;">
                                                 <img class="card-img-top" src="{{ $product->image_path }}" alt="">
                                             </div>
-                                            <div style="width: 183px; height: 100px;">
+                                            <div style="width: 193px; height: 100px;">
                                                 <div class="card-body">
-                                                    <div style="width: 183px; height: 80px; padding-right: 30px;">
+                                                    <div style="width: 193px; height: 80px; padding-right: 30px;">
                                                         <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                                     </div>
                                                     <p class="card-text"><b>${{ $product->price }}</b></p>

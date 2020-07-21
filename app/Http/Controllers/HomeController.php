@@ -41,7 +41,7 @@ class HomeController extends Controller
                 {
                     $myCookie = 'myProducts' . '[' . $id . ']';
                     Cookie::queue($myCookie, $value,  -1, '/'); //-1은 분을 의미(1시간 = 60초 * 60초)
-                }                                                  //일분 전에 쿠키가 지워졌다는 의미...
+                }                                               //일분 전에 쿠키가 지워졌다는 의미...
             }
         }
 

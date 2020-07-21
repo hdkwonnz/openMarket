@@ -1,5 +1,5 @@
 <div class="container">
-    <div class="row no-gutters" style="margin-top:69px; max-width: 1080px;">
+    <div class="row no-gutters" style="margin-top:69px; max-width: 1180px;">
         @foreach ($categorybs as $categoryb)
         <div class="col-md-3 col-sm-3">
             <div class="mt-1">

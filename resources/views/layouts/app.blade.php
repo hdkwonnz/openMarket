@@ -123,7 +123,7 @@
         </nav><!-- end of navbar top -->
 
         <!-- navbar second top-->
-        <nav class="navbar navbar-expand-md navbar-light bg-muted shadow-sm" style="top: 60px; z-index: 3;">
+        <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm" style="top: 60px; z-index: 3;">
             <div class="container">
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
                     <span class="navbar-toggler-icon"></span>

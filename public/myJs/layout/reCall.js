@@ -11,6 +11,12 @@ $('.delete_watched').each(function(i){
 })
 
 function deleteRecall(productId,savedProduct){
+    //var myCookie = 'myProducts' + '[' + productId + ']';
+    //alert(myCookie);
+    //document.cookie = "username=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+    //alert(myCookie + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;");
+    //document.cookie = myCookie + "=; expires=Thu, 01 Jan 1970 00:00:00 UTC; path=/;";
+
     $.ajax({
         url: "/home/deletCookieProduct",
         type: 'Post',
