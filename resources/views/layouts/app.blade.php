@@ -182,21 +182,20 @@
             </div>
         </div>
 
+        @cannot('isAdminOrSeller')
+
         <!-- main contents -->
         <main class="py-4">
-
             @yield('content')
-
         </main>
-
         <!-- footer -->
         @include('includes.layout.app.footer')
-
         <!-- help -->
         @include('includes.layout.app.help')
-
         <!-- view watched product-->
         @include('includes.layout.app.reCall')
+
+        @endcan
 
     </div>
 

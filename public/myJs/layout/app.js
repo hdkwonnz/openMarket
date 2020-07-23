@@ -39,3 +39,13 @@ $(function(){
 ////adding copyright year on footer
 var copyRightYear = (new Date().getFullYear());
 $('.copyright_year').text(copyRightYear);
+
+////help menu control
+$('.help_click').click(function(){
+    $(this).hide();
+    $('.help_menu').show();
+})
+$('.help_menu_close').click(function(){
+    $('.help_menu').hide();
+    $('.help_click').show();
+})

@@ -85,7 +85,7 @@
     <div class="container-fluid text-white logo_bottom">
         <div class="row no-gutters">
             <div class="col-md-6 col-sm-6 text-right">
-                <a href="#" class="text-decoration-none"><h1><b>HanMart</b></h2></a>
+                <a href="/" class="text-decoration-none"><h1><b>HanMart</b></h2></a>
             </div>
             <div class="col-md-6 col-sm-6 text-right">
 
