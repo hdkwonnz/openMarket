@@ -13,7 +13,7 @@ $.ajax({
     }
 });
 
-
+////전체 메뉴를 클릭 하면...
 // $('.all_menu').click(function(){
 //     $('.all_category').toggle();
 //     $('.cross_img').toggle();
@@ -35,3 +35,7 @@ $(function(){
         }
     })
 })
+
+////adding copyright year on footer
+var copyRightYear = (new Date().getFullYear());
+$('.copyright_year').text(copyRightYear);

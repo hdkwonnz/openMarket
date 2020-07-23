@@ -1,6 +1,11 @@
 <div class="footer">
     <div class="container-fluid text-white sns_block">
         <div class="row">
+            <div class="col-md-12 col-sm-12 text-right">
+                <a href="#" class="text-white text-decoration-none">Back To Top</a>
+            </div>
+        </div>
+        <div class="row">
             <div class="container mt-3">
                 <div class="row no-gutters h-100">
                     <div class="col-md-3 col-sm-3 col-12 my-auto">
@@ -67,7 +72,7 @@
         <div class="container">
             <div class="row mt-2">
                 <div class="col-md-6 col-sm-6">
-                    <span class="text-muted">Copyright © HANMART. All right reserved.</span>
+                    <p class="text-muted">Copyright &copy; <span class="copyright_year"></span>  HANMART. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 col-sm-6 text-right">
                     <i class="fab fa-cc-visa fa-3x"></i>

@@ -129,25 +129,22 @@
     </div><!-- end of row -->
 </div><!-- end of top big carousel -->
 
-
-
-
 <!-- BEST PRODUCTS IN THIS WEEK -->
 <!-- https://stackoverflow.com/questions/55481009/in-bootstrap-4-multiple-item-slider-3-items-shows-at-the-same-time-on-desktop -->
 <!--아래 오른쪽 data-interval을 "0"으로 놓으면 자동 sliding이 없어진다.-->
 <!--2초마다 슬라이딩 원할시 "2000"을 넣는다.-->
 <div class="container mt-4">
     <span><h5><b>BEST PRODUCTS IN THIS WEEK</b></h5></span>
-    <div id="demo" class="carousel slide" data-ride="carousel" data-interval="2000">
+    <div id="best_products_carousel" class="carousel slide multi_items_carousel" data-ride="carousel" data-interval="2000">
         <!-- Indicators -->
-        <ul class="carousel-indicators">
-            <li data-target="#demo" data-slide-to="0" class="active"></li>
-            <li data-target="#demo" data-slide-to="1"></li>
-            <li data-target="#demo" data-slide-to="2"></li>
-            <li data-target="#demo" data-slide-to="3"></li>
-            <li data-target="#demo" data-slide-to="4"></li>
-            <li data-target="#demo" data-slide-to="5"></li>
-        </ul>
+        {{-- <ul class="carousel-indicators">
+            <li data-target="#best_products_carousel" data-slide-to="0" class="active"></li>
+            <li data-target="#best_products_carousel" data-slide-to="1"></li>
+            <li data-target="#best_products_carousel" data-slide-to="2"></li>
+            <li data-target="#best_products_carousel" data-slide-to="3"></li>
+            <li data-target="#best_products_carousel" data-slide-to="4"></li>
+            <li data-target="#best_products_carousel" data-slide-to="5"></li>
+        </ul> --}}
         <!-- slide -->
         <div class="carousel-inner">
             @foreach($bestProducts as $key => $product)
@@ -201,13 +198,13 @@
         </div><!-- end of slid -->
 
         <!-- Left and right controls -->
-        {{-- <a class="carousel-control-prev" href="#demo" data-slide="prev">
-          <span class="carousel-control-prev-icon"></span>
+        <a class="carousel-control-prev" href="#best_products_carousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
         </a>
-        <a class="carousel-control-next" href="#demo" data-slide="next">
-          <span class="carousel-control-next-icon"></span>
-        </a> --}}
-      </div>
+        <a class="carousel-control-next" href="#best_products_carousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div><!-- end of id="best_products_carousel" -->
 </div><!-- END OF BEST PRODUCTS IN THIS WEEK -->
 
 <!-- HOT PRODUCTS-->
@@ -240,82 +237,68 @@
 
 <!-- new arrivals carousel-->
 <div class="container mt-4">
-    <div class="row no-gutters">
-        <span><h5><b>NEW ARRIVALS</b></h5></span>
-
-        <div id="new_arrivals_carousel" class="carousel slide carousel-multi-item mt-2" data-ride="carousel" data-interval="2500">
-            <!--Indicators-->
-            <ol class="carousel-indicators">
-                <li data-target="#new_arrivals_carousel" data-slide-to="0" class="active"></li>
-                <li data-target="#new_arrivals_carousel" data-slide-to="1"></li>
-                <li data-target="#new_arrivals_carousel" data-slide-to="2"></li>
-                <li data-target="#new_arrivals_carousel" data-slide-to="3" class="active"></li>
-                <li data-target="#new_arrivals_carousel" data-slide-to="4"></li>
-                <li data-target="#new_arrivals_carousel" data-slide-to="5"></li>
-            </ol><!--/.Indicators-->
-            <!--Slides-->
-            <div class="carousel-inner" role="listbox">
-                @foreach($newArrivalProducts as $key => $product)
-                @php
-                    $remainder = fmod($key,6);
-                @endphp
-                @if ($remainder == 0)
-                <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
-                    <div class="row no-gutters">
-                        <div class="col-md-2">
-                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                <div class="card" style="width: 201px; height: 310px;">
-                                    <div style="width: 193px; height: 180px;">
-                                        <img class="card-img-top" src="{{ $product->image_path }}" alt="">
-                                    </div>
-                                    <div style="width: 193px; height: 100px;">
-                                        <div class="card-body">
-                                            <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                                <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                            </div>
-                                            <p class="card-text"><b>${{ $product->price }}</b></p>
+    <span><h5><b>NEW ARRIVALS</b></h5></span>
+    <div id="new_arrivals_carousel" class="carousel slide multi_items_carousel" data-ride="carousel" data-interval="2500">
+        <!-- slide -->
+        <div class="carousel-inner">
+            @foreach($newArrivalProducts as $key => $product)
+            @php
+                $remainder = fmod($key,6);
+            @endphp
+            @if ($remainder == 0)
+            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                <div class="row no-gutters">
+                    <div class="col-sm-2 col-md-2">
+                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                            <div class="card" style="width: 201px; height: 310px;">
+                                <div style="width: 193px; height: 180px;">
+                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                                </div>
+                                <div style="width: 193px; height: 100px;">
+                                    <div class="card-body">
+                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
+                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                         </div>
+                                        <p class="card-text"><b>${{ $product->price }}</b></p>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
-                @else
-                        <div class="col-md-2 clearfix d-none d-md-block">
-                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                <div class="card" style="width: 201px; height: 310px;">
-                                    <div style="width: 193px; height: 180px;">
-                                        <img class="card-img-top" src="{{ $product->image_path }}" alt="">
-                                    </div>
-                                    <div style="width: 193px; height: 100px;">
-                                        <div class="card-body">
-                                            <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                                <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                            </div>
-                                            <p class="card-text"><b>${{ $product->price }}</b></p>
+                            </div>
+                        </a>
+                    </div>
+            @else
+                    <div class="col-sm-2 col-md-2">
+                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                            <div class="card" style="width: 201px; height: 310px;">
+                                <div style="width: 193px; height: 180px;">
+                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                                </div>
+                                <div style="width: 193px; height: 100px;">
+                                    <div class="card-body">
+                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
+                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
                                         </div>
+                                        <p class="card-text"><b>${{ $product->price }}</b></p>
                                     </div>
                                 </div>
-                            </a>
-                        </div>
+                            </div>
+                        </a>
+                    </div>
                     @if ($remainder == 5)
-                    </div><!-- end of row -->
-                </div><!-- end of carousel item -->
-                    @endif
+                </div><!-- end of row -->
+            </div><!-- end of carousel item -->
                 @endif
-                @endforeach
+            @endif
+            @endforeach
+        </div><!-- end of slid -->
 
-            </div><!--/.Slides-->
-             <!-- Left and right controls -->
-             {{-- <div>
-                <a class="carousel-control-prev" href="#new_arrivals_carousel" data-slide="prev">
-                    <i class="fas fa-chevron-left fa-2x"></i>
-                </a>
-                <a class="carousel-control-next" href="#new_arrivals_carousel" data-slide="next">
-                    <i class="fas fa-chevron-right fa-2x"></i>
-                </a>
-             </div> --}}
-        </div><!--/.Carousel Wrapper-->
-    </div><!-- end of row -->
+        <!-- Left and right controls -->
+        <a class="carousel-control-prev" href="#new_arrivals_carousel" data-slide="prev">
+            <span class="carousel-control-prev-icon"></span>
+        </a>
+        <a class="carousel-control-next" href="#new_arrivals_carousel" data-slide="next">
+            <span class="carousel-control-next-icon"></span>
+        </a>
+    </div><!--/.Carousel Wrapper-->
 </div><!-- end of new arrivals carousel -->
 
 <!-- super deal -->
