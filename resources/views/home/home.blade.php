@@ -108,15 +108,13 @@
             </ul>
             <!-- The slideshow -->
             <div class="carousel-inner">
-                <div class="carousel-item active">
-                    <img style="min-height: 440px;" src="\myImage\home\bigCarousel\building-01-1.jpg" class="img-fluid d-block w-100" alt="Los Angeles">
+                @foreach($carouselones as $key => $product)
+                <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                    <a href="{{ route('product.details', ['id' => $product->product_id]) }}">
+                        <img style="min-height: 440px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="Los Angeles">
+                    </a>
                 </div>
-                <div class="carousel-item">
-                    <img style="min-height: 440px;" src="\myImage\home\bigCarousel\seoul-01-1.jpg" class="img-fluid d-block w-100" alt="Chicago">
-                </div>
-                <div class="carousel-item">
-                    <img style="min-height: 440px;" src="\myImage\home\bigCarousel\south-01-1.jpg" class="img-fluid d-block w-100" alt="New York">
-                </div>
+                @endforeach
             </div>
             <!-- Left and right controls -->
             <a class="carousel-control-prev" href="#homeBig" data-slide="prev">
@@ -136,15 +134,6 @@
 <div class="container mt-4">
     <span><h5><b>BEST PRODUCTS IN THIS WEEK</b></h5></span>
     <div id="best_products_carousel" class="carousel slide multi_items_carousel" data-ride="carousel" data-interval="2000">
-        <!-- Indicators -->
-        {{-- <ul class="carousel-indicators">
-            <li data-target="#best_products_carousel" data-slide-to="0" class="active"></li>
-            <li data-target="#best_products_carousel" data-slide-to="1"></li>
-            <li data-target="#best_products_carousel" data-slide-to="2"></li>
-            <li data-target="#best_products_carousel" data-slide-to="3"></li>
-            <li data-target="#best_products_carousel" data-slide-to="4"></li>
-            <li data-target="#best_products_carousel" data-slide-to="5"></li>
-        </ul> --}}
         <!-- slide -->
         <div class="carousel-inner">
             @foreach($bestProducts as $key => $product)

@@ -40,7 +40,7 @@
         </div>
         <div class="col-md-7">
             <div class="mt-4">
-                <h4>{{ $product->name }}</h4>
+                <h4>{{ $product->name }}({{ $product->id }})</h4>
             </div>
             @if ($product->price > $product->sale_price)
             <div class="d-flex">

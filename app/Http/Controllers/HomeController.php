@@ -5,6 +5,7 @@
 
 namespace App\Http\Controllers;
 
+use App\Carouselone;
 use App\Product;
 use App\Categorya;
 use App\Categoryb;
@@ -114,15 +115,16 @@ class HomeController extends Controller
             return (Categorya::with('categorybs')->get());
         });
 
-        // $categoryas = Categorya::with('categorybs')
-        //                 ->get();
+        $carouselones = Cache::store('redis')->remember('home.carouselones', now()->addHours(24), function() {
+            return (Carouselone::all());
+        });
 
         $bestProducts = Product::inRandomOrder()->take(12)->get();
 
         $newArrivalProducts = Product::inRandomOrder()->take(12)->get();
 
         // return $categoryas;
-        return view('home.home', compact('categoryas','bestProducts','newArrivalProducts'));
+        return view('home.home', compact('categoryas','bestProducts','newArrivalProducts','carouselones'));
     }
 
     public function allCategory()
