@@ -106,6 +106,9 @@
                         <a href="{{ route('admin.category.showCategoryForm') }}" class="nav-link text-dark" href="#">CATEGORIES</a>
                       </li>
                       <li class="nav-item">
+                        <a href="{{ route('admin.product.showCarouselOne') }}" class="nav-link text-dark" href="#">CAROUSELS</a>
+                      </li>
+                      <li class="nav-item">
                         <a href="" class="nav-link text-dark" href="#">NOTICES</a>
                       </li>
                     </ul>

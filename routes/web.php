@@ -114,3 +114,8 @@ Route::post('/admin/getAllcategories', 'Admin\AdminController@getAllcategories')
 Route::post('/admin/getCategoryAbyId', 'Admin\AdminController@getCategoryAbyId')->name('admin.category.getCategoryAbyId')->middleware('auth','can:isAdmin');
 Route::post('/admin/getCategoryBbyId', 'Admin\AdminController@getCategoryBbyId')->name('admin.category.getCategoryBbyId')->middleware('auth','can:isAdmin');
 Route::post('/admin/getCategoryCbyId', 'Admin\AdminController@getCategoryCbyId')->name('admin.category.getCategoryCbyId')->middleware('auth','can:isAdmin');
+
+// admin/product
+Route::get('/admin/product/showCarouselOne', 'Admin\ProductController@showCarouselOne')->name('admin.product.showCarouselOne')->middleware('auth','can:isAdmin');
+Route::post('/admin/product/getCarouselOne', 'Admin\ProductController@getCarouselOne')->name('admin.product.getCarouselOne')->middleware('auth','can:isAdmin');
+Route::post('/admin/product/editCarouselOne', 'Admin\ProductController@editCarouselOne')->name('admin.product.editCarouselOne')->middleware('auth','can:isAdmin');
