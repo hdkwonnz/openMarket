@@ -4271,6 +4271,8 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4325,7 +4327,10 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    ////https://www.youtube.com/watch?v=RY6WhJTOIL0
+    ////https://www.youtube.com/watch?v=Py3iq7RZoUE
     selectedImages: function selectedImages(e) {
+      //for test
       //console.log(e)
       var maxWidth = 600;
       var maxHeight = 600;
@@ -4402,6 +4407,7 @@ __webpack_require__.r(__webpack_exports__);
       }
     },
     addImages: function addImages() {
+      //for test
       var files = document.getElementById('file').files; //console.log(files);
 
       var formData = new FormData();

@@ -153,6 +153,9 @@
                 </div>
             </div>
 
+            <!-- 이 부분은 comment 시킬 것. for test uploading -->
+            <!-- https://www.youtube.com/watch?v=RY6WhJTOIL0 -->
+            <!-- https://www.youtube.com/watch?v=Py3iq7RZoUE -->
             <div class='form-group row'>
                 <label class='col-sm-2 col-md-2 col-form-label'>Image Upload</label>
                 <div class='col-sm-10 col-md-10'>
@@ -161,7 +164,6 @@
                     <div class="thumbnail_msg"></div><!--썸네일 준비중 메세지 보여주기-->
                 </div>
                 <div class="col-md-2 col-sm-2">
-
                 </div>
                 <div class="col-md-10 col-sm-10">
                     <button @click.prevent="addImages()" class="btn btn-sm btn-primary">Send</button>
@@ -261,7 +263,9 @@
         },
 
         methods: {
-            selectedImages(e){
+            ////https://www.youtube.com/watch?v=RY6WhJTOIL0
+            ////https://www.youtube.com/watch?v=Py3iq7RZoUE
+            selectedImages(e){ //for test
                 //console.log(e)
                 const maxWidth = 600;
                 const maxHeight = 600;
@@ -332,7 +336,7 @@
                 }
             },
 
-            addImages(){
+            addImages(){ //for test
                 var files = document.getElementById('file').files;
                 //console.log(files);
 
