@@ -97,6 +97,7 @@ Route::get('/seller/product/showMyProducts', 'Seller\ProductController@showMyPro
 Route::get('/seller/product/getMyProducts', 'Seller\ProductController@getMyProducts')->name('seller.product.getMyProducts')->middleware('auth','can:isSeller');
 Route::get('/seller/product/showEditProduct/{id}', 'Seller\ProductController@showEditProduct')->name('seller.product.showEditProduct')->middleware('auth','can:isSeller');
 Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyProductById')->name('seller.product.getMyProductById')->middleware('auth','can:isSeller');
+Route::post('/seller/product/uploadImages', 'Seller\ProductController@uploadImages')->name('seller.product.uploadImages')->middleware('auth','can:isSeller');
 
 // seller/seller
 Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');

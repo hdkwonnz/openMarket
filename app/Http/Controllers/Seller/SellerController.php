@@ -32,7 +32,7 @@ class SellerController extends Controller
         // $toDate = date('Y-m-d H:i:s',strtotime(request('toDate')));
 
         //// https://stackoverflow.com/questions/43871752/how-to-get-created-at-date-only-not-time-in-laravel-5-4
-        $orders = Order::with('user','orderdetails')
+        $orders = Order::with('user','orderdetails','address')
                         ->whereDate('created_at', '>=', request('fromDate'))
                         ->whereDate('created_at', '<=', request('toDate'))
                         ->orderBy('created_at','desc')
@@ -43,7 +43,6 @@ class SellerController extends Controller
         return response()->json([
             'orders' => $orders,
         ]);
-
     }
 
 
@@ -51,14 +50,13 @@ class SellerController extends Controller
     {
         $todayDate = date("Y-m-d");
 
-        $orders = Order::with('user','orderdetails')
+        $orders = Order::with('user','orderdetails','address')
                         ->whereDate('created_at','=',$todayDate)
                         ->get();
 
         return response()->json([
                             'orders' => $orders,
         ]);
-
     }
 
     public function showCustomerOrders()

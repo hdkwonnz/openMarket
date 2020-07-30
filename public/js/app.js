@@ -4256,6 +4256,21 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -4310,6 +4325,172 @@ __webpack_require__.r(__webpack_exports__);
     };
   },
   methods: {
+    selectedImages: function selectedImages(e) {
+      //console.log(e)
+      var maxWidth = 600;
+      var maxHeight = 600;
+      var maxCount = 3;
+      window.URL = window.URL || window.webkitURL;
+      var elBrowse = document.getElementById("file"),
+          elPreview = document.getElementById("preview"),
+          useBlob =  false && false; // `true` to use Blob instead of Data-URL
+
+      function readImage(file) {
+        var reader = new FileReader();
+        reader.addEventListener("load", function () {
+          var image = new Image();
+          image.addEventListener("load", function () {
+            var imageInfo = file.name + ' ' + // get the value of `name` from the `file` Obj
+            image.width + '×' + // But get the width from our `image`
+            image.height + ' ' + file.type + ' ' + Math.round(file.size / 1024) + 'KB';
+
+            if (image.width > maxWidth || image.height > maxHeight) {
+              alert(file.name + "'s width or height more than 600px.");
+              $('#preview').empty();
+              $('#file').val('');
+              $('.thumbnail_msg').empty();
+              return;
+            }
+
+            elPreview.appendChild(this); //썸네일 준비중이라는 메세지 지우기
+
+            $('.thumbnail_msg').empty();
+          });
+          image.src = useBlob ? window.URL.createObjectURL(file) : reader.result;
+
+          if (useBlob) {
+            // Free some memory for optimal performance
+            window.URL.revokeObjectURL(file);
+          }
+        });
+        reader.readAsDataURL(file);
+      }
+
+      $('#preview').empty();
+      var errors = "";
+      var selectedFiles = e.target.files; //console.log(selectedFiles);
+
+      if (!selectedFiles.length) {
+        return false;
+      }
+
+      for (var i = 0; i < selectedFiles.length; i++) {
+        if (selectedFiles.length > maxCount) {
+          alert("You can upload maxmum 3 photos.");
+          $('#preview').empty();
+          $('#file').val('');
+          break;
+        }
+
+        var file = selectedFiles[i];
+
+        if (/\.(png|jpeg|jpg|gif)$/i.test(file.name)) {
+          // SUCCESS! It's an image!
+          // Send our image `file` to our `readImage` function!
+          readImage(file); //call function
+          //썸네일 준비중 메세지
+
+          $('.thumbnail_msg').empty().append('<span style="color:red;">썸네일 준비중. 잠시 기다리세요...</span>');
+        } else {
+          errors += file.name + " Unsupported Image extension\n";
+        }
+      }
+
+      if (errors) {
+        alert(errors);
+        return;
+      }
+    },
+    addImages: function addImages() {
+      var files = document.getElementById('file').files; //console.log(files);
+
+      var formData = new FormData();
+      /* Utility function to convert a canvas to a BLOB */
+
+      var dataURLtoBlob = function dataURLtoBlob(dataURL) {
+        var BASE64_MARKER = ';base64,';
+
+        if (dataURL.indexOf(BASE64_MARKER) == -1) {
+          var parts = dataURL.split(',');
+          var contentType = parts[0].split(':')[1];
+          var raw = parts[1];
+          return new Blob([raw], {
+            type: contentType
+          });
+        }
+
+        var parts = dataURL.split(BASE64_MARKER);
+        var contentType = parts[0].split(':')[1];
+        var raw = window.atob(parts[1]);
+        var rawLength = raw.length;
+        var uInt8Array = new Uint8Array(rawLength);
+
+        for (var i = 0; i < rawLength; ++i) {
+          uInt8Array[i] = raw.charCodeAt(i);
+        }
+
+        return new Blob([uInt8Array], {
+          type: contentType
+        });
+      };
+      /* End Utility function to convert a canvas to a BLOB      */
+
+
+      function resizeAndUpload(file) {
+        // Create a file reader
+        var reader = new FileReader();
+        reader.addEventListener("load", function (e) {
+          var img = new Image(); //
+          // Create an image
+
+          img.src = this.result; //
+
+          var canvas = document.createElement("canvas");
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0);
+          var width = 200;
+          var height = 200;
+          canvas.width = width;
+          canvas.height = height;
+          var ctx = canvas.getContext("2d");
+          ctx.drawImage(img, 0, 0, width, height);
+          var dataurl = canvas.toDataURL("image/jpeg");
+          var blob = dataURLtoBlob(dataurl); //call function
+
+          formData.append("files[]", blob, file.name);
+          axios.post('/seller/product/uploadImages', formData).then(function (response) {
+            //success
+            console.log(response);
+          })["catch"](function (response) {//error
+          });
+        }, false);
+        reader.readAsDataURL(file);
+      } //end of function resizeAndUpload(file)
+      ////아래를 uncomment 하면 file 1 개씩 upload. 위 function 사용해 원하는 size를 만든다.
+      // if (files) {
+      //     [].forEach.call(files, resizeAndUpload);
+      // }
+      ////file을 multi로 보낼 수 있다. file size는 미리 준비 해야 한다.
+
+
+      for (var i = 0; i < files.length; i++) {
+        formData.append('files[]', files[i]);
+      }
+
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      };
+      axios.post('/seller/product/uploadImages', formData, config).then(function (response) {
+        //success
+        console.log(response);
+      })["catch"](function (response) {//error
+      });
+      $('#preview').empty(); //clear
+
+      $('#file').val(''); //clear
+    },
     addProduct: function addProduct() {
       var _this = this;
 
@@ -68396,6 +68577,48 @@ var render = function() {
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
           _c("label", { staticClass: "col-sm-2 col-md-2 col-form-label" }, [
+            _vm._v("Image Upload")
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-sm-10 col-md-10" }, [
+            _c("input", {
+              staticClass: "form-control",
+              attrs: {
+                type: "file",
+                multiple: "",
+                id: "file",
+                accept: "image/.gif,.jpg,.png",
+                required: ""
+              },
+              on: { change: _vm.selectedImages }
+            }),
+            _vm._v(" "),
+            _c("div", { attrs: { id: "preview" } }),
+            _vm._v(" "),
+            _c("div", { staticClass: "thumbnail_msg" })
+          ]),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-2 col-sm-2" }),
+          _vm._v(" "),
+          _c("div", { staticClass: "col-md-10 col-sm-10" }, [
+            _c(
+              "button",
+              {
+                staticClass: "btn btn-sm btn-primary",
+                on: {
+                  click: function($event) {
+                    $event.preventDefault()
+                    return _vm.addImages()
+                  }
+                }
+              },
+              [_vm._v("Send")]
+            )
+          ])
+        ]),
+        _vm._v(" "),
+        _c("div", { staticClass: "form-group row" }, [
+          _c("label", { staticClass: "col-sm-2 col-md-2 col-form-label" }, [
             _vm._v("Image Path")
           ]),
           _vm._v(" "),
@@ -68768,7 +68991,7 @@ var render = function() {
                       _vm._v(" "),
                       _c("span", [_vm._v(_vm._s(order.addressee) + " / ")]),
                       _vm._v(" "),
-                      _c("span", [_vm._v(_vm._s(order.user.address.address))]),
+                      _c("span", [_vm._v(_vm._s(order.address.address))]),
                       _c("br"),
                       _vm._v(" "),
                       _c(

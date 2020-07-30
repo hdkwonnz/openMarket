@@ -38,7 +38,7 @@
                                         Ship.date: {{ order.shipping_date | myDate }} ({{ order.shipping_cost | currency }})
                                     </div>
                                      <span>{{ order.addressee }} / </span>
-                                     <span>{{ order.user.address.address }}</span><br>
+                                     <span>{{ order.address.address }}</span><br>
                                     <!-- <a href="javascript:void(0) return false;" class="btn btn-sm btn-primary" data-toggle="modal" data-target="#orderDetailsModal">
                                         Edit
                                     </a> -->

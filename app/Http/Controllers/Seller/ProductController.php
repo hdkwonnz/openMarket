@@ -25,6 +25,50 @@ class ProductController extends Controller
         return unserialize($product->photo_paths);
     }
 
+    public function uploadImages(Request $request)
+    {
+        $files = $_FILES; //File inputs are not put into $_POST, they're only in $_FILES.
+        $number_of_files = count($_FILES['files']['name']);
+        $images = $request->file('files');
+
+        $errors = 0;
+
+        $photos = [];//////추후에 사용하기 위해....
+
+        for ($i = 0; $i < $number_of_files; $i++)
+        {
+            $_FILES['files']['name'] = $files['files']['name'][$i];
+
+            //파일이름 앞에 상품 아이디를 첨가하여 업로드하는 파일 명을 다시 만든다(중복방지를 위해)
+            $productNo = 100001;////////////////////////////////////////////////지울것
+            $fileName = $productNo . "_";
+            $fileName .= $_FILES['files']['name'];
+
+            $photos[$i] = $fileName;//////
+
+            $type = $files['files']['type'][$i];
+            $size = $files['files']['size'][$i];
+            if (($type != "image/jpeg") && ($type != "image/png" ) &&
+                ($type != "image/jpg" ) && ($type != "image/gif" ))
+            {
+                $errors++;
+            }
+
+            if ($size > 1024000) //byte
+            {
+                $errors++;
+            }
+            if ($errors == 0)
+            {
+                //$image[$i]->move(public_path().'/uploadFiles/pictures/sellers/', $fileName);
+                $images[$i]->storeAs('products',$fileName,'public',); //storage/app/public/products
+            }
+        }
+
+        return $photos;
+
+    }
+
     public function showEditProduct($productId)
     {
 
