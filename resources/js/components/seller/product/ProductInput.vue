@@ -170,6 +170,7 @@
                 </div>
             </div>
 
+            <!-- comment 할 것 -->
             <div class='form-group row'>
                 <label class='col-sm-2 col-md-2 col-form-label'>Image Path</label>
                 <div class='col-sm-10 col-md-10'>
@@ -177,13 +178,13 @@
                 </div>
             </div>
 
+            <!-- comment 할 것 -->
             <!-- https://www.digitalocean.com/community/tutorials/vuejs-iterating-v-for -->
             <div class='form-group row'>
                 <label class='col-sm-2 col-md-2 col-form-label'>Photos Path</label>
                 <div class='col-sm-10 col-md-10'>
                     <input v-for="item in 3" :key="item.index" type="text" max="255" class="form-control" v-model="form.photoPaths[item - 1]">
                 </div>
-
             </div>
 
             <div class="form-group row">
