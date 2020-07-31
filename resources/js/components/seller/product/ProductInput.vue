@@ -165,9 +165,10 @@
                 </div>
                 <div class="col-md-2 col-sm-2">
                 </div>
-                <div class="col-md-10 col-sm-10">
+                <!-- will be commented -->
+                <!-- <div class="col-md-10 col-sm-10">
                     <button @click.prevent="addImages()" class="btn btn-sm btn-primary">Send</button>
-                </div>
+                </div> -->
             </div>
 
             <!-- comment 할 것 -->
@@ -215,7 +216,7 @@
             </div>
         </form>
         <div class="offset-md-2 offset-sm-2 col-md-10 col-sm-10 error_message">
-
+            {{ this.errorMsg }}
         </div>
         <!-- end of input form -->
     </div>
@@ -225,6 +226,7 @@
     export default {
         data(){
             return{
+                errorMsg: "",
                 countries: [
                     { text: 'South Korea', value: 'South Korea' },
                     { text: 'China', value: 'China' },
@@ -433,35 +435,83 @@
                     return;
                 }
 
-                axios.post('/seller/product/addProduct',{
-                    categoryAid : this.form.categoryAid,
-                    categoryBid : this.form.categoryBid,
-                    categoryCid : this.form.categoryCid,
-                    productName : this.form.productName,
-                    manufacturer : this.form.manufacturer,
-                    normalPrice : this.form.normalPrice,
-                    salePrice : this.form.salePrice,
-                    countryOfOrigin: this.form.countryOfOrigin,
-                    photoPaths : this.form.photoPaths,
-                    imagePath : this.form.imagePath,
-                    detailsPath : this.form.detailsPath,
-                    skuNumber: this.form.skuNumber,
-                    stockQty: this.form.stockQty,
-                    ingredients: this.form.ingredients,
-                    option: this.form.option,
-                })
+                var formData = new FormData();
+                var files = document.getElementById('file').files;
+                for(let i=0; i<files.length;i++){
+                    formData.append('files[]',files[i]);
+                }
+                formData.append('categoryAid', this.form.categoryAid);
+                formData.append('categoryBid', this.form.categoryBid);
+                formData.append('categoryCid', this.form.categoryCid);
+                formData.append('productName', this.form.productName);
+                formData.append('manufacturer', this.form.manufacturer);
+                formData.append('normalPrice', this.form.normalPrice);
+                formData.append('salePrice', this.form.salePrice);
+                formData.append('countryOfOrigin', this.form.countryOfOrigin);
+                formData.append('photoPaths', this.form.photoPaths);
+                formData.append('imagePath', this.form.imagePath);
+                formData.append('detailsPath', this.form.detailsPath);
+                formData.append('skuNumber', this.form.skuNumber);
+                formData.append('stockQty', this.form.stockQty);
+                formData.append('ingredients', this.form.ingredients);
+                formData.append('option', this.form.option);
+
+                const config = { headers: { 'Content-Type': 'multipart/form-data' } };
+                // axios.post('/seller/product/uploadImages',formData,config)
+                axios.post('/seller/product/addProduct',formData,config)
                 .then(response => {
                     //console.log(response);
-                    $('.error_message').empty();
-                    this.newProductId = response.data.productId;
-                    // this.resetForm();////clear form
-                    // window.location.href = '/product/details' + '/' + id; //do not delete
-                    window.open('/product/details' + '/' + this.newProductId, '_blank') //for new window////show added product
+                    this.errorMsg = response.data.errorMsg;
+                    if (!this.errorMsg){
+                        $('.error_message').empty();
+                        this.newProductId = response.data.productId;
+                        // this.resetForm();////clear form
+                        if (this.newProductId){
+                            // window.location.href = '/product/details' + '/' + id; //do not delete
+                            ////commented for a while
+                            //window.open('/product/details' + '/' + this.newProductId, '_blank') //for new window////show added product
+                        }
+                    }else{
+                        $('.error_message').addClass('text-danger');
+                    }
                 })
                 .catch(error => {
                     //console.log(error);
                     $('.error_message').empty().text(error).addClass('text-danger');
                 });
+
+                $('#preview').empty(); //clear
+                $('#file').val(''); //clear
+
+            //     axios.post('/seller/product/addProduct',{
+            //         categoryAid : this.form.categoryAid,
+            //         categoryBid : this.form.categoryBid,
+            //         categoryCid : this.form.categoryCid,
+            //         productName : this.form.productName,
+            //         manufacturer : this.form.manufacturer,
+            //         normalPrice : this.form.normalPrice,
+            //         salePrice : this.form.salePrice,
+            //         countryOfOrigin: this.form.countryOfOrigin,
+            //         photoPaths : this.form.photoPaths,
+            //         imagePath : this.form.imagePath,
+            //         detailsPath : this.form.detailsPath,
+            //         skuNumber: this.form.skuNumber,
+            //         stockQty: this.form.stockQty,
+            //         ingredients: this.form.ingredients,
+            //         option: this.form.option,
+            //     })
+            //     .then(response => {
+            //         //console.log(response);
+            //         $('.error_message').empty();
+            //         this.newProductId = response.data.productId;
+            //         // this.resetForm();////clear form
+            //         // window.location.href = '/product/details' + '/' + id; //do not delete
+            //         window.open('/product/details' + '/' + this.newProductId, '_blank') //for new window////show added product
+            //     })
+            //     .catch(error => {
+            //         //console.log(error);
+            //         $('.error_message').empty().text(error).addClass('text-danger');
+            //     });
             },
 
             resetForm() {

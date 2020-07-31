@@ -74,6 +74,10 @@
                 <span class="categoryc_name"></span>
             </div>
 
+            <div class="row no-gutters">
+                <img :src="form.imagePath" alt="" class="img-fluid" style="width: 450px; height:450px;">
+            </div>
+
             <!-- input form -->
             <form @submit.prevent="editProduct()">
                 <div class='form-group row'>
@@ -366,7 +370,8 @@
                     this.form.salePrice = this.product.sale_price;
                     this.form.countryOfOrigin = this.product.country_origin;
 
-                    this.form.imagePath = this.product.image_path;
+                    // this.form.imagePath = this.product.image_path;
+                    this.form.imagePath = response.data.imagePath;
 
                     if (response.data.photos){
                         this.form.photoPaths = response.data.photos;

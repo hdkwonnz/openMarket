@@ -3780,6 +3780,10 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
+//
+//
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   props: ['product_id'],
   data: function data() {
@@ -3922,8 +3926,9 @@ __webpack_require__.r(__webpack_exports__);
         _this4.form.manufacturer = _this4.product.brand;
         _this4.form.normalPrice = _this4.product.price;
         _this4.form.salePrice = _this4.product.sale_price;
-        _this4.form.countryOfOrigin = _this4.product.country_origin;
-        _this4.form.imagePath = _this4.product.image_path;
+        _this4.form.countryOfOrigin = _this4.product.country_origin; // this.form.imagePath = this.product.image_path;
+
+        _this4.form.imagePath = response.data.imagePath;
 
         if (response.data.photos) {
           _this4.form.photoPaths = response.data.photos;
@@ -4274,9 +4279,11 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
+//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
+      errorMsg: "",
       countries: [{
         text: 'South Korea',
         value: 'South Korea'
@@ -4506,33 +4513,85 @@ __webpack_require__.r(__webpack_exports__);
         return;
       }
 
-      axios.post('/seller/product/addProduct', {
-        categoryAid: this.form.categoryAid,
-        categoryBid: this.form.categoryBid,
-        categoryCid: this.form.categoryCid,
-        productName: this.form.productName,
-        manufacturer: this.form.manufacturer,
-        normalPrice: this.form.normalPrice,
-        salePrice: this.form.salePrice,
-        countryOfOrigin: this.form.countryOfOrigin,
-        photoPaths: this.form.photoPaths,
-        imagePath: this.form.imagePath,
-        detailsPath: this.form.detailsPath,
-        skuNumber: this.form.skuNumber,
-        stockQty: this.form.stockQty,
-        ingredients: this.form.ingredients,
-        option: this.form.option
-      }).then(function (response) {
-        //console.log(response);
-        $('.error_message').empty();
-        _this.newProductId = response.data.productId; // this.resetForm();////clear form
-        // window.location.href = '/product/details' + '/' + id; //do not delete
+      var formData = new FormData();
+      var files = document.getElementById('file').files;
 
-        window.open('/product/details' + '/' + _this.newProductId, '_blank'); //for new window////show added product
+      for (var i = 0; i < files.length; i++) {
+        formData.append('files[]', files[i]);
+      }
+
+      formData.append('categoryAid', this.form.categoryAid);
+      formData.append('categoryBid', this.form.categoryBid);
+      formData.append('categoryCid', this.form.categoryCid);
+      formData.append('productName', this.form.productName);
+      formData.append('manufacturer', this.form.manufacturer);
+      formData.append('normalPrice', this.form.normalPrice);
+      formData.append('salePrice', this.form.salePrice);
+      formData.append('countryOfOrigin', this.form.countryOfOrigin);
+      formData.append('photoPaths', this.form.photoPaths);
+      formData.append('imagePath', this.form.imagePath);
+      formData.append('detailsPath', this.form.detailsPath);
+      formData.append('skuNumber', this.form.skuNumber);
+      formData.append('stockQty', this.form.stockQty);
+      formData.append('ingredients', this.form.ingredients);
+      formData.append('option', this.form.option);
+      var config = {
+        headers: {
+          'Content-Type': 'multipart/form-data'
+        }
+      }; // axios.post('/seller/product/uploadImages',formData,config)
+
+      axios.post('/seller/product/addProduct', formData, config).then(function (response) {
+        //console.log(response);
+        _this.errorMsg = response.data.errorMsg;
+
+        if (!_this.errorMsg) {
+          $('.error_message').empty();
+          _this.newProductId = response.data.productId; // this.resetForm();////clear form
+
+          if (_this.newProductId) {// window.location.href = '/product/details' + '/' + id; //do not delete
+            ////commented for a while
+            //window.open('/product/details' + '/' + this.newProductId, '_blank') //for new window////show added product
+          }
+        } else {
+          $('.error_message').addClass('text-danger');
+        }
       })["catch"](function (error) {
         //console.log(error);
         $('.error_message').empty().text(error).addClass('text-danger');
       });
+      $('#preview').empty(); //clear
+
+      $('#file').val(''); //clear
+      //     axios.post('/seller/product/addProduct',{
+      //         categoryAid : this.form.categoryAid,
+      //         categoryBid : this.form.categoryBid,
+      //         categoryCid : this.form.categoryCid,
+      //         productName : this.form.productName,
+      //         manufacturer : this.form.manufacturer,
+      //         normalPrice : this.form.normalPrice,
+      //         salePrice : this.form.salePrice,
+      //         countryOfOrigin: this.form.countryOfOrigin,
+      //         photoPaths : this.form.photoPaths,
+      //         imagePath : this.form.imagePath,
+      //         detailsPath : this.form.detailsPath,
+      //         skuNumber: this.form.skuNumber,
+      //         stockQty: this.form.stockQty,
+      //         ingredients: this.form.ingredients,
+      //         option: this.form.option,
+      //     })
+      //     .then(response => {
+      //         //console.log(response);
+      //         $('.error_message').empty();
+      //         this.newProductId = response.data.productId;
+      //         // this.resetForm();////clear form
+      //         // window.location.href = '/product/details' + '/' + id; //do not delete
+      //         window.open('/product/details' + '/' + this.newProductId, '_blank') //for new window////show added product
+      //     })
+      //     .catch(error => {
+      //         //console.log(error);
+      //         $('.error_message').empty().text(error).addClass('text-danger');
+      //     });
     },
     resetForm: function resetForm() {
       var _this2 = this;
@@ -66979,6 +67038,14 @@ var render = function() {
           _vm._v(" "),
           _vm._m(4),
           _vm._v(" "),
+          _c("div", { staticClass: "row no-gutters" }, [
+            _c("img", {
+              staticClass: "img-fluid",
+              staticStyle: { width: "450px", height: "450px" },
+              attrs: { src: _vm.form.imagePath, alt: "" }
+            })
+          ]),
+          _vm._v(" "),
           _c(
             "form",
             {
@@ -68605,23 +68672,7 @@ var render = function() {
             _c("div", { staticClass: "thumbnail_msg" })
           ]),
           _vm._v(" "),
-          _c("div", { staticClass: "col-md-2 col-sm-2" }),
-          _vm._v(" "),
-          _c("div", { staticClass: "col-md-10 col-sm-10" }, [
-            _c(
-              "button",
-              {
-                staticClass: "btn btn-sm btn-primary",
-                on: {
-                  click: function($event) {
-                    $event.preventDefault()
-                    return _vm.addImages()
-                  }
-                }
-              },
-              [_vm._v("Send")]
-            )
-          ])
+          _c("div", { staticClass: "col-md-2 col-sm-2" })
         ]),
         _vm._v(" "),
         _c("div", { staticClass: "form-group row" }, [
@@ -68756,9 +68807,13 @@ var render = function() {
       ]
     ),
     _vm._v(" "),
-    _c("div", {
-      staticClass: "offset-md-2 offset-sm-2 col-md-10 col-sm-10 error_message"
-    })
+    _c(
+      "div",
+      {
+        staticClass: "offset-md-2 offset-sm-2 col-md-10 col-sm-10 error_message"
+      },
+      [_vm._v("\n        " + _vm._s(this.errorMsg) + "\n    ")]
+    )
   ])
 }
 var staticRenderFns = [

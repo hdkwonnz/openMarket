@@ -9,6 +9,7 @@ use App\Categoryc;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Illuminate\Support\Facades\Cache;
+use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
@@ -103,9 +104,12 @@ class ProductController extends Controller
         }
 
         $photos = unserialize($product->photo_paths);
+        $imagePath = unserialize($product->image_path);
+
         return response()->json([
             'product' => $product,
             'photos' => $photos,
+            'imagePath' => $imagePath,
             'errorMsg' => null,
         ]);
     }
@@ -145,15 +149,72 @@ class ProductController extends Controller
             'countryOfOrigin' => ["required", "max:15"],
             'manufacturer' => ["nullable","max:255"],
             'option' => ["nullable","numeric"],
+            'files' => ['required'],
         ]);
 
-        $photos = [];
-        $i = 0;
-        foreach ($request->photoPaths as $photo) {
-            $photos[$i][] = $photo;
-            $i++;
+        ////////////////////////////////////////////////////////////////////
+
+        $files = $_FILES; //File inputs are not put into $_POST, they're only in $_FILES.
+        $number_of_files = count($_FILES['files']['name']);
+        if ($number_of_files < 1){
+            return response()->json([
+                'errorMsg' => 'Please select photos.'
+            ]);
         }
-        $serializedPhotos = serialize($photos);
+
+        $images = $request->file('files');
+
+        $errors = 0;
+
+        $selectedPhotos = [];
+
+        for ($i = 0; $i < $number_of_files; $i++){
+            $_FILES['files']['name'] = $files['files']['name'][$i];
+
+            $fileName = $_FILES['files']['name'];
+
+            //$selectedPhotos[$i] = $fileName;//////
+
+            $type = $files['files']['type'][$i];
+            $size = $files['files']['size'][$i];
+            if (($type != "image/jpeg") && ($type != "image/png" ) &&
+                ($type != "image/jpg" ) && ($type != "image/gif" ))
+            {
+                $errors++;
+            }
+
+            if ($size > 1024000) //byte
+            {
+                $errors++;
+            }
+            if ($errors < 1){
+                ////아래는 local disk에 upload
+                // $images[$i]->storeAs('products',$fileName,'public',); //storage/app/public/products
+                ////아래는 upload 후에 public access 불가
+                //$images[$i]->storeAs('products',$fileName,'s3',); //amazon s3/hdkwonnz.openmarket/products
+                ////아래는 upload 후에 public access 가능
+                $images[$i]->storePubliclyAs('products',$fileName,'s3',); //amazon s3/hdkwonnz.openmarket/products
+                $selectedPhotos[$i] = Storage::cloud()->url('products/'.$fileName);//get url for uploaded photo
+                ////https://stackoverflow.com/questions/52598891/how-can-i-get-the-full-url-of-file-uploaded-to-s3-with-laravel
+                ////return Storage::cloud()->url($fileName);//get url for uploaded photo
+            }else{
+                return response()->json([
+                    'errorMsg' => "Photos have problems with over size or wrong extention.",
+                ]);
+            }
+
+            $serializedSelectedPhotos = serialize($selectedPhotos);
+
+        }
+
+        ////////////////////////////////////////////////////////////////////
+
+        $photoPaths = explode(',', $request->photoPaths);
+        if ($photoPaths[0] == ""){
+            $serializedPhotos = null;
+        }else{
+            $serializedPhotos = serialize($photoPaths);
+        }
 
         if (!($request->salePrice)){
             $request->salePrice = $request->normalPrice;
@@ -170,9 +231,11 @@ class ProductController extends Controller
             'sale_price' => $request->salePrice,
             'stock' => $request->stockQty,
             'country_origin' => $request->countryOfOrigin,
-            'image_path' => $request->imagePath,//will be changed
+            // 'image_path' => $request->imagePath,//will be changed
+            'image_path' => $serializedSelectedPhotos,//will be changed
             'photo_paths' => $serializedPhotos,//will be changed
-            'details_path' => $request->detailsPath,//will be changed
+            // 'details_path' => $request->detailsPath,//will be changed
+            'details_path' => $serializedSelectedPhotos,//will be changed
             'ingredients' => $request->ingredients,
             //'number_option' => 0,///////////
             'sku' => $request->skuNumber,
