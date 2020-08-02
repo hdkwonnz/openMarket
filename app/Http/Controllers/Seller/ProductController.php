@@ -190,9 +190,9 @@ class ProductController extends Controller
             if ($errors < 1){
                 ////아래는 local disk에 upload
                 // $images[$i]->storeAs('products',$fileName,'public',); //storage/app/public/products
-                ////아래는 upload 후에 public access 불가
+                ////아래는 upload(amazon s3) 후에 public access 불가
                 //$images[$i]->storeAs('products',$fileName,'s3',); //amazon s3/hdkwonnz.openmarket/products
-                ////아래는 upload 후에 public access 가능
+                ////아래는 upload(amazon s3) 후에 public access 가능
                 $images[$i]->storePubliclyAs('products',$fileName,'s3',); //amazon s3/hdkwonnz.openmarket/products
                 $selectedPhotos[$i] = Storage::cloud()->url('products/'.$fileName);//get url for uploaded photo
                 ////https://stackoverflow.com/questions/52598891/how-can-i-get-the-full-url-of-file-uploaded-to-s3-with-laravel
