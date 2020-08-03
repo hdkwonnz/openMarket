@@ -29,8 +29,9 @@ class ProductController extends Controller
         //     return back()->with('message', 'Product Id does not exist.');
         // }
 
-        $recall = new Recall;
-        $recall->add($product->id, $product->image_path);
+        ////save product in users hard disk(cookie)
+        // $recall = new Recall;
+        // $recall->add($product->id, $product->image_path);
 
         return view('product.details', compact('product'));
     }

@@ -133,8 +133,9 @@ class CartController extends Controller
             ]);
         }
 
-        $recall = new Recall;
-        $recall->add($product->id, $product->image_path);
+        ////save product in users hard disk(cookie)
+        // $recall = new Recall;
+        // $recall->add($product->id, $product->image_path);
 
         // $item = ['qty' => 1, 'price' => $product->price, 'name' => $product->name, 'productId' => $product->id];
         $item =

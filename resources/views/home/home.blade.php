@@ -111,7 +111,7 @@
                 @foreach($carouselones as $key => $product)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <a href="{{ route('product.details', ['id' => $product->product_id]) }}">
-                        <img style="min-height: 440px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="Los Angeles">
+                        <img style="min-height: 445px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="Los Angeles">
                     </a>
                 </div>
                 @endforeach
