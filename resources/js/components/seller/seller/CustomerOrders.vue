@@ -57,10 +57,14 @@
                                                     <td style="width: 20%;" scope="row">
                                                         <img :src="detail.product.image_path" class="img-fluid img_thumb_nail" alt="">
                                                     </td>
-                                                    <td style="width: 80%;">
+                                                    <td style="width: 75%;">
                                                         <div>{{ detail.product.name }}</div>
                                                         <div>QTY : {{ detail.qty }} ea</div>
                                                         <div><b>{{ (detail.sale_price * detail.qty) | currency }}</b></div>
+                                                    </td>
+                                                    <td style="width: 5%;">
+                                                        <!-- resend email for misssing initail email after buying product-->
+                                                        <button @click.prevent="sendMail(order.id)" class="btn btn-sm btn-danger">SendMail</button>
                                                     </td>
                                                 </tr>
                                             </tbody>
@@ -135,6 +139,20 @@
         },
 
         methods: {
+            sendMail(orderId){
+                //alert (orderId);
+                axios.post('/seller/reSendMailForOrder',{
+                    orderId: orderId
+                })
+                .then(response => {
+                    //console.log(response);
+                    alert(response.data.successMsg);
+                })
+                .catch(error => {
+                    console.log(error);
+                });
+            },
+
             openModal(orderId){
                 this.orderId = orderId;
                 $('#orderDetailsModal').modal('show');

@@ -14,7 +14,6 @@
             <div class="col-md-10 col-sm-10">
                 <h5 class="text-dark">(Order Number : {{ $orderDetails->id }} | Order Date : {{ \Carbon\Carbon::parse($orderDetails->created_at)->format('d-m-Y') }})</h5>
             </div>
-        </col-md-6>
         </div>
         <div class="row mt-2">
             <div class="col-md-9 col-sm-9">
@@ -22,8 +21,8 @@
                     <table class="table table-sm table-borderless">
                         <thead>
                             <tr>
-                                <th style="width: 40%;">Delivery Address / Total Amount</th>
-                                <th style="width: 60%;">Product Infos</th>
+                                <th style="width: 34%;">Delivery Address / Total Amount</th>
+                                <th style="width: 66%;">Product Infos</th>
                             </tr>
                         </thead>
                         <tbody>
@@ -45,7 +44,8 @@
                                                 @foreach ($orderDetails->orderdetails as $detail)
                                                 <tr>
                                                     <td style="width: 20%;">
-                                                        <img src={{ config('app.url')}}{{ $detail->product->image_path }} style="height: 100px; width: 100px;" alt="">
+                                                        {{-- <img src={{ config('app.url')}}{{ $detail->product->image_path }} style="height: 100px; width: 100px;" alt=""> --}}
+                                                        <img src={{ $detail->product->image_path }} style="height: 100px; width: 100px;" alt="">
                                                     </td>
                                                     <td style="width: 80%;"scope="row">
                                                         <div>{{ $detail->product->name }}</div>

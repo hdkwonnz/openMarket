@@ -100,6 +100,7 @@ Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyPr
 Route::post('/seller/product/uploadImages', 'Seller\ProductController@uploadImages')->name('seller.product.uploadImages')->middleware('auth','can:isSeller');
 
 // seller/seller
+Route::post('/seller/reSendMailForOrder', 'Seller\SellerController@resendMailForOrder')->name('seller.seller.resendMailForOrder')->middleware('auth','can:isSeller');
 Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');
 Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')->name('seller.seller.customerOrders')->middleware('auth','can:isSeller');
 Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
