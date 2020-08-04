@@ -4798,8 +4798,6 @@ __webpack_require__.r(__webpack_exports__);
 //
 //
 //
-//
-//
 /* harmony default export */ __webpack_exports__["default"] = ({
   data: function data() {
     return {
@@ -69136,6 +69134,20 @@ var render = function() {
                             "\n                                    Edit\n                                "
                           )
                         ]
+                      ),
+                      _vm._v(" "),
+                      _c(
+                        "a",
+                        {
+                          staticClass: "btn btn-sm btn-danger",
+                          on: {
+                            click: function($event) {
+                              $event.preventDefault()
+                              return _vm.sendMail(order.id)
+                            }
+                          }
+                        },
+                        [_vm._v("SendMail")]
                       )
                     ]
                   ),
@@ -69173,7 +69185,7 @@ var render = function() {
                                   ]
                                 ),
                                 _vm._v(" "),
-                                _c("td", { staticStyle: { width: "75%" } }, [
+                                _c("td", { staticStyle: { width: "80%" } }, [
                                   _c("div", [
                                     _vm._v(_vm._s(detail.product.name))
                                   ]),
@@ -69195,22 +69207,6 @@ var render = function() {
                                       )
                                     ])
                                   ])
-                                ]),
-                                _vm._v(" "),
-                                _c("td", { staticStyle: { width: "5%" } }, [
-                                  _c(
-                                    "button",
-                                    {
-                                      staticClass: "btn btn-sm btn-danger",
-                                      on: {
-                                        click: function($event) {
-                                          $event.preventDefault()
-                                          return _vm.sendMail(order.id)
-                                        }
-                                      }
-                                    },
-                                    [_vm._v("SendMail")]
-                                  )
                                 ])
                               ])
                             }),

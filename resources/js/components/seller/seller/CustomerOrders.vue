@@ -45,6 +45,8 @@
                                     <a @click.prevent="openModal(order.id)" class="btn btn-sm btn-primary">
                                         Edit
                                     </a>
+                                    <!-- resend email for misssing initail email after buying product-->
+                                    <a @click.prevent="sendMail(order.id)" class="btn btn-sm btn-danger">SendMail</a>
                                 </td>
                                 <td>
                                     processing
@@ -57,14 +59,10 @@
                                                     <td style="width: 20%;" scope="row">
                                                         <img :src="detail.product.image_path" class="img-fluid img_thumb_nail" alt="">
                                                     </td>
-                                                    <td style="width: 75%;">
+                                                    <td style="width: 80%;">
                                                         <div>{{ detail.product.name }}</div>
                                                         <div>QTY : {{ detail.qty }} ea</div>
                                                         <div><b>{{ (detail.sale_price * detail.qty) | currency }}</b></div>
-                                                    </td>
-                                                    <td style="width: 5%;">
-                                                        <!-- resend email for misssing initail email after buying product-->
-                                                        <button @click.prevent="sendMail(order.id)" class="btn btn-sm btn-danger">SendMail</button>
                                                     </td>
                                                 </tr>
                                             </tbody>

@@ -7,9 +7,14 @@
 </head>
 <body>
     <div class="container mt-5">
+        <div class="row nogutters">
+            <div class="col-md-6 col-sm-6">
+                <h4>Dear {{ $orderDetails->user->name }},</h4>
+            </div>
+        </div>
         <div class="row no-gutters">
             <div class="col-md-2 col-sm-2">
-                <h4>ORDER DETAILS</h4>
+                <h5>ORDER DETAILS</h5>
             </div>
             <div class="col-md-10 col-sm-10">
                 <h5 class="text-dark">(Order Number : {{ $orderDetails->id }} | Order Date : {{ \Carbon\Carbon::parse($orderDetails->created_at)->format('d-m-Y') }})</h5>
