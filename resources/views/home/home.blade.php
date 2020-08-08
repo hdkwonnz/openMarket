@@ -111,18 +111,18 @@
                 @foreach($carouselones as $key => $product)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <a href="{{ route('product.details', ['id' => $product->product_id]) }}">
-                        <img style="min-height: 445px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="Los Angeles">
+                        <img style="min-height: 444px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="Los Angeles">
                     </a>
                 </div>
                 @endforeach
             </div>
             <!-- Left and right controls -->
-            <a class="carousel-control-prev" href="#homeBig" data-slide="prev">
+            {{-- <a class="carousel-control-prev" href="#homeBig" data-slide="prev">
                 <i class="fas fa-chevron-left fa-4x"></i>
             </a>
             <a class="carousel-control-next" href="#homeBig" data-slide="next">
                 <i class="fas fa-chevron-right fa-4x"></i>
-            </a>
+            </a> --}}
         </div>
     </div><!-- end of row -->
 </div><!-- end of top big carousel -->

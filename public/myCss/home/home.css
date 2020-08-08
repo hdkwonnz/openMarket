@@ -22,8 +22,7 @@
     border: 10px solid blue; box-shadow: 3px 3px 10px rgba(255, 255, 255, 0.137); min-height: 500px;
 }
 
-
-
+/* for multi items carousel */
 .multi_items_carousel .carousel-control-prev{
     position: absolute;
     top: 100px;
