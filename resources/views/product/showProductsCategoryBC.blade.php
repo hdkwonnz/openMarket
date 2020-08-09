@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ config('app.name') }} - {{ $categoryBCs->name }}
+@endsection
+
 @section('content')
 
 <link rel="stylesheet" href="{{ asset('myCss/product/product.css') }}">

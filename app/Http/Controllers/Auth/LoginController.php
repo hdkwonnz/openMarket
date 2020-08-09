@@ -52,6 +52,35 @@ class LoginController extends Controller
     {
         $this->validateLogin($request);
 
+        ////reCaptcha
+        ////https://welcm.uk/blog/adding-google-recaptcha-v3-to-your-laravel-forms
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $data = [
+                    'secret' => config('services.recaptcha.secret'),
+                    'response' => $request->get('recaptcha'),
+                    'remoteip' => $remoteip
+                ];
+        $options = [
+                        'http' => [
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($data)
+                        ]
+                    ];
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $resultJson = json_decode($result);
+
+        //dd($resultJson);
+
+        if (($resultJson->success == true) && ($resultJson->score >= 0.8)) { //need to adjust score value
+            //continue to next
+        }else{
+            return back()->with('error', 'Sorry, you have problem with ReCaptcha Error.');
+        }
+        ////end of reCaptcha
+
         // If the class is using the ThrottlesLogins trait, we can automatically throttle
         // the login attempts for this application. We'll key this by the username and
         // the IP address of the client making these requests into this application.

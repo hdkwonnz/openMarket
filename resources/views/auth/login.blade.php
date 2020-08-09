@@ -1,7 +1,7 @@
 @extends('layouts.app')
 
 @section('title')
-{{ config('app.name') }} - login
+{{ config('app.name') }} - Login
 @endsection
 
 @section('content')
@@ -14,6 +14,9 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('login') }}">
                         @csrf
+
+                        <!-- below for reCaptcha -->
+                        <input type="hidden" name="recaptcha" id="recaptcha">
 
                         <div class="form-group row">
                             <label for="email" class="col-md-4 col-form-label text-md-right">{{ __('E-Mail Address') }}</label>
@@ -69,9 +72,30 @@
                             </div>
                         </div>
                     </form>
+
+                    @if (session('error'))
+                    <div class="alert alert-danger mt-3">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>
     </div>
 </div>
+@endsection
+
+@section('extra-js')
+<script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
+<script>
+    grecaptcha.ready(function() {
+        grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'login'})
+        .then(function(token) {
+            if (token) {
+                document.getElementById('recaptcha').value = token;
+            }
+        });
+    });
+</script>
 @endsection

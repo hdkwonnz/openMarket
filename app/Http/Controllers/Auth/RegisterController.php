@@ -85,7 +85,7 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
-        dd($request->all());
+        //dd($request->all());
 
         $this->validator($request->all())->validate();
 
@@ -114,7 +114,7 @@ class RegisterController extends Controller
         if (($resultJson->success == true) && ($resultJson->score >= 0.8)) { //need to adjust score value
             //continue to next
         }else{
-            return back()->withErrors(['captcha' => 'ReCaptcha Error']);
+            return back()->with('error', 'Sorry, you have problem with ReCaptcha Error.');
         }
         ////end of reCaptcha
 

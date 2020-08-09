@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ config('app.name') }} - Register
+@endsection
+
 @section('content')
 <div class="container mt-5" style="margin-bottom: 200px;">
     <div class="row justify-content-center">
@@ -10,7 +14,10 @@
                 <div class="card-body">
                     <form method="POST" action="{{ route('register') }}">
                         @csrf
+
+                        <!-- below for reCaptcha -->
                         <input type="hidden" name="recaptcha" id="recaptcha">
+
                         <div class="form-group row">
                             <label for="first name" class="col-md-4 col-form-label text-md-right">{{ __('First Name') }}</label>
 
@@ -85,6 +92,13 @@
                             </div>
                         </div>
                     </form>
+
+                    @if (session('error'))
+                    <div class="alert alert-danger mt-3">
+                        {{ session('error') }}
+                    </div>
+                    @endif
+
                 </div>
             </div>
         </div>
@@ -96,10 +110,11 @@
 <script src="https://www.google.com/recaptcha/api.js?render={{ config('services.recaptcha.sitekey') }}"></script>
 <script>
     grecaptcha.ready(function() {
-        grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'register'}).then(function(token) {
-        if (token) {
-            document.getElementById('recaptcha').value = token;
-        }
+        grecaptcha.execute('{{ config('services.recaptcha.sitekey') }}', {action: 'register'})
+        .then(function(token) {
+            if (token) {
+                document.getElementById('recaptcha').value = token;
+            }
         });
     });
 </script>
