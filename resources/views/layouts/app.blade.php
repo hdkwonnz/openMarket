@@ -195,7 +195,7 @@
         <!-- view watched product-->
         @include('includes.layout.app.reCall')
 
-        @endcan
+        @endcannot
 
     </div>
 

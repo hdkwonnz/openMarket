@@ -56,6 +56,7 @@ class RegisterController extends Controller
             'lastname' => ['required', 'string', 'max:255'],
             'email' => ['required', 'string', 'email', 'max:255', 'unique:users'],
             'password' => ['required', 'string', 'min:8', 'confirmed'],
+            //'recaptcha' => ['required', 'string', 'max:255'],////error 나와서 commented...
         ]);
     }
 
@@ -84,7 +85,38 @@ class RegisterController extends Controller
      */
     public function register(Request $request)
     {
+        dd($request->all());
+
         $this->validator($request->all())->validate();
+
+        ////reCaptcha
+        ////https://welcm.uk/blog/adding-google-recaptcha-v3-to-your-laravel-forms
+        $url = 'https://www.google.com/recaptcha/api/siteverify';
+        $remoteip = $_SERVER['REMOTE_ADDR'];
+        $data = [
+                    'secret' => config('services.recaptcha.secret'),
+                    'response' => $request->get('recaptcha'),
+                    'remoteip' => $remoteip
+                ];
+        $options = [
+                        'http' => [
+                        'header' => "Content-type: application/x-www-form-urlencoded\r\n",
+                        'method' => 'POST',
+                        'content' => http_build_query($data)
+                        ]
+                    ];
+        $context = stream_context_create($options);
+        $result = file_get_contents($url, false, $context);
+        $resultJson = json_decode($result);
+
+        //dd($resultJson);
+
+        if (($resultJson->success == true) && ($resultJson->score >= 0.8)) { //need to adjust score value
+            //continue to next
+        }else{
+            return back()->withErrors(['captcha' => 'ReCaptcha Error']);
+        }
+        ////end of reCaptcha
 
         event(new Registered($user = $this->create($request->all())));
 
