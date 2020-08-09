@@ -1,5 +1,9 @@
 @extends('layouts.app')
 
+@section('title')
+{{ config('app.name') }} - login
+@endsection
+
 @section('content')
 <div class="container mt-5" style="margin-bottom: 200px;">
     <div class="row justify-content-center">
