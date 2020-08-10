@@ -12,7 +12,7 @@
                 <div class="card-header">{{ __('Register') }}</div>
 
                 <div class="card-body">
-                    <form method="POST" action="{{ route('register') }}">
+                    <form method="POST" action="{{ route('register') }}" onsubmit="return (registerValidate());">
                         @csrf
 
                         <!-- below for reCaptcha -->
@@ -99,6 +99,9 @@
                     </div>
                     @endif
 
+                    <div class="registerValidationError mt-3">
+                        <!-- frontENdValidationError will be showing here -->
+                    </div>
                 </div>
             </div>
         </div>
@@ -118,4 +121,5 @@
         });
     });
 </script>
+<script src="{{ asset('myJs/auth/register.js') }}"></script>
 @endsection
