@@ -9,7 +9,7 @@
 <link rel="stylesheet" href="{{ asset('myCss/home/home.css') }}">
 
 <!-- categorya & categoryb -->
-<div class="container" style="margin-top: 35px;">
+{{-- <div class="container" style="margin-top: 35px;">
     <div class="row no-gutters">
         <div class="col-md-5 col-sm-6 col-lg-4 col-xl-3 z_index2">
             <ul class="list-group">
@@ -98,10 +98,11 @@
             @endforeach
         </div>
     </div>
-</div><!-- end of categorya & categoryb -->
+</div><!-- end of categorya & categoryb --> --}}
 
 <!-- top big carousel -->
-<div class="container-fluid big_carousel">
+{{-- <div class="container-fluid big_carousel"> --}}<!-- do not delete -->
+<div class="container-fluid">
     <div class="row">
         <div id="homeBig" class="carousel slide" data-ride="carousel">
             <!-- Indicators -->
@@ -115,18 +116,18 @@
                 @foreach($carouselones as $key => $product)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
                     <a href="{{ route('product.details', ['id' => $product->product_id]) }}">
-                        <img style="min-height: 444px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="Los Angeles">
+                        <img style="min-height: 444px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="">
                     </a>
                 </div>
                 @endforeach
             </div>
             <!-- Left and right controls -->
-            {{-- <a class="carousel-control-prev" href="#homeBig" data-slide="prev">
+            <a class="carousel-control-prev" href="#homeBig" data-slide="prev">
                 <i class="fas fa-chevron-left fa-4x"></i>
             </a>
             <a class="carousel-control-next" href="#homeBig" data-slide="next">
                 <i class="fas fa-chevron-right fa-4x"></i>
-            </a> --}}
+            </a>
         </div>
     </div><!-- end of row -->
 </div><!-- end of top big carousel -->
@@ -488,5 +489,5 @@
 @endsection
 
 @section('extra-js')
-<script src="{{ asset('myJs/home/home.js') }}"></script>
+{{-- <script src="{{ asset('myJs/home/home.js') }}"></script> --}}
 @endsection

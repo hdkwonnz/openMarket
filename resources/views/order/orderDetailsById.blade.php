@@ -2,6 +2,10 @@
 
 @section('content')
 
+<div class="my_loader">
+    <!-- spiner will be showing here -->
+</div>
+
 @if ($errorMsg)
 <div class="container mt-5 mb-5">
     <div class="row no-gutters">
@@ -73,4 +77,8 @@
 </div><!-- end of container -->
 @endif
 
+@endsection
+
+@section('extra-js')
+<script src="{{ asset('myJs/layout/loadingSpinner.js') }}"></script>
 @endsection
