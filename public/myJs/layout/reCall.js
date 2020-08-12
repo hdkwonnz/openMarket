@@ -1,11 +1,14 @@
 $('.watched_products').click(function(){
+    if (($('.delete_watched').length) == 0){
+        alert("You do not have recently viewed items.");
+        return;
+    }
     $('.show_watched').toggle();
 })
 
 $('.delete_watched').each(function(i){
     $(this).click(function(){
         var savedProduct = $('.show_watched').eq(i); //현재 마우스온 상태인 상품을 세이브한다
-
         deleteRecall($('.product_id').eq(i).val(), savedProduct);
     })
 })
@@ -26,6 +29,9 @@ function deleteRecall(productId,savedProduct){
         data: { id: productId },
         success: function (data) {
             $(savedProduct).empty().hide();
+            if (($('.delete_watched').length) == 0){
+                $('.show_watched').hide();
+            }
         },
         error: function (data) {
 

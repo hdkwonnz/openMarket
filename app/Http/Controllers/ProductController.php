@@ -6,10 +6,10 @@
 namespace App\Http\Controllers;
 
 use App\Product;
+use App\Reviewed;
 use App\Categorya;
 use App\Categoryb;
 use App\Categoryc;
-use App\Recall;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Cache;
 
@@ -20,18 +20,18 @@ class ProductController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function details($id)
+    public function details(Request $request, $id)
     {
         $product = Product::with('categorya','categoryb','categoryc')
                                 ->findOrFail($id);
 
-        // if (!$product){
-        //     return back()->with('message', 'Product Id does not exist.');
-        // }
-
         ////save product in users hard disk(cookie)
         // $recall = new Recall;
         // $recall->add($product->id, $product->image_path);
+
+        ////https://www.256kilobytes.com/content/show/3282/laravel-php-how-to-make-a-recently-viewed-posts-widget
+        $reviewed = new Reviewed;
+        $reviewed->add($product->id, $product->image_path);
 
         return view('product.details', compact('product'));
     }
@@ -120,5 +120,4 @@ class ProductController extends Controller
 
         return view('product.showProductsCategoryC', compact('productsCategoryCs','categoryCs'));
     }
-
 }

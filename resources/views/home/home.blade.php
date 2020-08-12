@@ -489,5 +489,5 @@
 @endsection
 
 @section('extra-js')
-{{-- <script src="{{ asset('myJs/home/home.js') }}"></script> --}}
+<script src="{{ asset('myJs/home/home.js') }}"></script>
 @endsection

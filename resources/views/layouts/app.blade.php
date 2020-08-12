@@ -47,12 +47,6 @@
                                 <i class="fas fa-times fa-2x display_none cross_img"></i>
                             </a>
                         </li>
-                        {{-- <li class="nav-item">
-                            <a class="nav-link menu_home text-dark" href="{{ url('/home') }}">HOME</a>
-                        </li> --}}
-                        {{-- <li class="nav-item">
-                            <a class="nav-link" href="{{ url('/seller/showProductOptions') }}">ProductOptions</a>
-                        </li> --}}
                     </ul>
                     <!-- Search -->
                     <form class="form-inline mr-auto" action="/home/search" method="GET" name="mainSerach" id="mainSerach">
@@ -63,64 +57,21 @@
                     </form>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
-                        <!-- shopping cart -->
-                        {{-- @auth
                         <li class="nav-item">
-                            @if (Session::has('cart') && Session::get('cart')->countOfItems > 0)
-                            <a class="nav-link m-0 p-0" href="{{ route('cart.getCart') }}">
-                                <i class="fas fa-cart-arrow-down text-primary fa-2x"></i>Cart
-                                <span class="badge badge-danger">{{ Session::get('cart')->countOfItems }}</span>
-                            </a>
-                            @endif
+                            <a href="{{ route('order.orderDetails') }}" class="nav-link text-dark" href="#">MY SHOPPING</a>
                         </li>
-                        @endauth --}}
-                        {{-- <li class="nav-item">
-                            @if (Session::has('cart') && Session::get('cart')->countOfItems > 0)
-                            <a class="nav-link m-0 p-0" href="{{ route('cart.showCart') }}">
-                                <i class="fas fa-cart-arrow-down text-primary fa-2x"></i>
-                                <span class="badge badge-danger count_cart">{{ Session::get('cart')->countOfItems }}</span>
-                            </a>
-                            @endif
-                        </li> --}}
                         <li class="nav-item">
-                            <a class="nav-link m-0 p-0" href="{{ route('cart.showCart') }}">
+                            <a class="nav-link text-dark watched_products" href="#">VIEWED</a>
+                        </li>
+                        <li class="nav-item">
+                            {{-- <a class="nav-link m-0 p-0" href="{{ route('cart.showCart') }}">
                                 <i class="fas fa-cart-arrow-down text-primary fa-2x"></i>
                                 <span class="badge badge-danger count_cart">{{ Session::get('cart') ? Session::get('cart')->countOfItems : 0 }}</span>
+                            </a> --}}
+                            <a class="nav-link text-dark" href="{{ route('cart.showCart') }}">
+                                CART<span class="badge badge-danger count_cart">{{ Session::get('cart') ? Session::get('cart')->countOfItems : 0 }}</span>
                             </a>
                         </li>
-
-                        <!-- Authentication Links -->
-                        @guest
-                            <li class="nav-item">
-                                <a class="nav-link text-dark" href="{{ route('login') }}">
-                                    <!-- <i class="fas fa-sign-in-alt text-primary"></i> --> LOGIN
-                                </a>
-                            </li>
-                            @if (Route::has('register'))
-                                <li class="nav-item">
-                                    <a class="nav-link text-dark" href="{{ route('register') }}">
-                                        <!-- <i class="fas fa-user-plus text-primary"></i> --> REGISTER
-                                    </a>
-                                </li>
-                            @endif
-                        @else
-                            <li class="nav-item">
-                                <a class="nav-link" href="#">
-                                    <i class="fas fa-user text-primary text-dark"></i> {{ Auth::user()->name }}
-                                </a>
-                            </li>
-                            <li class="nav-item">
-                                <a class="nav-link" href="{{ route('logout') }}"
-                                    onclick="event.preventDefault();
-                                                document.getElementById('logout-form').submit();">
-                                    <!-- <i class="fas fa-sign-out-alt text-danger"></i> --> LOGOUT
-                                </a>
-
-                                <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
-                                    @csrf
-                                </form>
-                            </li>
-                        @endguest
                     </ul>
                 </div>
             </div>
@@ -134,18 +85,13 @@
                 </button>
                 <div class="collapse navbar-collapse" id="collapsibleNavbar">
                     @cannot('isAdminOrSeller')
+                    <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a class="nav-link text-dark watched_products" href="#">WATCHED</a>
+                            <a class="nav-link text-dark" href="#">ABOUT US</a>
                         </li>
                         <li class="nav-item">
-                            <a href="{{ route('order.orderDetails') }}" class="nav-link text-dark" href="#">MY SHOPPING</a>
-                        </li>
-                        <li class="nav-item">
-                            <a href="{{ route('cart.showCart') }}" class="nav-link text-dark" href="#">MY CART</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">SALE</a>
+                            <a class="nav-link text-dark" href="#">CONTACT US</a>
                         </li>
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="#">LOCATION</a>
@@ -154,15 +100,42 @@
                     @endcannot
 
                     @cannot('isAdminOrSeller')
+                    <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+                        <!-- Authentication Links -->
+                        @guest
+                        <li class="nav-item">
+                            <a class="nav-link text-dark" href="{{ route('login') }}">
+                                <!-- <i class="fas fa-sign-in-alt text-primary"></i> --> LOGIN
+                            </a>
+                        </li>
+                        @if (Route::has('register'))
+                            <li class="nav-item">
+                                <a class="nav-link text-dark" href="{{ route('register') }}">
+                                    <!-- <i class="fas fa-user-plus text-primary"></i> --> REGISTER
+                                </a>
+                            </li>
+                        @endif
+                        @else
+                        <li class="nav-item">
+                            <a class="nav-link" href="#">
+                                <i class="fas fa-user text-primary text-dark"></i> {{ Auth::user()->name }}
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('logout') }}"
+                                onclick="event.preventDefault();
+                                            document.getElementById('logout-form').submit();">
+                                <!-- <i class="fas fa-sign-out-alt text-danger"></i> --> LOGOUT
+                            </a>
+
+                            <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
+                                @csrf
+                            </form>
+                        </li>
+                        @endguest
                         <li class="nav-item">
                             <a class="nav-link text-dark" href="#">CUSTOMER CENTER</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">ABOUT US</a>
-                        </li>
-                        <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">CONTACT US</a>
                         </li>
                     </ul>
                     @endcannot
