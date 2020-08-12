@@ -56,11 +56,6 @@
             krsort( $recently_viewed_content );
             @endphp
 
-            <div class="display_none show_watched" style="position: fixed; bottom: 80px; z-index: 4; border: 1px solid black; width: 40px; height: 40px; background-color: red;">
-                <div class="watched_products text-center">
-                    <i class="fas fa-times fa-3x"></i>
-                </div>
-            </div>
             @foreach ( $recently_viewed_content as $rvc)
             <div class="display_none show_watched" style="width: 100px; height: 100px; float: left;">
                 <a class="show_image" href="{{ route('product.details', ['id' => $rvc['id']]) }}" target="_blank">
@@ -76,6 +71,11 @@
                 </a>
             </div>
             @endforeach
+            <div class="display_none show_watched" style="position: fixed; bottom: 80px; z-index: 4; border: 1px solid black; width: 40px; height: 40px; background-color: red;">
+                <div class="watched_products text-center">
+                    <i class="fas fa-times fa-3x"></i>
+                </div>
+            </div>
             @endif
         </div>
         {{-- <div class="col-md-1 col-sm-1">
