@@ -6,6 +6,7 @@ use Session;
 use App\Cart;
 use App\Recall;
 use App\Product;
+use App\Reviewed;
 use Illuminate\Http\Request;
 
 class CartController extends Controller
@@ -137,7 +138,10 @@ class CartController extends Controller
         // $recall = new Recall;
         // $recall->add($product->id, $product->image_path);
 
-        // $item = ['qty' => 1, 'price' => $product->price, 'name' => $product->name, 'productId' => $product->id];
+        ////https://www.256kilobytes.com/content/show/3282/laravel-php-how-to-make-a-recently-viewed-posts-widget
+        $reviewed = new Reviewed;
+        $reviewed->add($product->id, $product->image_path);
+
         $item =
                 [
                     'qty' => request('qty'),
