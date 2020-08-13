@@ -28,7 +28,7 @@ function deleteRecall(productId,savedProduct){
         },
         data: { id: productId },
         success: function (data) {
-            $(savedProduct).empty().hide();
+            $(savedProduct).empty();
             if (($('.delete_watched').length) == 0){
                 $('.show_watched').hide();
             }

@@ -53,7 +53,7 @@
                         <strong>RECIPE</strong>
                     </div>
                     <div class="col-md-2 col-sm-2" >
-                        <strong>HANMART.COM</strong>
+                        <strong>HMARKET.COM</strong>
                     </div>
                     <div class="col-md-2 col-sm-2" >
                         <strong>HELP</strong>
@@ -72,7 +72,7 @@
         <div class="container">
             <div class="row mt-2">
                 <div class="col-md-6 col-sm-6">
-                    <p class="text-muted">Copyright &copy; <span class="copyright_year"></span>  HANMART. All Rights Reserved.</p>
+                    <p class="text-muted">Copyright &copy; <span class="copyright_year"></span>  HMARKET. All Rights Reserved.</p>
                 </div>
                 <div class="col-md-6 col-sm-6 text-right">
                     <i class="fab fa-cc-visa fa-3x"></i>
