@@ -115,7 +115,10 @@
             <div class="carousel-inner">
                 @foreach($carouselones as $key => $product)
                 <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
-                    <a href="{{ route('product.details', ['id' => $product->product_id]) }}">
+                    {{-- <a href="{{ route('product.details', ['id' => $product->product_id]) }}">
+                        <img style="min-height: 444px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="">
+                    </a> --}}
+                    <a href="/product/showProductsCategoryAB/{{ $product->id }}" class="text-decoration-none text-dark">
                         <img style="min-height: 444px;" src="{{ $product->image_path }}" class="img-fluid d-block w-100" alt="">
                     </a>
                 </div>
