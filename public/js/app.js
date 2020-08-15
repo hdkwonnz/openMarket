@@ -85239,8 +85239,7 @@ Vue.filter('myDate', function (created) {
 
 Vue.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_2__, {
   load: {
-    key: 'AIzaSyCAQ_RubvuB4Lu4Sk0vj5GX2eEN5gcjMHw' // key: "{{ env('GOOGLE_MAP_KEY') }}" //error....
-
+    key: "AIzaSyAZOWPFVH7owMkBTVZjCyTWmY1CXbMjbJk"
   }
 });
 /**
@@ -86310,8 +86309,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/openmarket/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/openmarket/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/openMarket/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/openMarket/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
