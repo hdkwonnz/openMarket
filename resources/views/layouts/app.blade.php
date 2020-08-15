@@ -94,7 +94,7 @@
                             <a class="nav-link text-dark" href="#">CONTACT US</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark" href="#">LOCATION</a>
+                            <a class="nav-link text-dark" href="{{ route('location.index') }}">LOCATION & HOURS</a>
                         </li>
                     </ul>
                     @endcannot
