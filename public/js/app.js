@@ -3383,7 +3383,7 @@ __webpack_require__.r(__webpack_exports__);
 
 Vue.use(vue2_google_maps__WEBPACK_IMPORTED_MODULE_0__, {
   load: {
-    key: 'AIzaSyCAQ_RubvuB4Lu4Sk0vj5GX2eEN5gcjMHw'
+    key: "AIzaSyAZOWPFVH7owMkBTVZjCyTWmY1CXbMjbJk"
   }
 });
 /* harmony default export */ __webpack_exports__["default"] = ({
