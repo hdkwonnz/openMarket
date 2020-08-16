@@ -61,7 +61,7 @@
                             <a href="{{ route('order.orderDetails') }}" class="nav-link text-dark" href="#">MY SHOPPING</a>
                         </li>
                         <li class="nav-item">
-                            <a class="nav-link text-dark watched_products" href="#">VIEWED</a>
+                            <a class="nav-link text-dark watched_products" href="javascript: void(0)">VIEWED</a>
                         </li>
                         <li class="nav-item">
                             {{-- <a class="nav-link m-0 p-0" href="{{ route('cart.showCart') }}">
