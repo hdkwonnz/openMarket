@@ -209,28 +209,47 @@
     <span><h5><b>HOT PRODUCTS</b></h5></span>
     <div class="row">
         <div class="col-md-4 col-sm-4">
-            <div class="bg-warning mb-3" style="border: 1px solid red; height: 200px;">
-
+            <div class="mb-3">
+                <a href="javascript: void(0)">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/1.JPG" alt="">
+                </a>
             </div>
-            <div class="bg-warning" style="border: 1px solid red; height: 200px;">
-
+            <div>
+                <a href="javascript: void(0)">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/2.JPG" alt="">
+                </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-4">
-            <div class="bg-info mb-3" style="border: 1px solid red; height: 415px;">
-
+            <div class="mb-3">
+                <a href="javascript: void(0)">
+                    <img class="w-100 img-fluid" style="height: 415px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/3.JPG" alt="">
+                </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-4">
-            <div class="bg-success mb-3" style="border: 1px solid red; height: 200px;">
-
+            <div class="mb-3">
+                <a href="javascript: void(0)">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/4.JPG" alt="">
+                </a>
             </div>
-            <div class="bg-success" style="border: 1px solid red; height: 200px;">
-
+            <div>
+                <a href="javascript: void(0)">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/5.JPG" alt="">
+                </a>
             </div>
         </div>
     </div>
 </div><!-- END OF HOT PRODUCTS-->
+
+<!-- longBoxAd -->
+<div class="container-fluid mt-4">
+    <div class="row">
+        <a href="javascript: void(0)">
+            <img class="img-fluid w-100" style="height: 100px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/longBoxAd/fresh_veges.jpg" alt="">
+        </a>
+    </div>
+</div>
 
 <!-- new arrivals carousel-->
 <div class="container mt-4">
@@ -312,18 +331,30 @@
                 </div>
                 <div class="row no-gutters">
                     <div class="col-md-4 col-sm-4 col-4">
-                        <div style="border: 1px solid white; height: 400px; background-color: red; position:relative; top: 10px;">
+                        <div style="border: 1px solid white; height: 400px; position:relative; top: 10px;">
+                            <a href="javascript: void(0)">
+                                <img class="img-fluid w-100" style="min-height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/superDeal/s1.JPG" alt="">
+                                <div style="border: 1px solid red; height: 150px;">
 
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-4">
-                        <div style="border: 1px solid white; height: 400px; background-color: red; position:relative; top: 10px;">
+                        <div style="border: 1px solid white; height: 400px; position:relative; top: 10px;">
+                            <a href="javascript: void(0)">
+                                <img class="img-fluid w-100" style="min-height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/superDeal/s2.JPG" alt="">
+                                <div style="border: 1px solid red; height: 150px;">
 
+                                </div>
+                            </a>
                         </div>
                     </div>
                     <div class="col-md-4 col-sm-4 col-4">
-                        <div style="border: 1px solid white; height: 400px; background-color: red; position:relative; top: 10px;">
-
+                        <div style="border: 1px solid white; height: 400px; position:relative; top: 10px;">
+                            <a href="javascript: void(0)">
+                                <img class="img-fluid w-100" style="min-height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/superDeal/s3.JPG" alt="">
+                            </a>
                         </div>
                     </div>
                 </div>
@@ -346,8 +377,56 @@
         <h5><b>FRESH VEGES FROM THE FARM</b></h5>
     </div>
     <div class="row no-gutters mt-2">
-        <div class="bg-primary" style="border: 1px solid white; width: 100%; height: 400px;">
+        {{-- <div class="bg-primary" style="border: 1px solid white; width: 100%; height: 400px;">
 
+        </div> --}}
+        <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
+            <a href="javascript: void(0)">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/01_circul.JPG" alt="">
+                <div class="w-100" style="height: 149px;">
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
+            <a href="javascript: void(0)">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o2_circul.JPG" alt="">
+                <div class="w-100" style="height: 149px;">
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
+            <a href="javascript: void(0)">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o3_circul.JPG" alt="">
+                <div class="w-100" style="height: 149px;">
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
+            <a href="javascript: void(0)">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o4_circul.JPG" alt="">
+                <div class="w-100" style="height: 149px;">
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
+            <a href="javascript: void(0)">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o5_circul.JPG" alt="">
+                <div class="w-100" style="height: 149px;">
+
+                </div>
+            </a>
+        </div>
+        <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
+            <a href="javascript: void(0)">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/06_circul.JPG" alt="">
+                <div class="w-100" style="height: 149px;">
+
+                </div>
+            </a>
         </div>
     </div>
 </div><!-- end of FRESH VEGES FROM THE FARM -->
