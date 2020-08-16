@@ -526,8 +526,34 @@
         <h5><b>OTHERS</b></h5>
     </div>
     <div class="row no-gutters mt-2">
-        <div class="bg-secondary" style="border: 1px solid white; width: 100%; height: 400px;">
+        {{-- <div class="bg-secondary" style="border: 1px solid white; width: 100%; height: 400px;">
 
+        </div> --}}
+        <div class="col-md-3 col-sm-3">
+            <div class="bg-secondary" style="border: 1px solid white; width: 100%; height: 400px;">
+
+            </div>
+        </div>
+        <div class="col-md-9 col-sm-9">
+            <div style="border: 2px solid purple; min-height: 400px; width: 100%;">
+                <div class="row no-gutters">
+                    <div class="col-md-4 col-sm-4 p-2">
+                        <div class="bg-primary" style="border: 1px solid red; min-height: 250px; width: 100%;">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 p-2">
+                        <div class="bg-danger" style="border: 1px solid red; min-height: 250px; width: 100%;">
+
+                        </div>
+                    </div>
+                    <div class="col-md-4 col-sm-4 p-2">
+                        <div class="bg-success" style="border: 1px solid red; min-height: 250px; width: 100%;">
+
+                        </div>
+                    </div>
+                </div>
+            </div>
         </div>
     </div>
 </div><!-- end of others -->
