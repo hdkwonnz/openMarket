@@ -144,8 +144,10 @@ class HomeController extends Controller
 
         $newArrivalProducts = Product::inRandomOrder()->take(12)->get();
 
+        $othersProducts = Product::inRandomOrder()->take(6)->get();
+
         // return $categoryas;
-        return view('home.home', compact('categoryas','bestProducts','newArrivalProducts','carouselones'));
+        return view('home.home', compact('categoryas','bestProducts','newArrivalProducts','carouselones','othersProducts'));
     }
 
     public function allCategory()

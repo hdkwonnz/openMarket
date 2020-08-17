@@ -152,39 +152,35 @@
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="row no-gutters">
                     <div class="col-sm-2 col-md-2">
-                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                            <div class="card" style="width: 201px; height: 310px;">
-                                <div style="width: 193px; height: 180px;">
-                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                <div>
+                                    <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div style="width: 193px; height: 100px;">
-                                    <div class="card-body">
-                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                        </div>
-                                        <p class="card-text"><b>${{ $product->price }}</b></p>
+                                <div>
+                                    <div style="height: 100px;">
+                                        <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
+                                    <div><b>${{ $product->price }}</b></div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
             @else
                     <div class="col-sm-2 col-md-2">
-                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                            <div class="card" style="width: 201px; height: 310px;">
-                                <div style="width: 193px; height: 180px;">
-                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                <div>
+                                    <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div style="width: 193px; height: 100px;">
-                                    <div class="card-body">
-                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                        </div>
-                                        <p class="card-text"><b>${{ $product->price }}</b></p>
+                                <div>
+                                    <div style="height: 100px;">
+                                        <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
+                                    <div><b>${{ $product->price }}</b></div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                     @if ($remainder == 5)
                 </div><!-- end of row -->
@@ -196,10 +192,14 @@
 
         <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#best_products_carousel" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+            <span class="text-danger">
+                <i class="fas fa-chevron-left fa-4x"></i>
+            </span>
         </a>
         <a class="carousel-control-next" href="#best_products_carousel" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
+            <span class="text-danger">
+                <i class="fas fa-chevron-right fa-4x"></i>
+            </span>
         </a>
     </div><!-- end of id="best_products_carousel" -->
 </div><!-- END OF BEST PRODUCTS IN THIS WEEK -->
@@ -265,39 +265,35 @@
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="row no-gutters">
                     <div class="col-sm-2 col-md-2">
-                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                            <div class="card" style="width: 201px; height: 310px;">
-                                <div style="width: 193px; height: 180px;">
-                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                <div>
+                                    <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div style="width: 193px; height: 100px;">
-                                    <div class="card-body">
-                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                        </div>
-                                        <p class="card-text"><b>${{ $product->price }}</b></p>
+                                <div>
+                                    <div style="height: 100px;">
+                                        <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
+                                    <div><b>${{ $product->price }}</b></div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
             @else
                     <div class="col-sm-2 col-md-2">
-                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                            <div class="card" style="width: 201px; height: 310px;">
-                                <div style="width: 193px; height: 180px;">
-                                    <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                            <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                <div>
+                                    <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div style="width: 193px; height: 100px;">
-                                    <div class="card-body">
-                                        <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                            <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                        </div>
-                                        <p class="card-text"><b>${{ $product->price }}</b></p>
+                                <div>
+                                    <div style="height: 100px;">
+                                        <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
+                                    <div><b>${{ $product->price }}</b></div>
                                 </div>
-                            </div>
-                        </a>
+                            </a>
+                        </div>
                     </div>
                     @if ($remainder == 5)
                 </div><!-- end of row -->
@@ -309,10 +305,14 @@
 
         <!-- Left and right controls -->
         <a class="carousel-control-prev" href="#new_arrivals_carousel" data-slide="prev">
-            <span class="carousel-control-prev-icon"></span>
+            <span class="text-danger">
+                <i class="fas fa-chevron-left fa-4x"></i>
+            </span>
         </a>
         <a class="carousel-control-next" href="#new_arrivals_carousel" data-slide="next">
-            <span class="carousel-control-next-icon"></span>
+            <span class="text-danger">
+                <i class="fas fa-chevron-right fa-4x"></i>
+            </span>
         </a>
     </div><!--/.Carousel Wrapper-->
 </div><!-- end of new arrivals carousel -->
@@ -431,6 +431,14 @@
     </div>
 </div><!-- end of FRESH VEGES FROM THE FARM -->
 
+<div class="container mt-4">
+    <div class="row no-gutters">
+        <a href="javascript: void(0)">
+            <img class="img-fluid" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/coupon/discountCoupon.jpg" alt="">
+        </a>
+    </div>
+</div>
+
 <!-- home shopping event -->
 <div class="container mt-4">
     <div class="row no-gutters">
@@ -440,21 +448,11 @@
 <div class="container-fluid mt-2">
     <div class="row" style="background-color: rgba(41, 40, 37, 0.068);">
         <div class="container">
-
             <div class="row no-gutters">
-                <!--Carousel Wrapper-->
-                <div id="home_shopping_event" class="carousel slide carousel-multi-item" data-ride="carousel" data-interval="2000">
-                    <!--Indicators-->
-                    <ol class="carousel-indicators">
-                        <li data-target="#home_shopping_event" data-slide-to="0" class="active"></li>
-                        <li data-target="#home_shopping_event" data-slide-to="1"></li>
-                        <li data-target="#home_shopping_event" data-slide-to="2"></li>
-                        <li data-target="#home_shopping_event" data-slide-to="3"></li>
-                        <li data-target="#home_shopping_event" data-slide-to="4"></li>
-                        <li data-target="#home_shopping_event" data-slide-to="5"></li>
-                    </ol><!--/.Indicators-->
-                    <!--Slides-->
-                    <div class="carousel-inner" role="listbox">
+                <!-- start home_shopping_event carousel-->
+                <div id="home_shopping_event" class="carousel slide multi_items_carousel" data-ride="carousel" data-interval="2500">
+                    <!-- slide -->
+                    <div class="carousel-inner">
                         @foreach($bestProducts as $key => $product)
                         @php
                             $remainder = fmod($key,6);
@@ -462,59 +460,57 @@
                         @if ($remainder == 0)
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <div class="row no-gutters">
-                                <div class="col-md-2">
-                                    <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                        <div class="card" style="width: 201px; height: 310px;">
-                                            <div style="width: 193px; height: 180px;">
-                                                <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                                <div class="col-sm-2 col-md-2">
+                                    <div style="border: 1px solid black; height: 310px;">
+                                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                            <div>
+                                                <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                             </div>
-                                            <div style="width: 193px; height: 100px;">
-                                                <div class="card-body">
-                                                    <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                                        <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                                    </div>
-                                                    <p class="card-text"><b>${{ $product->price }}</b></p>
+                                            <div>
+                                                <div style="height: 100px;">
+                                                    <div style="word-break: break-all;">{{ $product->name }}</div>
                                                 </div>
+                                                <div><b>${{ $product->price }}</b></div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
                         @else
-                                <div class="col-md-2 clearfix d-none d-md-block">
-                                    <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
-                                        <div class="card" style="width: 201px; height: 310px;">
-                                            <div style="width: 193px; height: 180px;">
-                                                <img class="card-img-top" src="{{ $product->image_path }}" alt="">
+                                <div class="col-sm-2 col-md-2">
+                                    <div style="border: 1px solid black; height: 310px;">
+                                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                            <div>
+                                                <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                             </div>
-                                            <div style="width: 193px; height: 100px;">
-                                                <div class="card-body">
-                                                    <div style="width: 193px; height: 80px; padding-right: 30px;">
-                                                        <p class="card-title" style="word-break: break-all;">{{ $product->name }}</p>
-                                                    </div>
-                                                    <p class="card-text"><b>${{ $product->price }}</b></p>
+                                            <div>
+                                                <div style="height: 100px;">
+                                                    <div style="word-break: break-all;">{{ $product->name }}</div>
                                                 </div>
+                                                <div><b>${{ $product->price }}</b></div>
                                             </div>
-                                        </div>
-                                    </a>
+                                        </a>
+                                    </div>
                                 </div>
-                            @if ($remainder == 5)
+                                @if ($remainder == 5)
                             </div><!-- end of row -->
                         </div><!-- end of carousel item -->
                             @endif
                         @endif
                         @endforeach
+                    </div><!-- end of slid -->
 
-                    </div><!--/.Slides-->
-                     <!-- Left and right controls -->
-                     {{-- <div>
-                        <a class="carousel-control-prev" href="#home_shopping_event" data-slide="prev">
-                            <i class="fas fa-chevron-left fa-2x"></i>
-                        </a>
-                        <a class="carousel-control-next" href="#home_shopping_event" data-slide="next">
-                            <i class="fas fa-chevron-right fa-2x"></i>
-                        </a>
-                     </div> --}}
-                </div><!--/.Carousel Wrapper-->
+                    <!-- Left and right controls -->
+                    <a class="carousel-control-prev" href="#home_shopping_event" data-slide="prev">
+                        <span class="text-danger">
+                            <i class="fas fa-chevron-left fa-4x"></i>
+                        </span>
+                    </a>
+                    <a class="carousel-control-next" href="#home_shopping_event" data-slide="next">
+                        <span class="text-danger">
+                            <i class="fas fa-chevron-right fa-4x"></i>
+                        </span>
+                    </a>
+                </div><!-- end of home_shopping_event carousel -->
             </div><!-- end of row -->
         </div>
     </div>
@@ -525,33 +521,83 @@
     <div class="row no-gutters">
         <h5><b>OTHERS</b></h5>
     </div>
-    <div class="row no-gutters mt-2">
-        {{-- <div class="bg-secondary" style="border: 1px solid white; width: 100%; height: 400px;">
-
-        </div> --}}
+    <div class="row mt-2">
         <div class="col-md-3 col-sm-3">
-            <div class="bg-secondary" style="border: 1px solid white; width: 100%; height: 400px;">
-
+            <div>
+                <a href="javascript: avoid(0)">
+                    <img class="w-100" style="height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/others/oo8.JPG" alt="">
+                </a>
             </div>
         </div>
         <div class="col-md-9 col-sm-9">
-            <div style="border: 2px solid purple; min-height: 400px; width: 100%;">
+            <div style="border: 2px solid purple; min-height: 400px;">
                 <div class="row no-gutters">
-                    <div class="col-md-4 col-sm-4 p-2">
-                        <div class="bg-primary" style="border: 1px solid red; min-height: 250px; width: 100%;">
+                    <!-- start others carousel -->
+                    <div id="others_products_carousel" class="carousel slide multi_items_carousel" data-ride="carousel" data-interval="2000">
+                        <!-- slide -->
+                        <div class="carousel-inner">
+                            @foreach($othersProducts as $key => $product)
+                            @php
+                                $remainder = fmod($key,3);
+                            @endphp
+                            @if ($remainder == 0)
+                            <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
+                                <div class="row no-gutters">
+                                    <div class="col-sm4 col-md-4 p-2">
+                                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                            <div>
+                                                <div style="border: 1px solid green;">
+                                                    <img style="height: 250px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
+                                                </div>
+                                                <div>
+                                                    <div style="height: 100px; width: 90%;">
+                                                        <div style="word-break: break-all;">{{ $product->name }}</div>
+                                                    </div>
+                                                    <div style="height: 20px; width: 90%;">
+                                                        <div><b>${{ $product->price }}</b></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                            @else
+                                    <div class="col-sm-4 col-md-4 p-2">
+                                        <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
+                                            <div>
+                                                <div style="border: 1px solid green;">
+                                                    <img style="height: 250px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
+                                                </div>
+                                                <div>
+                                                    <div style="height: 100px; width: 90%;">
+                                                        <div style="word-break: break-all;">{{ $product->name }}</div>
+                                                    </div>
+                                                    <div style="height: 20px; width: 90%;">
+                                                        <div><b>${{ $product->price }}</b></div>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </a>
+                                    </div>
+                                    @if ($remainder == 2)
+                                </div><!-- end of row -->
+                            </div><!-- end of carousel item -->
+                                @endif
+                            @endif
+                            @endforeach
+                        </div><!-- end of slid -->
 
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 p-2">
-                        <div class="bg-danger" style="border: 1px solid red; min-height: 250px; width: 100%;">
-
-                        </div>
-                    </div>
-                    <div class="col-md-4 col-sm-4 p-2">
-                        <div class="bg-success" style="border: 1px solid red; min-height: 250px; width: 100%;">
-
-                        </div>
-                    </div>
+                        <!-- Left and right controls -->
+                        <a class="carousel-control-prev" href="#others_products_carousel" data-slide="prev">
+                            <span class="text-danger">
+                                <i class="fas fa-chevron-left fa-4x"></i>
+                            </span>
+                        </a>
+                        <a class="carousel-control-next" href="#others_products_carousel" data-slide="next">
+                            <span class="text-danger">
+                                <i class="fas fa-chevron-right fa-4x"></i>
+                            </span>
+                        </a>
+                    </div> <!-- end of others carousel -->
                 </div>
             </div>
         </div>
