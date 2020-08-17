@@ -48,12 +48,23 @@
                             </a>
                         </li>
                     </ul>
-                    <!-- Search -->
-                    <form class="form-inline mr-auto" action="/home/search" method="GET" name="mainSerach" id="mainSerach">
+                    <!-- Search --> <!-- do not delete below -->
+                    {{-- <form class="form-inline mr-auto" action="/home/search" method="GET" name="mainSerach" id="mainSerach">
                         <input type="text" class="form-control" style="width: 400px;" name="searchTerm" id="searchTerm" value="{{ request()->input('searchTerm') }}" placeholder="Search" aria-label="Search" required autofocus />
                         <button class="btn btn-outline-success" type="submit">
                             <i class="fas fa-search"></i>
                         </button>
+                    </form> --}}
+                    <!-- https://www.codeply.com/go/sbfCXYgqoO -->
+                    <form class="mx-2 my-auto d-inline w-25" action="/home/search" method="GET" name="mainSerach" id="mainSerach">
+                        <div class="input-group">
+                            <input type="text" class="form-control border border-right-0" name="searchTerm" id="searchTerm" value="{{ request()->input('searchTerm') }}" placeholder="Search" aria-label="Search" required autofocus>
+                            <span class="input-group-append">
+                                <button type="submit" class="btn btn-outline-secondary border border-left-0" type="button">
+                                    <i class="fa fa-search"></i>
+                                </button>
+                            </span>
+                        </div>
                     </form>
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
