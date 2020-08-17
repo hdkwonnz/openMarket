@@ -152,12 +152,12 @@
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="row no-gutters">
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div>
+                                <div class="p-2">
                                     <div style="height: 100px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
@@ -168,12 +168,12 @@
                     </div>
             @else
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div>
+                                <div class="p-2">
                                     <div style="height: 100px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
@@ -265,12 +265,12 @@
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="row no-gutters">
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div>
+                                <div class="p-2">
                                     <div style="height: 100px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
@@ -281,12 +281,12 @@
                     </div>
             @else
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
-                                <div>
+                                <div class="p-2">
                                     <div style="height: 100px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
@@ -377,9 +377,6 @@
         <h5><b>FRESH VEGES FROM THE FARM</b></h5>
     </div>
     <div class="row no-gutters mt-2">
-        {{-- <div class="bg-primary" style="border: 1px solid white; width: 100%; height: 400px;">
-
-        </div> --}}
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
                 <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/01_circul.JPG" alt="">
@@ -461,12 +458,12 @@
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <div class="row no-gutters">
                                 <div class="col-sm-2 col-md-2">
-                                    <div style="border: 1px solid black; height: 310px;">
+                                    <div style="border: 1px solid black; min-height: 310px;">
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                             </div>
-                                            <div>
+                                            <div class="p-2">
                                                 <div style="height: 100px;">
                                                     <div style="word-break: break-all;">{{ $product->name }}</div>
                                                 </div>
@@ -477,12 +474,12 @@
                                 </div>
                         @else
                                 <div class="col-sm-2 col-md-2">
-                                    <div style="border: 1px solid black; height: 310px;">
+                                    <div style="border: 1px solid black; min-height: 310px;">
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                             </div>
-                                            <div>
+                                            <div class="p-2">
                                                 <div style="height: 100px;">
                                                     <div style="word-break: break-all;">{{ $product->name }}</div>
                                                 </div>
@@ -524,7 +521,7 @@
     <div class="row mt-2">
         <div class="col-md-3 col-sm-3">
             <div>
-                <a href="javascript: avoid(0)">
+                <a href="javascript: void(0)">
                     <img class="w-100" style="height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/others/oo8.JPG" alt="">
                 </a>
             </div>
@@ -547,14 +544,16 @@
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <div style="border: 1px solid green;">
-                                                    <img style="height: 250px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
+                                                    <img style="height: 230px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                                 </div>
-                                                <div>
-                                                    <div style="height: 100px; width: 90%;">
-                                                        <div style="word-break: break-all;">{{ $product->name }}</div>
-                                                    </div>
-                                                    <div style="height: 20px; width: 90%;">
-                                                        <div><b>${{ $product->price }}</b></div>
+                                                <div class="mt-1" style="border: 1px solid green;">
+                                                    <div class="p-2">
+                                                        <div style="height: 100px; width: 90%;">
+                                                            <div style="word-break: break-all;">{{ $product->name }}</div>
+                                                        </div>
+                                                        <div style="height: 20px; width: 90%;">
+                                                            <div><b>${{ $product->price }}</b></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
@@ -565,14 +564,16 @@
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <div style="border: 1px solid green;">
-                                                    <img style="height: 250px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
+                                                    <img style="height: 230px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                                 </div>
-                                                <div>
-                                                    <div style="height: 100px; width: 90%;">
-                                                        <div style="word-break: break-all;">{{ $product->name }}</div>
-                                                    </div>
-                                                    <div style="height: 20px; width: 90%;">
-                                                        <div><b>${{ $product->price }}</b></div>
+                                                <div class="mt-1" style="border: 1px solid green;">
+                                                    <div class="p-2">
+                                                        <div style="height: 100px; width: 90%;">
+                                                            <div style="word-break: break-all;">{{ $product->name }}</div>
+                                                        </div>
+                                                        <div style="height: 20px; width: 90%;">
+                                                            <div><b>${{ $product->price }}</b></div>
+                                                        </div>
                                                     </div>
                                                 </div>
                                             </div>
