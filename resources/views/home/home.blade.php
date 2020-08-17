@@ -428,10 +428,11 @@
     </div>
 </div><!-- end of FRESH VEGES FROM THE FARM -->
 
+<!-- coupon Ad. -->
 <div class="container mt-4">
     <div class="row no-gutters">
         <a href="javascript: void(0)">
-            <img class="img-fluid" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/coupon/discountCoupon.jpg" alt="">
+            <img class="img-fluid w-100" style="height: 100px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/coupon/discountCoupon.jpg" alt="">
         </a>
     </div>
 </div>
