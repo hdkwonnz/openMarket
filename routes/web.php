@@ -86,41 +86,90 @@ Route::get('/seller/showProductOptions', 'SellerController@showProductOptions')-
 Route::post('/seller/connectProductOptions', 'SellerController@connectProductOptions')->name('seller.connectProductOptions');
 Route::post('/seller/disConnectProductOptions', 'SellerController@disConnectProductOptions')->name('seller.disConnectProductOptions');
 
-// seller/product
-Route::get('/seller/product/test/{id}', 'Seller\ProductController@test')->middleware('auth','can:isSeller');
-Route::get('/seller/product/showProductInputForm', 'Seller\ProductController@showProductInputForm')->name('seller.product.showProductInputForm')->middleware('auth','can:isSeller');
-Route::get('/seller/product/getCategoryAs', 'Seller\ProductController@getCategoryAs')->name('seller.product.getCategoryAs')->middleware('auth','can:isSeller');
-Route::get('/seller/product/getCategoryBbyId', 'Seller\ProductController@getCategoryBbyId')->name('seller.product.getCategoryBbyId')->middleware('auth','can:isSeller');
-Route::get('/seller/product/getCategoryCbyId', 'Seller\ProductController@getCategoryCbyId')->name('seller.product.getCategoryCbyId')->middleware('auth','can:isSeller');
-Route::post('/seller/product/addProduct', 'Seller\ProductController@addProduct')->name('seller.product.addProduct')->middleware('auth','can:isSeller');
-Route::get('/seller/product/showMyProducts', 'Seller\ProductController@showMyProducts')->name('seller.product.showMyProducts')->middleware('auth','can:isSeller');
-Route::get('/seller/product/getMyProducts', 'Seller\ProductController@getMyProducts')->name('seller.product.getMyProducts')->middleware('auth','can:isSeller');
-Route::get('/seller/product/showEditProduct/{id}', 'Seller\ProductController@showEditProduct')->name('seller.product.showEditProduct')->middleware('auth','can:isSeller');
-Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyProductById')->name('seller.product.getMyProductById')->middleware('auth','can:isSeller');
-Route::post('/seller/product/uploadImages', 'Seller\ProductController@uploadImages')->name('seller.product.uploadImages')->middleware('auth','can:isSeller');
+Route::group(
+    [
+        'domain' => 'seller.openmarket.test'
+    ],
+    function () {
+        // seller/product
+        Route::get('/seller/product/test/{id}', 'Seller\ProductController@test')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/showProductInputForm', 'Seller\ProductController@showProductInputForm')->name('seller.product.showProductInputForm')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/getCategoryAs', 'Seller\ProductController@getCategoryAs')->name('seller.product.getCategoryAs')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/getCategoryBbyId', 'Seller\ProductController@getCategoryBbyId')->name('seller.product.getCategoryBbyId')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/getCategoryCbyId', 'Seller\ProductController@getCategoryCbyId')->name('seller.product.getCategoryCbyId')->middleware('auth','can:isSeller');
+        Route::post('/seller/product/addProduct', 'Seller\ProductController@addProduct')->name('seller.product.addProduct')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/showMyProducts', 'Seller\ProductController@showMyProducts')->name('seller.product.showMyProducts')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/getMyProducts', 'Seller\ProductController@getMyProducts')->name('seller.product.getMyProducts')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/showEditProduct/{id}', 'Seller\ProductController@showEditProduct')->name('seller.product.showEditProduct')->middleware('auth','can:isSeller');
+        Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyProductById')->name('seller.product.getMyProductById')->middleware('auth','can:isSeller');
+        Route::post('/seller/product/uploadImages', 'Seller\ProductController@uploadImages')->name('seller.product.uploadImages')->middleware('auth','can:isSeller');
+        // seller/seller
+        Route::post('/seller/reSendMailForOrder', 'Seller\SellerController@resendMailForOrder')->name('seller.seller.resendMailForOrder')->middleware('auth','can:isSeller');
+        Route::get('/', 'Seller\SellerController@index');
+        Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');
+        Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')->name('seller.seller.customerOrders')->middleware('auth','can:isSeller');
+        Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
+        Route::get('/seller/showCustomerOrders', 'Seller\SellerController@showCustomerOrders')->name('seller.seller.showCustomerOrders')->middleware('auth','can:isSeller');
+        Route::post('/seller/editOrder', 'Seller\SellerController@editOrder')->name('seller.seller.editOrder')->middleware('auth','can:isSeller');
+    }
+);
 
-// seller/seller
-Route::post('/seller/reSendMailForOrder', 'Seller\SellerController@resendMailForOrder')->name('seller.seller.resendMailForOrder')->middleware('auth','can:isSeller');
-Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');
-Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')->name('seller.seller.customerOrders')->middleware('auth','can:isSeller');
-Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
-Route::get('/seller/showCustomerOrders', 'Seller\SellerController@showCustomerOrders')->name('seller.seller.showCustomerOrders')->middleware('auth','can:isSeller');
-Route::post('/seller/editOrder', 'Seller\SellerController@editOrder')->name('seller.seller.editOrder')->middleware('auth','can:isSeller');
+// // seller/product
+// Route::get('/seller/product/test/{id}', 'Seller\ProductController@test')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/showProductInputForm', 'Seller\ProductController@showProductInputForm')->name('seller.product.showProductInputForm')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/getCategoryAs', 'Seller\ProductController@getCategoryAs')->name('seller.product.getCategoryAs')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/getCategoryBbyId', 'Seller\ProductController@getCategoryBbyId')->name('seller.product.getCategoryBbyId')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/getCategoryCbyId', 'Seller\ProductController@getCategoryCbyId')->name('seller.product.getCategoryCbyId')->middleware('auth','can:isSeller');
+// Route::post('/seller/product/addProduct', 'Seller\ProductController@addProduct')->name('seller.product.addProduct')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/showMyProducts', 'Seller\ProductController@showMyProducts')->name('seller.product.showMyProducts')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/getMyProducts', 'Seller\ProductController@getMyProducts')->name('seller.product.getMyProducts')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/showEditProduct/{id}', 'Seller\ProductController@showEditProduct')->name('seller.product.showEditProduct')->middleware('auth','can:isSeller');
+// Route::get('/seller/product/getMyProductById', 'Seller\ProductController@getMyProductById')->name('seller.product.getMyProductById')->middleware('auth','can:isSeller');
+// Route::post('/seller/product/uploadImages', 'Seller\ProductController@uploadImages')->name('seller.product.uploadImages')->middleware('auth','can:isSeller');
 
-// admin/admin
-Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin.index')->middleware('auth','can:isAdmin');
+// // seller/seller
+// Route::post('/seller/reSendMailForOrder', 'Seller\SellerController@resendMailForOrder')->name('seller.seller.resendMailForOrder')->middleware('auth','can:isSeller');
+// Route::get('/seller', 'Seller\SellerController@index')->name('seller.seller.index')->middleware('auth','can:isSeller');
+// Route::post('/seller/customerOrders', 'Seller\SellerController@customerOrders')->name('seller.seller.customerOrders')->middleware('auth','can:isSeller');
+// Route::get('/seller/customerOrdersByTerm', 'Seller\SellerController@customerOrdersByTerm')->name('seller.seller.customerOrdersByTerm')->middleware('auth','can:isSeller');
+// Route::get('/seller/showCustomerOrders', 'Seller\SellerController@showCustomerOrders')->name('seller.seller.showCustomerOrders')->middleware('auth','can:isSeller');
+// Route::post('/seller/editOrder', 'Seller\SellerController@editOrder')->name('seller.seller.editOrder')->middleware('auth','can:isSeller');
 
-// admin/category
-Route::get('/admin/category', 'Admin\AdminController@showCategoryForm')->name('admin.category.showCategoryForm')->middleware('auth','can:isAdmin');
-Route::post('/admin/getAllcategories', 'Admin\AdminController@getAllcategories')->name('admin.category.getAllcategories')->middleware('auth','can:isAdmin');
-Route::post('/admin/getCategoryAbyId', 'Admin\AdminController@getCategoryAbyId')->name('admin.category.getCategoryAbyId')->middleware('auth','can:isAdmin');
-Route::post('/admin/getCategoryBbyId', 'Admin\AdminController@getCategoryBbyId')->name('admin.category.getCategoryBbyId')->middleware('auth','can:isAdmin');
-Route::post('/admin/getCategoryCbyId', 'Admin\AdminController@getCategoryCbyId')->name('admin.category.getCategoryCbyId')->middleware('auth','can:isAdmin');
+Route::group(
+    [
+        'domain' => 'admin.openmarket.test'
+    ],
+    function () {
+        // admin/admin
+        Route::get('/', 'Admin\AdminController@index');
+        Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin.index')->middleware('auth','can:isAdmin');
+        // admin/category
+        Route::get('/admin/category', 'Admin\AdminController@showCategoryForm')->name('admin.category.showCategoryForm')->middleware('auth','can:isAdmin');
+        Route::post('/admin/getAllcategories', 'Admin\AdminController@getAllcategories')->name('admin.category.getAllcategories')->middleware('auth','can:isAdmin');
+        Route::post('/admin/getCategoryAbyId', 'Admin\AdminController@getCategoryAbyId')->name('admin.category.getCategoryAbyId')->middleware('auth','can:isAdmin');
+        Route::post('/admin/getCategoryBbyId', 'Admin\AdminController@getCategoryBbyId')->name('admin.category.getCategoryBbyId')->middleware('auth','can:isAdmin');
+        Route::post('/admin/getCategoryCbyId', 'Admin\AdminController@getCategoryCbyId')->name('admin.category.getCategoryCbyId')->middleware('auth','can:isAdmin');
+        // admin/product
+        Route::get('/admin/product/showCarouselOne', 'Admin\ProductController@showCarouselOne')->name('admin.product.showCarouselOne')->middleware('auth','can:isAdmin');
+        Route::post('/admin/product/getCarouselOne', 'Admin\ProductController@getCarouselOne')->name('admin.product.getCarouselOne')->middleware('auth','can:isAdmin');
+        Route::post('/admin/product/editCarouselOne', 'Admin\ProductController@editCarouselOne')->name('admin.product.editCarouselOne')->middleware('auth','can:isAdmin');
+    }
+);
 
-// admin/product
-Route::get('/admin/product/showCarouselOne', 'Admin\ProductController@showCarouselOne')->name('admin.product.showCarouselOne')->middleware('auth','can:isAdmin');
-Route::post('/admin/product/getCarouselOne', 'Admin\ProductController@getCarouselOne')->name('admin.product.getCarouselOne')->middleware('auth','can:isAdmin');
-Route::post('/admin/product/editCarouselOne', 'Admin\ProductController@editCarouselOne')->name('admin.product.editCarouselOne')->middleware('auth','can:isAdmin');
+// // admin/admin
+// Route::get('/admin', 'Admin\AdminController@index')->name('admin.admin.index')->middleware('auth','can:isAdmin');
+
+// // admin/category
+// Route::get('/admin/category', 'Admin\AdminController@showCategoryForm')->name('admin.category.showCategoryForm')->middleware('auth','can:isAdmin');
+// Route::post('/admin/getAllcategories', 'Admin\AdminController@getAllcategories')->name('admin.category.getAllcategories')->middleware('auth','can:isAdmin');
+// Route::post('/admin/getCategoryAbyId', 'Admin\AdminController@getCategoryAbyId')->name('admin.category.getCategoryAbyId')->middleware('auth','can:isAdmin');
+// Route::post('/admin/getCategoryBbyId', 'Admin\AdminController@getCategoryBbyId')->name('admin.category.getCategoryBbyId')->middleware('auth','can:isAdmin');
+// Route::post('/admin/getCategoryCbyId', 'Admin\AdminController@getCategoryCbyId')->name('admin.category.getCategoryCbyId')->middleware('auth','can:isAdmin');
+
+// // admin/product
+// Route::get('/admin/product/showCarouselOne', 'Admin\ProductController@showCarouselOne')->name('admin.product.showCarouselOne')->middleware('auth','can:isAdmin');
+// Route::post('/admin/product/getCarouselOne', 'Admin\ProductController@getCarouselOne')->name('admin.product.getCarouselOne')->middleware('auth','can:isAdmin');
+// Route::post('/admin/product/editCarouselOne', 'Admin\ProductController@editCarouselOne')->name('admin.product.editCarouselOne')->middleware('auth','can:isAdmin');
 
 // location
 Route::get('/location/index', 'LocationController@index')->name('location.index');
