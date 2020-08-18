@@ -2,7 +2,7 @@ function registerValidate() {
     var password = document.getElementById("password");
     var confirmPassword = document.getElementById("password-confirm");
 
-    var checkValue = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,255}$/;
+    var checkValue = /^(?=.*\d)(?=.*[a-z])(?=.*[A-Z])(?=.*[^a-zA-Z0-9])(?!.*\s).{8,15}$/;
 
     var validError = 'To check a password between 8 to 15 characters which contain at least one lowercase letter, one uppercase letter, one numeric digit, and one special character';
     var matchError = "Password and ConfrimPassword Mismatched."
