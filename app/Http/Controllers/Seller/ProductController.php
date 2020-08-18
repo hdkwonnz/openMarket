@@ -104,12 +104,12 @@ class ProductController extends Controller
         }
 
         $photos = unserialize($product->photo_paths);
-        $imagePath = unserialize($product->image_path);
+        //$imagePath = unserialize($product->image_path);
 
         return response()->json([
             'product' => $product,
             'photos' => $photos,
-            'imagePath' => $imagePath,
+            //'imagePath' => $imagePath,
             'errorMsg' => null,
         ]);
     }

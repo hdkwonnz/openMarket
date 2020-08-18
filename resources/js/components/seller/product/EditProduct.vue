@@ -370,8 +370,8 @@
                     this.form.salePrice = this.product.sale_price;
                     this.form.countryOfOrigin = this.product.country_origin;
 
-                    // this.form.imagePath = this.product.image_path;
-                    this.form.imagePath = response.data.imagePath;
+                    this.form.imagePath = this.product.image_path;
+                    // this.form.imagePath = response.data.imagePath;
 
                     if (response.data.photos){
                         this.form.photoPaths = response.data.photos;

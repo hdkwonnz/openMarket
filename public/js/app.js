@@ -3969,9 +3969,8 @@ __webpack_require__.r(__webpack_exports__);
         _this4.form.manufacturer = _this4.product.brand;
         _this4.form.normalPrice = _this4.product.price;
         _this4.form.salePrice = _this4.product.sale_price;
-        _this4.form.countryOfOrigin = _this4.product.country_origin; // this.form.imagePath = this.product.image_path;
-
-        _this4.form.imagePath = response.data.imagePath;
+        _this4.form.countryOfOrigin = _this4.product.country_origin;
+        _this4.form.imagePath = _this4.product.image_path; // this.form.imagePath = response.data.imagePath;
 
         if (response.data.photos) {
           _this4.form.photoPaths = response.data.photos;
