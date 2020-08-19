@@ -53,12 +53,6 @@
                     <button type="" class="btn btn-sm btn-success mt-3" onclick="addToCart({{ $productsCategoryA->id }}); return false;">
                         Add to Cart
                     </button>
-                    {{-- <a href="{{ route('cart.addToCart', ['id' => $productsCategoryBC->id]) }}" class="btn btn-sm btn-success mt-3">Add to Cart</a> --}}
-                    {{-- <form action="{{ route('cart.addToCart') }}" method="GET">
-                        <input type="hidden" name="id" value="{{ $productsCategoryA->id }}">
-                        <input type="hidden" name="qty" value="1">
-                        <button type="submit" class="btn btn-sm btn-success mt-3">Add to Cart</button>
-                    </form> --}}
                 </div>
             </a>
             @endforeach
