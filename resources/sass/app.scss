@@ -7,6 +7,14 @@
 // Bootstrap
 @import '~bootstrap/scss/bootstrap';
 
+// product
+.line_height13 {
+    line-height: 1.3;
+}
+.text_decoration_line_through{
+    text-decoration: line-through
+}
+
 // GetCart.vue
 .img_thumb_nail {
     min-width: 100px; min-height: 100px;

@@ -152,32 +152,54 @@
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="row no-gutters">
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 360px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
                                 <div class="p-2">
-                                    <div style="height: 100px;">
+                                    <div style="height: 120px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
-                                    <div><b>${{ $product->price }}</b></div>
+                                    <div>
+                                        @if ($product->price > $product->sale_price)
+                                        <div class="row">
+                                            <div class="col-md-3 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                            <div class="col-md-3 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                        </div>
+                                        @else
+                                        <div class="row">
+                                            <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </a>
                         </div>
                     </div>
             @else
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 360px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
                                 <div class="p-2">
-                                    <div style="height: 100px;">
+                                    <div style="height: 120px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
-                                    <div><b>${{ $product->price }}</b></div>
+                                    <div>
+                                        @if ($product->price > $product->sale_price)
+                                        <div class="row">
+                                            <div class="col-md-3 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                            <div class="col-md-3 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                        </div>
+                                        @else
+                                        <div class="row">
+                                            <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -265,32 +287,54 @@
             <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                 <div class="row no-gutters">
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 360px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
                                 <div class="p-2">
-                                    <div style="height: 100px;">
+                                    <div style="height: 120px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
-                                    <div><b>${{ $product->price }}</b></div>
+                                    <div>
+                                        @if ($product->price > $product->sale_price)
+                                        <div class="row">
+                                            <div class="col-md-3 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                            <div class="col-md-3 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                        </div>
+                                        @else
+                                        <div class="row">
+                                            <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </a>
                         </div>
                     </div>
             @else
                     <div class="col-sm-2 col-md-2">
-                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 310px;">
+                        <div style="border: 1px solid rgba(233, 225, 225, 0.959); min-height: 360px;">
                             <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                 <div>
                                     <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                 </div>
                                 <div class="p-2">
-                                    <div style="height: 100px;">
+                                    <div style="height: 120px;">
                                         <div style="word-break: break-all;">{{ $product->name }}</div>
                                     </div>
-                                    <div><b>${{ $product->price }}</b></div>
+                                    <div>
+                                        @if ($product->price > $product->sale_price)
+                                        <div class="row">
+                                            <div class="col-md-3 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                            <div class="col-md-3 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                        </div>
+                                        @else
+                                        <div class="row">
+                                            <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                        </div>
+                                        @endif
+                                    </div>
                                 </div>
                             </a>
                         </div>
@@ -459,32 +503,54 @@
                         <div class="carousel-item {{$key == 0 ? 'active' : '' }}">
                             <div class="row no-gutters">
                                 <div class="col-sm-2 col-md-2">
-                                    <div style="border: 1px solid black; min-height: 310px;">
+                                    <div style="border: 1px solid black; min-height: 360px;">
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                             </div>
                                             <div class="p-2">
-                                                <div style="height: 100px;">
+                                                <div style="height: 120px;">
                                                     <div style="word-break: break-all;">{{ $product->name }}</div>
                                                 </div>
-                                                <div><b>${{ $product->price }}</b></div>
+                                                <div>
+                                                    @if ($product->price > $product->sale_price)
+                                                    <div class="row">
+                                                        <div class="col-md-3 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                                        <div class="col-md-3 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                                    </div>
+                                                    @else
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                                    </div>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </a>
                                     </div>
                                 </div>
                         @else
                                 <div class="col-sm-2 col-md-2">
-                                    <div style="border: 1px solid black; min-height: 310px;">
+                                    <div style="border: 1px solid black; min-height: 360px;">
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <img style="height: 180px;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                             </div>
                                             <div class="p-2">
-                                                <div style="height: 100px;">
+                                                <div style="height: 120px;">
                                                     <div style="word-break: break-all;">{{ $product->name }}</div>
                                                 </div>
-                                                <div><b>${{ $product->price }}</b></div>
+                                                <div>
+                                                    @if ($product->price > $product->sale_price)
+                                                    <div class="row">
+                                                        <div class="col-md-3 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                                        <div class="col-md-3 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                                    </div>
+                                                    @else
+                                                    <div class="row">
+                                                        <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                                    </div>
+                                                    @endif
+                                                </div>
                                             </div>
                                         </a>
                                     </div>
@@ -521,9 +587,9 @@
     </div>
     <div class="row mt-2">
         <div class="col-md-3 col-sm-3">
-            <div>
+            <div style="min-height: 400px;">
                 <a href="javascript: void(0)">
-                    <img class="w-100" style="height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/others/oo8.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/others/oo8.JPG" alt="">
                 </a>
             </div>
         </div>
@@ -545,15 +611,26 @@
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <div style="border: 1px solid green;">
-                                                    <img style="height: 230px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
+                                                    <img style="height: 200px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                                 </div>
                                                 <div class="mt-1" style="border: 1px solid green;">
                                                     <div class="p-2">
-                                                        <div style="height: 100px; width: 90%;">
+                                                        <div style="height: 90px; width: 90%;">
                                                             <div style="word-break: break-all;">{{ $product->name }}</div>
                                                         </div>
-                                                        <div style="height: 20px; width: 90%;">
-                                                            <div><b>${{ $product->price }}</b></div>
+                                                        <div style="height: 50px; width: 90%;">
+                                                            <div>
+                                                                @if ($product->price > $product->sale_price)
+                                                                <div class="row">
+                                                                    <div class="col-md-2 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                                                    <div class="col-md-2 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                                                </div>
+                                                                @else
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                                                </div>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
@@ -565,15 +642,26 @@
                                         <a href="{{ route('product.details', ['id' => $product->id]) }}" class="text-decoration-none text-dark">
                                             <div>
                                                 <div style="border: 1px solid green;">
-                                                    <img style="height: 230px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
+                                                    <img style="height: 200px; width: 90%;" class="img-fluid" src="{{ $product->image_path }}" alt="">
                                                 </div>
                                                 <div class="mt-1" style="border: 1px solid green;">
                                                     <div class="p-2">
-                                                        <div style="height: 100px; width: 90%;">
+                                                        <div style="height: 90px; width: 90%;">
                                                             <div style="word-break: break-all;">{{ $product->name }}</div>
                                                         </div>
-                                                        <div style="height: 20px; width: 90%;">
-                                                            <div><b>${{ $product->price }}</b></div>
+                                                        <div style="height: 50px; width: 90%;">
+                                                            <div>
+                                                                @if ($product->price > $product->sale_price)
+                                                                <div class="row">
+                                                                    <div class="col-md-2 mt-2 text-dark mr-3 text_decoration_line_through">${{ $product->price }}</div>
+                                                                    <div class="col-md-2 mt-2 text-dark"><b>${{ $product->sale_price }}</b></div>
+                                                                </div>
+                                                                @else
+                                                                <div class="row">
+                                                                    <div class="col-md-12 mt-2 text-dark"><b>${{ $product->price }}</b></div>
+                                                                </div>
+                                                                @endif
+                                                            </div>
                                                         </div>
                                                     </div>
                                                 </div>
