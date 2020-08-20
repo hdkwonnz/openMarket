@@ -8,6 +8,14 @@
 
 <link rel="stylesheet" href="{{ asset('myCss/home/home.css') }}">
 
+@auth
+    @if(auth()->user()->role != 'user')
+        @php
+            Auth::logout();
+        @endphp
+    @endif
+@endauth
+
 <!-- categorya & categoryb -->
 {{-- <div class="container" style="margin-top: 35px;">
     <div class="row no-gutters">
