@@ -3313,7 +3313,6 @@ __webpack_require__.r(__webpack_exports__);
 
       axios.get('https://api.addy.co.nz/search', {
         params: {
-          //apiKey="a88039a8124c4995a04f445d050de41a";
           key: "demo-api-key",
           s: this.streetName
         }
@@ -86308,8 +86307,8 @@ __webpack_require__.r(__webpack_exports__);
 /*! no static exports found */
 /***/ (function(module, exports, __webpack_require__) {
 
-__webpack_require__(/*! /home/vagrant/code/openMarket/resources/js/app.js */"./resources/js/app.js");
-module.exports = __webpack_require__(/*! /home/vagrant/code/openMarket/resources/sass/app.scss */"./resources/sass/app.scss");
+__webpack_require__(/*! /home/vagrant/code/openmarket/resources/js/app.js */"./resources/js/app.js");
+module.exports = __webpack_require__(/*! /home/vagrant/code/openmarket/resources/sass/app.scss */"./resources/sass/app.scss");
 
 
 /***/ })
