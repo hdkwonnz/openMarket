@@ -11,7 +11,6 @@ $(function(){
     $('#findAddress').on('submit',function(event){
         event.preventDefault();
 
-        //apiKey="a88039a8124c4995a04f445d050de41a";
         apiKey="demo-api-key";
         streetName = $('.street_name').val();
 
