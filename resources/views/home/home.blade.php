@@ -489,6 +489,68 @@
     </div>
 </div>
 
+<!-- both single carousel-->
+<div class="container mt-4">
+    <div class="row">
+        <div class="col-md-6 col-sm-6">
+            <span class="text-success">
+                <h5><b>SHOPPING IN HMARKET</b></h5>
+            </span>
+            <div id="shoppingInHmarket" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    @foreach($othersProducts as $key => $product)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <a href="/product/showProductsCategoryAB/{{ $product->id }}" class="text-decoration-none text-dark">
+                            <img style="height: 250px;" src="{{ $product->image_path }}" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#shoppingInHmarket" data-slide="prev">
+                    <span class="text-danger">
+                        <i class="fas fa-chevron-left fa-4x"></i>
+                    </span>
+                </a>
+                <a class="carousel-control-next" href="#shoppingInHmarket" data-slide="next">
+                    <span class="text-danger">
+                        <i class="fas fa-chevron-right fa-4x"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+        <div class="col-md-6 col-sm-6">
+            <span class="text-danger">
+                <h5><b>BEST CHOICE IN HMARKET</b></h5>
+            </span>
+            <div id="bestChoiceInHMarket" class="carousel slide" data-ride="carousel">
+                <!-- The slideshow -->
+                <div class="carousel-inner">
+                    @foreach($othersProducts as $key => $product)
+                    <div class="carousel-item {{ $key == 0 ? 'active' : '' }}">
+                        <a href="/product/showProductsCategoryAB/{{ $product->id }}" class="text-decoration-none text-dark">
+                            <img style="height: 250px;" src="{{ $product->image_path }}" class="img-fluid" alt="">
+                        </a>
+                    </div>
+                    @endforeach
+                </div>
+                <!-- Left and right controls -->
+                <a class="carousel-control-prev" href="#bestChoiceInHMarket" data-slide="prev">
+                    <span class="text-danger">
+                        <i class="fas fa-chevron-left fa-4x"></i>
+                    </span>
+                </a>
+                <a class="carousel-control-next" href="#bestChoiceInHMarket" data-slide="next">
+                    <span class="text-danger">
+                        <i class="fas fa-chevron-right fa-4x"></i>
+                    </span>
+                </a>
+            </div>
+        </div>
+    </div>
+</div>
+
 <!-- home shopping event -->
 <div class="container mt-4">
     <div class="row no-gutters">
