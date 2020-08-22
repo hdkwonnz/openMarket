@@ -49,3 +49,14 @@ $('.help_menu_close').click(function(){
     $('.help_menu').hide();
     $('.help_click').show();
 })
+
+////goTop
+$(window).scroll(function () {         //스크롤을 시작하면
+    var h = $('.base_mark').height();  //해당 영역의 높이를 측정하여
+    //alert(h);
+    if ($(document).scrollTop() > h) { //screen top 이 h 보다 크면
+        $(".goTop").show();            //goTop element를 보여주고
+    }else{                             //그렇지 않으면
+        $(".goTop").hide();            //숨긴다.
+    }
+});

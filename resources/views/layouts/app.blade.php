@@ -154,14 +154,8 @@
             </div>
         </nav><!-- end of navbar second top-->
 
-        <!-- navbar bottom -->
-        {{-- <nav class="navbar fixed-bottom">
-            <ul class="navbar-nav ml-auto">
-                <li class="nav-item">
-                    <a href="#" class="btn btn-lg btn-danger"><i class="far fa-question-circle"></i> Help</a>
-                </li>
-            </ul>
-        </nav> --}}
+        <!-- dummy element for goTop a tag -->
+        <div class="base_mark"></div>
 
         <!-- all menu display block -->
         <div class="container">
@@ -176,8 +170,11 @@
         <main class="py-4">
             @yield('content')
         </main>
+
         <!-- footer -->
         @include('includes.layout.app.footer')
+        <!-- goTop -->
+        @include('includes.layout.app.goTop')
         <!-- help -->
         @include('includes.layout.app.help')
         <!-- view watched product-->
