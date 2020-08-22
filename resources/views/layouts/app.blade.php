@@ -42,7 +42,7 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link all_menu">
+                            <a href="javascript: void(0)" class="nav-link all_menu">
                                 <i class="fas fa-bars fa-2x bars_img"></i>
                                 <i class="fas fa-times fa-2x display_none cross_img"></i>
                             </a>

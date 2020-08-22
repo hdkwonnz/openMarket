@@ -21,7 +21,7 @@
                     </div>
                     <div class="col-md-2 col-sm-2 col-12 my-auto text-center">
                         <div class="bg-danger my-auto subscribe_block">
-                            <a href="#" class="text-decoration-none">
+                            <a href="javascript: void(0)" class="text-decoration-none text-dark">
                                 <strong>SUBSCRIBE</strong>
                             </a>
                         </div>

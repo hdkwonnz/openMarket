@@ -44,7 +44,8 @@
     margin-top: 2px;
 }
 .position_absolute_top {
-    position: absolute; top: 0;
+    /* position: absolute; top: 0; */
+    position: fixed; top: 0;
 }
 /* .text_decoration_line_through{
     text-decoration: line-through
