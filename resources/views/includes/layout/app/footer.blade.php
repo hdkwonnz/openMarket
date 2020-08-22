@@ -1,18 +1,13 @@
 <div class="footer">
     <div class="container-fluid text-white sns_block">
         <div class="row">
-            <div class="col-md-12 col-sm-12 text-right">
-                <a href="#" class="text-white text-decoration-none">Back To Top</a>
-            </div>
-        </div>
-        <div class="row">
             <div class="container mt-3">
                 <div class="row no-gutters h-100">
                     <div class="col-md-3 col-sm-3 col-12 my-auto">
-                        <a href="#" data-toggle="tooltip" data-placement="bottom" title="facebook"><i class="fab fa-facebook fa-3x"></i></a>
-                        <a href="#" data-placement="bottom" title="youtube"><i class="fab fa-youtube fa-3x ml-3"></i></a>
-                        <a href="#" data-placement="bottom" title="instagram"><i class="fab fa-instagram fa-3x ml-3"></i></a>
-                        <a href="#" data-placement="bottom" title="twitter"><i class="fab fa-twitter-square fa-3x ml-3"></i></a>
+                        <a href="javascript: void(0)" data-toggle="tooltip" data-placement="bottom" title="facebook"><i class="fab fa-facebook fa-3x"></i></a>
+                        <a href="javascript: void(0)" data-placement="bottom" title="youtube"><i class="fab fa-youtube fa-3x ml-3"></i></a>
+                        <a href="javascript: void(0)" data-placement="bottom" title="instagram"><i class="fab fa-instagram fa-3x ml-3"></i></a>
+                        <a href="javascript: void(0)" data-placement="bottom" title="twitter"><i class="fab fa-twitter-square fa-3x ml-3"></i></a>
                     </div>
                     <div class="col-md-3 col-sm-3 col-12 my-auto text-left">
                         <h5>
