@@ -51,6 +51,7 @@ Vue.component('customer-orders', require('./components/seller/seller/CustomerOrd
 Vue.component('show-category', require('./components/admin/category/ShowCategory.vue').default);
 Vue.component('show-carouselone', require('./components/admin/product/ShowCarouselone.vue').default);
 Vue.component('get-location', require('./components/location/GetLocation.vue').default);
+
 /**
  * Next, we will create a fresh Vue application instance and attach it to
  * the page. Then, you may begin adding components to this application
@@ -60,73 +61,83 @@ Vue.component('get-location', require('./components/location/GetLocation.vue').d
 const app = new Vue({
     el: '#app',
 
-    // below code for google map API
-    data() {
-        return {
-            locations: [],
-            infoWindowOptions: {
-                pixelOffset: {
-                    width: 0,
-                    height: -35
-                }
-            },
-            activeLocation: {},
-            infoWindowOpened: false
-        }
-    },
+    // // below code for pusher testing //currently not working 24/08/2020
+    // mounted(){
+    //     Echo.channel('notice-seller')
+    //     .listen('NoticeToSellerEvent', (e) => {
+    //         console.log('omggg realtime bro')
+    //     });
+    // },
 
-    created() {
-        axios.get('/location/getLocations')
-            .then((response) => this.locations = response.data)
-            .catch((error) => console.error(error));
-    },
+    // // below code for google map API //do not delete
+    // data() {
+    //     return {
+    //         //locations: [],
+    //         locations: {},
+    //         infoWindowOptions: {
+    //             pixelOffset: {
+    //                 width: 0,
+    //                 height: -35
+    //             }
+    //         },
+    //         activeLocation: {},
+    //         infoWindowOpened: false
+    //     }
+    // },
 
-    methods: {
-        getPosition(location) {
-            return {
-                lat: parseFloat(location.latitude),
-                lng: parseFloat(location.longitude)
-            }
-        },
-        handleMarkerClicked(location) {
-            this.activeLocation = location;
-            this.infoWindowOpened = true;
-        },
-        handleInfoWindowClose() {
-            this.activeLocation = {};
-            this.infoWindowOpened = false;
-        },
-        // handleMapClick(e) {
-        //     this.locations.push({
-        //         name: "Placeholder",
-        //         hours: "00:00am-00:00pm",
-        //         city: "Orlando",
-        //         state: "FL",
-        //         latitude: e.latLng.lat(),
-        //         longitude: e.latLng.lng()
-        //     });
-        // },
-    },
+    // created() {
+    //     axios.get('/location/getLocations')
+    //         //.then((response) => this.locations = response.data)
+    //         .then((response) => this.locations = response.data.locations)
+    //         .catch((error) => console.error(error));
+    // },
 
-    computed: {
-        mapCenter() {
-            if (!this.locations.length) {
-                return {
-                    lat: 10,
-                    lng: 10
-                }
-            }
-            return {
-                lat: parseFloat(this.locations[0].latitude),
-                lng: parseFloat(this.locations[0].longitude)
-            }
-        },
-        infoWindowPosition() {
-            return {
-                lat: parseFloat(this.activeLocation.latitude),
-                lng: parseFloat(this.activeLocation.longitude)
-            };
-        },
-    },
-    // end of google map API
+    // methods: {
+    //     getPosition(location) {
+    //         return {
+    //             lat: parseFloat(location.latitude),
+    //             lng: parseFloat(location.longitude)
+    //         }
+    //     },
+    //     handleMarkerClicked(location) {
+    //         this.activeLocation = location;
+    //         this.infoWindowOpened = true;
+    //     },
+    //     handleInfoWindowClose() {
+    //         this.activeLocation = {};
+    //         this.infoWindowOpened = false;
+    //     },
+    //     // handleMapClick(e) {
+    //     //     this.locations.push({
+    //     //         name: "Placeholder",
+    //     //         hours: "00:00am-00:00pm",
+    //     //         city: "Orlando",
+    //     //         state: "FL",
+    //     //         latitude: e.latLng.lat(),
+    //     //         longitude: e.latLng.lng()
+    //     //     });
+    //     // },
+    // },
+
+    // computed: {
+    //     mapCenter() {
+    //         if (!this.locations.length) {
+    //             return {
+    //                 lat: 10,
+    //                 lng: 10
+    //             }
+    //         }
+    //         return {
+    //             lat: parseFloat(this.locations[0].latitude),
+    //             lng: parseFloat(this.locations[0].longitude)
+    //         }
+    //     },
+    //     infoWindowPosition() {
+    //         return {
+    //             lat: parseFloat(this.activeLocation.latitude),
+    //             lng: parseFloat(this.activeLocation.longitude)
+    //         };
+    //     },
+    // },
+    // // // end of google map API
 });

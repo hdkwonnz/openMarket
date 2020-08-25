@@ -11,6 +11,7 @@ use App\Categorya;
 use App\Categoryb;
 use App\Categoryc;
 use Illuminate\Http\Request;
+use App\Events\NoticeToSellerEvent;
 use Illuminate\Support\Facades\Cache;
 
 class ProductController extends Controller
@@ -32,6 +33,10 @@ class ProductController extends Controller
         ////https://www.256kilobytes.com/content/show/3282/laravel-php-how-to-make-a-recently-viewed-posts-widget
         $reviewed = new Reviewed;
         $reviewed->add($product->id, $product->image_path);
+
+        ////for testing temporary
+        event(new NoticeToSellerEvent($product));
+
 
         return view('product.details', compact('product'));
     }

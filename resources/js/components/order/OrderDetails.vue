@@ -1,5 +1,9 @@
 <template>
     <div>
+        <div class="row">
+            <div>{{ this.productName }}</div>
+        </div>
+
         <div class="row no-gutters">
             <div v-if="termSw" class="col-md-7 col-sm-7">
                 <h4>ORDER DETAILS (by terms)</h4>
@@ -119,6 +123,7 @@
     export default {
         data(){
             return{
+                productName: "", //temp
                 orders: {},
                 fromDate: "",
                 toDate: "",
@@ -185,7 +190,14 @@
         },
 
         mounted() {
-
+            Echo.private('notice-seller')
+            .listen('NoticeToSellerEvent', (product) => {
+                // if (this.user_email == appointment.doctor_email){
+                //     this.appointments.push(appointment);
+                // }
+                //console.log(product);
+                this.productName = product.name;
+            });
         }
     }
 </script>

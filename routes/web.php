@@ -17,6 +17,7 @@ use Illuminate\Support\Facades\Route;
 //     return $remainder;
 // });
 
+Route::get('/fire', 'HomeController@fire');
 
 // Route::get('/', function () {
 //     return view('welcome');

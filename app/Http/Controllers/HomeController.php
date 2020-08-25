@@ -9,6 +9,7 @@ use App\Carouselone;
 use App\Product;
 use App\Categorya;
 use App\Categoryb;
+use App\Events\NoticeToSellerEvent;
 use Cookie;
 
 use Illuminate\Http\Request;
@@ -24,6 +25,13 @@ class HomeController extends Controller
     public function __construct()
     {
         // $this->middleware('auth');
+    }
+
+    // testing for pusher => temporary testing
+    public function fire()
+    {
+        event(new NoticeToSellerEvent);
+        return 'Fired';
     }
 
     //myJs/layout/reCall.js 에서 콜한다.

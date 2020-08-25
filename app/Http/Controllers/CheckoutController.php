@@ -8,6 +8,7 @@ use DateTime;
 use App\Order;
 use App\Address;
 use App\Errorlog;
+use App\Events\NoticeToSellerEvent;
 use Stripe\Stripe;
 use App\Orderdetail;
 use Stripe\PaymentIntent;
@@ -154,6 +155,16 @@ class CheckoutController extends Controller
             $job = (new OrderdetailsEmailJob($orderDetails))
                     ->delay(now()->addSeconds(10));
             $this->dispatch($job);
+
+            ////이곳에서 각 product owner에게 order 된 내용을 email로 발송해야 된다.
+            //
+            //
+            //
+
+            ////seller에게 solid message를 보낸다.
+            ////현재는 test 중이라 buyer에게 보낸다.
+            //event(new NoticeToSellerEvent($order));
+
 
             return response()->json([
                                         'errorMsg' => null,
