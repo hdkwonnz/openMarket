@@ -162,9 +162,13 @@ class CheckoutController extends Controller
             //
 
             ////seller에게 solid message를 보낸다.
-            ////현재는 test 중이라 buyer에게 보낸다.
-            //event(new NoticeToSellerEvent($order));
-
+            ////추후에 아래를 참고하여 code를 완성 할 것...
+            // $orders = Orderdetail::with('product')
+            //                         ->where('order_id','=',$order->id)
+            //                         ->get();
+            // foreach($orders as $order){
+            //     event(new NoticeToSellerEvent($order_need_to_be_changed_here_future));
+            // }
 
             return response()->json([
                                         'errorMsg' => null,
