@@ -38,19 +38,10 @@
                     <!-- Left Side Of Navbar -->
                     <ul class="navbar-nav mr-auto">
                         <li class="nav-item">
-                            <a href="#" class="nav-link all_menu">
-                                <i class="fas fa-bars fa-2x bars_img"></i>
-                                <i class="fas fa-times fa-2x display_none cross_img"></i>
-                            </a>
+
                         </li>
                     </ul>
-                    <!-- Search -->
-                    <form class="form-inline mr-auto" action="/home/search" method="GET" name="mainSerach" id="mainSerach">
-                        <input type="text" class="form-control" style="width: 400px;" name="searchTerm" id="searchTerm" value="{{ request()->input('searchTerm') }}" placeholder="Search" aria-label="Search" required autofocus />
-                        <button class="btn btn-outline-success" type="submit">
-                            <i class="fas fa-search"></i>
-                        </button>
-                    </form>
+
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
                         <!-- Authentication Links -->
@@ -90,50 +81,9 @@
             </div>
         </nav><!-- end of navbar top -->
 
-        <!-- navbar second top-->
-        <nav class="navbar navbar-expand-md navbar-light bg-muted shadow-sm" style="top: 60px; z-index: 3;">
-            <div class="container">
-                <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#collapsibleNavbar">
-                    <span class="navbar-toggler-icon"></span>
-                  </button>
-                  <div class="collapse navbar-collapse" id="collapsibleNavbar">
-                    @can('isAdmin')
-                    <ul class="navbar-nav mr-auto">
-                      <li class="nav-item">
-                        <a href="" class="nav-link text-dark" href="#">PERMISSIONS</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('admin.category.showCategoryForm') }}" class="nav-link text-dark" href="#">CATEGORIES</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="{{ route('admin.product.showCarouselOne') }}" class="nav-link text-dark" href="#">CAROUSELS</a>
-                      </li>
-                      <li class="nav-item">
-                        <a href="" class="nav-link text-dark" href="#">NOTICES</a>
-                      </li>
-                    </ul>
-                    <ul class="navbar-nav ml-auto">
-                        <li class="nav-item">
-                          <a class="nav-link text-dark" href="#">CUSTOMER CENTER</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-dark" href="#">ABOUT US</a>
-                        </li>
-                        <li class="nav-item">
-                          <a class="nav-link text-dark" href="#">CONTACT US</a>
-                        </li>
-                      </ul>
-                      @endcan
-                  </div>
-            </div>
-        </nav><!-- end of navbar second top-->
 
-        <!-- all menu display block -->
-        <div class="container">
-            <div class="all_category z_index3 display_none position_absolute_top bg-white">
 
-            </div>
-        </div>
+
 
         <!-- main contents -->
         <main class="py-4">

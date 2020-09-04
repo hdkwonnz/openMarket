@@ -121,7 +121,7 @@ class LoginController extends Controller
             return redirect('/seller');////
         }////
         if ($roleName == 'admin'){////
-            return redirect('/admin');////
+            return redirect('/showErrorLogsForAdmin');////
         }////
 
         if ($response = $this->authenticated($request, $this->guard()->user())) {

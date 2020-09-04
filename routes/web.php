@@ -175,3 +175,19 @@ Route::post('/seller/disConnectProductOptions', 'SellerController@disConnectProd
 // location
 Route::get('/location/index', 'LocationController@index')->name('location.index');
 Route::get('/location/getLocations', 'LocationController@getLocations')->name('location.getLocations');
+
+// logs
+Route::get('/showErrorLogsForAdmin','LogController@show')->name('logs')->middleware('auth','can:isAdmin');
+
+// Route::domain('admin.openmarket.test')->group(function () {
+//     Route::get('/logs','Admin\LogController@show')->name('logs');
+// });
+
+// Route::group(
+//     [
+//         'domain' => 'admin.openmarket.test'
+//     ],
+//     function () {
+//         Route::get('/logs','Admin\LogController@show')->name('logs');
+//     }
+// );
