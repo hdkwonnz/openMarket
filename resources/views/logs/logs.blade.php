@@ -11,7 +11,7 @@
     </div>
 
     <form action="{{ route('logs') }}">
-        <input type="date" name='date' value="{{ $date ? $date->format('Y-m-d') : today()->format('Y-m-d') }}">
+        <input type="date" name='selectedDate' value="{{ $selectedDate ? $selectedDate->format('Y-m-d') : today()->format('Y-m-d') }}">
         <button type="submit">Get</button>
     </form>
 

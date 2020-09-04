@@ -27,8 +27,8 @@
         <!-- navbar top -->
         <nav class="navbar navbar-expand-md navbar-light bg-white shadow-sm fixed-top">
             <div class="container">
-                <a class="navbar-brand text-danger" href="{{ url('/') }}">
-                    HANMART
+                <a class="navbar-brand text-danger" href="javascript: void(0)">
+                    H-Mart
                 </a>
                 <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent" aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="{{ __('Toggle navigation') }}">
                     <span class="navbar-toggler-icon"></span>
@@ -80,10 +80,6 @@
                 </div>
             </div>
         </nav><!-- end of navbar top -->
-
-
-
-
 
         <!-- main contents -->
         <main class="py-4">
