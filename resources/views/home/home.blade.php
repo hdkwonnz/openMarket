@@ -241,31 +241,31 @@
         <div class="col-md-4 col-sm-4">
             <div class="mb-3">
                 <a href="javascript: void(0)">
-                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/1.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://media.publit.io/file/laraMartImages/home/hotProducts/1.jpg" alt="">
                 </a>
             </div>
             <div>
                 <a href="javascript: void(0)">
-                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/2.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://media.publit.io/file/laraMartImages/home/hotProducts/2.jpg" alt="">
                 </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-4">
             <div class="mb-3">
                 <a href="javascript: void(0)">
-                    <img class="w-100 img-fluid" style="height: 415px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/3.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 415px;" src="https://media.publit.io/file/laraMartImages/home/hotProducts/3.jpg" alt="">
                 </a>
             </div>
         </div>
         <div class="col-md-4 col-sm-4">
             <div class="mb-3">
                 <a href="javascript: void(0)">
-                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/4.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://media.publit.io/file/laraMartImages/home/hotProducts/4.jpg" alt="">
                 </a>
             </div>
             <div>
                 <a href="javascript: void(0)">
-                    <img class="w-100 img-fluid" style="height: 200px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/hotProduct/5.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 200px;" src="https://media.publit.io/file/laraMartImages/home/hotProducts/5.jpg" alt="">
                 </a>
             </div>
         </div>
@@ -276,7 +276,7 @@
 <div class="container-fluid mt-4">
     <div class="row">
         <a href="javascript: void(0)">
-            <img class="img-fluid w-100" style="height: 100px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/longBoxAd/fresh_veges.jpg" alt="">
+            <img class="img-fluid w-100" style="height: 100px;" src="https://media.publit.io/file/laraMartImages/home/longBoxAd/fresh_veges.jpg" alt="">
         </a>
     </div>
 </div>
@@ -385,7 +385,7 @@
                     <div class="col-md-4 col-sm-4 col-4">
                         <div style="border: 1px solid white; height: 400px; position:relative; top: 10px;">
                             <a href="javascript: void(0)">
-                                <img class="img-fluid w-100" style="min-height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/superDeal/s1.JPG" alt="">
+                                <img class="img-fluid w-100" style="min-height: 250px;" src="https://media.publit.io/file/laraMartImages/home/superDeal/s1.jpg" alt="">
                                 <div style="border: 1px solid red; height: 150px;">
 
                                 </div>
@@ -395,7 +395,7 @@
                     <div class="col-md-4 col-sm-4 col-4">
                         <div style="border: 1px solid white; height: 400px; position:relative; top: 10px;">
                             <a href="javascript: void(0)">
-                                <img class="img-fluid w-100" style="min-height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/superDeal/s2.JPG" alt="">
+                                <img class="img-fluid w-100" style="min-height: 250px;" src="https://media.publit.io/file/laraMartImages/home/superDeal/s2.jpg" alt="">
                                 <div style="border: 1px solid red; height: 150px;">
 
                                 </div>
@@ -405,7 +405,7 @@
                     <div class="col-md-4 col-sm-4 col-4">
                         <div style="border: 1px solid white; height: 400px; position:relative; top: 10px;">
                             <a href="javascript: void(0)">
-                                <img class="img-fluid w-100" style="min-height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/superDeal/s3.JPG" alt="">
+                                <img class="img-fluid w-100" style="min-height: 400px;" src="https://media.publit.io/file/laraMartImages/home/superDeal/s3.jpg" alt="">
                             </a>
                         </div>
                     </div>
@@ -431,7 +431,7 @@
     <div class="row no-gutters mt-2">
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
-                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/01_circul.JPG" alt="">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://media.publit.io/file/laraMartImages/home/freshVeges/01_circul.jpg" alt="">
                 <div class="w-100" style="height: 149px;">
 
                 </div>
@@ -439,7 +439,7 @@
         </div>
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
-                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o2_circul.JPG" alt="">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://media.publit.io/file/laraMartImages/home/freshVeges/o2_circul.jpg" alt="">
                 <div class="w-100" style="height: 149px;">
 
                 </div>
@@ -447,7 +447,7 @@
         </div>
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
-                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o3_circul.JPG" alt="">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://media.publit.io/file/laraMartImages/home/freshVeges/o3_circul.jpg" alt="">
                 <div class="w-100" style="height: 149px;">
 
                 </div>
@@ -455,7 +455,7 @@
         </div>
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
-                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o4_circul.JPG" alt="">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://media.publit.io/file/laraMartImages/home/freshVeges/o4_circul.jpg" alt="">
                 <div class="w-100" style="height: 149px;">
 
                 </div>
@@ -463,7 +463,7 @@
         </div>
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
-                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/o5_circul.JPG" alt="">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://media.publit.io/file/laraMartImages/home/freshVeges/o5_circul.jpg" alt="">
                 <div class="w-100" style="height: 149px;">
 
                 </div>
@@ -471,7 +471,7 @@
         </div>
         <div class="col-md-2 col-sm-2"style="border: 1px solid black; width: 100%; height: 400px;" >
             <a href="javascript: void(0)">
-                <img class="img-fluid w-100" style="height: 250px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/fresh/06_circul.JPG" alt="">
+                <img class="img-fluid w-100" style="height: 250px;" src="https://media.publit.io/file/laraMartImages/home/freshVeges/06_circul.jpg" alt="">
                 <div class="w-100" style="height: 149px;">
 
                 </div>
@@ -484,7 +484,7 @@
 <div class="container mt-4">
     <div class="row no-gutters">
         <a href="javascript: void(0)">
-            <img class="img-fluid w-100" style="height: 100px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/coupon/discountCoupon.jpg" alt="">
+            <img class="img-fluid w-100" style="height: 100px;" src="https://media.publit.io/file/laraMartImages/home/couponAd/discountCoupon.jpg" alt="">
         </a>
     </div>
 </div>
@@ -659,7 +659,7 @@
         <div class="col-md-3 col-sm-3">
             <div style="min-height: 400px;">
                 <a href="javascript: void(0)">
-                    <img class="w-100 img-fluid" style="height: 400px;" src="https://s3-ap-southeast-2.amazonaws.com/hdkwonnz.openmarket/others/oo8.JPG" alt="">
+                    <img class="w-100 img-fluid" style="height: 400px;" src="https://media.publit.io/file/laraMartImages/home/others/oo8.jpg" alt="">
                 </a>
             </div>
         </div>
